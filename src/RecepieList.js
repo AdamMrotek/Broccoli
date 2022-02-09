@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function recepieList({ recepies, name }) {
   return (
     <div className="recepie-list">
@@ -6,10 +8,12 @@ function recepieList({ recepies, name }) {
       {recepies.map((recepie) => {
         return (
           <div className="blog-preview" key={recepie.id}>
-            <h2>{recepie.title}</h2>
-            <p>{recepie.body}</p>
-            <p>{recepie.author}</p>
-            <button onClick={() => {}}>Delete this recepie</button>
+            <Link to={`/recepie/${recepie.id}`}>
+              <h2>{recepie.title}</h2>
+              <p>{recepie.body}</p>
+              <p>{recepie.author}</p>
+              <button onClick={() => {}}>Delete this recepie</button>
+            </Link>
           </div>
         );
       })}

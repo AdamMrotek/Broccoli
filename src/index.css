@@ -53,15 +53,15 @@
 }
 
 /* blog details page */
-.blog-details h2 {
+.recepie-details h2 {
   font-size: 20px;
   color: #f1356d;
   margin-bottom: 10px;
 }
-.blog-details div {
+.recepie-details div {
   margin: 20px 0;
 }
-.blog-details button {
+.recepie-details button {
   background: #f1356d;
   color: #fff;
   border: 0;
