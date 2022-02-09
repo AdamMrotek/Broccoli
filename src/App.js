@@ -4,14 +4,15 @@ import Home from "./Home.js";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
-  const title = "Broccoli Groceries";
-
   return (
     <Router>
       <div className="App">
         <Navbar />
         <div className="content">
           <Switch>
+            <Route path="/create">
+              <div>Create</div>
+            </Route>
             <Route path="/">
               <Home />
             </Route>
