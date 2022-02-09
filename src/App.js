@@ -1,6 +1,8 @@
 import "./App.css";
 import Navbar from "./Navbar.js";
 import Home from "./Home.js";
+import Create from "./Create.js";
+import NotFound from "./NotFound.js";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import RecepieDetails from "./RecepieDetails.js";
 
@@ -12,13 +14,16 @@ function App() {
         <div className="content">
           <Switch>
             <Route exact path="/create">
-              <div>Create</div>
+              <Create />
             </Route>
             <Route exact path="/">
               <Home />
             </Route>
             <Route path="/recepie/:id">
               <RecepieDetails />
+            </Route>
+            <Route path="*">
+              <NotFound />
             </Route>
           </Switch>
         </div>

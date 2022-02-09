@@ -4,12 +4,6 @@
       "title": "food",
       "body": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, porro!",
       "author": "User 1",
-      "id": 1
-    },
-    {
-      "title": "food",
-      "body": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, porro!",
-      "author": "User 1",
       "id": 2
     },
     {
@@ -17,6 +11,18 @@
       "body": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, porro!",
       "author": "User 1",
       "id": 3
+    },
+    {
+      "title": "adas",
+      "body": "dasda",
+      "author": "foodie 2",
+      "id": 4
+    },
+    {
+      "title": "adasafda",
+      "body": "dasdafdasf",
+      "author": "foodie 1",
+      "id": 5
     }
   ]
 }
