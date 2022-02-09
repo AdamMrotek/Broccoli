@@ -1,0 +1,22 @@
+{
+  "recepies": [
+    {
+      "title": "food",
+      "body": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, porro!",
+      "author": "User 1",
+      "id": 1
+    },
+    {
+      "title": "food",
+      "body": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, porro!",
+      "author": "User 1",
+      "id": 2
+    },
+    {
+      "title": "drink",
+      "body": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, porro!",
+      "author": "User 1",
+      "id": 3
+    }
+  ]
+}
