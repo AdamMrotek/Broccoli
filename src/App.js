@@ -3,6 +3,8 @@ import Navbar from "./Navbar.js";
 import Home from "./Home.js";
 import Create from "./Create.js";
 import NotFound from "./NotFound.js";
+import Search from "./Search.js";
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import RecepieDetails from "./RecepieDetails.js";
 
@@ -18,6 +20,9 @@ function App() {
             </Route>
             <Route exact path="/">
               <Home />
+            </Route>
+            <Route exact path="/search">
+              <Search />
             </Route>
             <Route path="/recepie/:id">
               <RecepieDetails />

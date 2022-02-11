@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function recepieList({ recepies, name }) {
+function RecepieList({ recepies, name }) {
   return (
     <div className="recepie-list">
       <p>{name}</p>
@@ -21,4 +21,4 @@ function recepieList({ recepies, name }) {
   );
 }
 
-export default recepieList;
+export default RecepieList;

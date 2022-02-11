@@ -16,7 +16,7 @@ function Home() {
       <button onClick={(e) => handleClick(e)}>Click Me!</button>
       {data && <RecepieList recepies={data} name={name} />}
       {isLoading && <p>Data is loading</p>}
-      {error && <p>Data is loading</p>}
+      {error && <p>{error}</p>}
     </div>
   );
 }
