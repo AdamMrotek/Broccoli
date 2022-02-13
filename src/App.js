@@ -2,6 +2,7 @@ import "./App.css";
 import Navbar from "./Navbar.js";
 import Home from "./Home.js";
 import Create from "./Create.js";
+import Footer from "./Footer.js";
 import NotFound from "./NotFound.js";
 import Search from "./Search.js";
 
@@ -32,6 +33,7 @@ function App() {
             </Route>
           </Switch>
         </div>
+        <Footer></Footer>
       </div>
     </Router>
   );

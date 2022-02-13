@@ -14,7 +14,7 @@ function Create() {
       `https://api.edamam.com/api/recipes/v2?type=public&q=${recipeName}&app_id=${process.env.REACT_APP_Application_ID}&app_key=${process.env.REACT_APP_Application_Keys}`
     );
     const data = await response.json();
-    console.log(data.hits[0].recipe);
+    console.log(data.hits[0]);
     setRecipeList(data.hits);
 
     console.log(e.target, recipeName, cusine);

@@ -1,10 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC&family=Poppins:wght@300;600&display=swap");
 
 /* base styles */
 * {
   margin: 0;
-  font-family: "Quicksand";
+  font-family: "Amatic SC", cursive;
+  letter-spacing: normal;
   color: #333;
+}
+.App {
+  min-height: 100vh;
+  position: relative;
+}
+h1,
+h2,
+h3 {
+  font-family: "Poppins", sans-serif;
 }
 .navbar {
   padding: 20px;
@@ -31,6 +41,7 @@
 .content {
   max-width: 1200px;
   margin: 40px auto;
+
   padding: 20px;
 }
 
@@ -101,5 +112,31 @@
   border: 0;
   padding: 8px;
   border-radius: 8px;
+  cursor: pointer;
+}
+.footer-wrap {
+  padding-top: 5rem;
+}
+.footer {
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #333;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  height: 5rem;
+}
+.footer__text > * {
+  color: white;
+}
+.footer__menu > ul {
+  display: flex;
+  list-style: none;
+}
+.footer__menu > ul > * {
+  margin: 1rem;
+  color: white;
   cursor: pointer;
 }
