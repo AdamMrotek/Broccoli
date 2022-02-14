@@ -5,6 +5,7 @@ import Create from "./Create.js";
 import Footer from "./Footer.js";
 import NotFound from "./NotFound.js";
 import Search from "./Search.js";
+import Counter from "./Counter.js";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import RecepieDetails from "./RecepieDetails.js";
@@ -33,6 +34,7 @@ function App() {
             </Route>
           </Switch>
         </div>
+        <Counter></Counter>
         <Footer></Footer>
       </div>
     </Router>

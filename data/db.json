@@ -23,6 +23,26 @@
       "body": "dasdafdasf",
       "author": "foodie 1",
       "id": 5
+    },
+    {
+      "title": "adasd",
+      "body": "afdafdaf",
+      "author": "foodie 2",
+      "id": 6
+    },
+    {
+      "title": "adadsa",
+      "body": "dsadsada",
+      "author": "foodie 2",
+      "id": 7
+    },
+    {
+      "title": "adsdsad",
+      "body": "adsad",
+      "author": "",
+      "dishtype": "",
+      "dishType": "lunch",
+      "id": 8
     }
   ]
 }

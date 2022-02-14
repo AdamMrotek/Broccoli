@@ -15,6 +15,7 @@ const RecepieDetails = () => {
       history.push("/");
     });
   }
+
   return (
     <div className="recepie-details">
       <h2>Recepie details {id}</h2>
