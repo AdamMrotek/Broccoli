@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import RecepieList from "./RecepieList.js";
+import RecipeCard from "./RecipeCard.js";
+import RecipeList from "./RecipeList.js";
 import useFetch from "./useFetch.js";
 
-function Create() {
+function Search(props) {
   const [recipeList, setRecipeList] = useState(null);
   const [recipeName, setrecipeName] = useState("");
   const [cusine, setCusine] = useState();
@@ -14,10 +15,17 @@ function Create() {
       `https://api.edamam.com/api/recipes/v2?type=public&q=${recipeName}&app_id=${process.env.REACT_APP_Application_ID}&app_key=${process.env.REACT_APP_Application_Keys}`
     );
     const data = await response.json();
-    console.log(data.hits[0]);
-    setRecipeList(data.hits);
-
-    console.log(e.target, recipeName, cusine);
+    let newData = data.hits.map((recipe) => {
+      return {
+        lable: recipe.recipe.label,
+        image: recipe.recipe.images.SMALL.url,
+        ingedients: recipe.recipe.ingredients,
+        key: recipe.recipe.uri.split("recipe_")[1],
+      };
+    });
+    console.log(data);
+    console.log(newData);
+    setRecipeList(newData);
   };
   return (
     <div className="create">
@@ -55,14 +63,12 @@ function Create() {
       </form>
       {recipeList &&
         recipeList.map((recipe, i) => {
-          console.log(recipe);
           return (
-            <div>
-              <img
-                src={recipe.recipe.images.SMALL.url}
-                alt={recipe.recipe.label}
+            <div className="card" key={recipe.key}>
+              <RecipeCard
+                recipe={recipe}
+                addToGroceries={props.addToGroceries}
               />
-              <p key={i}>{recipe.recipe.label}</p>
             </div>
           );
         })}
@@ -70,4 +76,4 @@ function Create() {
   );
 }
 
-export default Create;
+export default Search;

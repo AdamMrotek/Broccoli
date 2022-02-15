@@ -5,12 +5,25 @@ import Create from "./Create.js";
 import Footer from "./Footer.js";
 import NotFound from "./NotFound.js";
 import Search from "./Search.js";
-import Counter from "./Counter.js";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import RecepieDetails from "./RecepieDetails.js";
+import { useState } from "react";
 
 function App() {
+  const [groceriesList, setGroceriesList] = useState([
+    { lable: "test recepie" },
+  ]);
+  function addToGroceries(recepie) {
+    setGroceriesList((groceriesList) => groceriesList.concat(recepie));
+  }
+  function removeFromGroceries(id) {
+    setGroceriesList((groceriesList) =>
+      groceriesList.filter((recipe) => recipe.key !== id)
+    );
+  }
+  console.log("+++++++++++++++++", groceriesList);
+
   return (
     <Router>
       <div className="App">
@@ -21,10 +34,13 @@ function App() {
               <Create />
             </Route>
             <Route exact path="/">
-              <Home />
+              <Home
+                groceriesList={groceriesList}
+                removeFromGroceries={removeFromGroceries}
+              />
             </Route>
             <Route exact path="/search">
-              <Search />
+              <Search addToGroceries={addToGroceries} />
             </Route>
             <Route path="/recepie/:id">
               <RecepieDetails />
@@ -34,7 +50,6 @@ function App() {
             </Route>
           </Switch>
         </div>
-        <Counter></Counter>
         <Footer></Footer>
       </div>
     </Router>
