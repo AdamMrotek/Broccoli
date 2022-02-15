@@ -61,17 +61,12 @@ function Search(props) {
         </select>
         <button>Search</button>
       </form>
-      {recipeList &&
-        recipeList.map((recipe, i) => {
-          return (
-            <div className="card" key={recipe.key}>
-              <RecipeCard
-                recipe={recipe}
-                addToGroceries={props.addToGroceries}
-              />
-            </div>
-          );
-        })}
+      {recipeList && (
+        <RecipeList
+          recipes={recipeList}
+          addToGroceries={props.addToGroceries}
+        />
+      )}
     </div>
   );
 }

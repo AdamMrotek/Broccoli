@@ -5,7 +5,7 @@ function RecipeList({ recipes, addToGroceries, removeFromGroceries }) {
     <div className="recipe-list">
       {recipes.map((recipe) => {
         return (
-          <div className="recipeCard" id={recipe.key}>
+          <div className="recipeCard" key={recipe.key}>
             <img
               className="recipeCard__image"
               src={recipe.image}

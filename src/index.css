@@ -161,11 +161,14 @@ h3 {
   width: 14rem;
   background-color: var(--white);
   box-shadow: var(--shadow);
-  border-radius: 5px;
+  border-radius: 20px;
   border: var(--grey) 1px solid;
+  overflow: hidden;
 }
 .recipeCard__image {
   width: 100%;
+  overflow: hidden;
+
   box-shadow: var(--shadow);
   margin-bottom: 1rem;
 }
@@ -175,7 +178,3 @@ h3 {
   justify-self: end;
   margin: 1rem;
 }
-/* <div className="recipe-list">
-{recipes.map((recipe) => {
-  return (
-    <div className="recipeCard" id={recipe.key}> */

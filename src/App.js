@@ -8,21 +8,60 @@ import Search from "./Search.js";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import RecepieDetails from "./RecepieDetails.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
-  const [groceriesList, setGroceriesList] = useState([
-    { lable: "test recepie" },
+  const [recipeList, setRecipeList] = useState([
+    { lable: "test recepie", key: "dadfas742q" },
   ]);
+
+  // FUNCTIONS CONTROLING recipeList
   function addToGroceries(recepie) {
-    setGroceriesList((groceriesList) => groceriesList.concat(recepie));
+    setRecipeList((recipeList) => recipeList.concat(recepie));
   }
   function removeFromGroceries(id) {
-    setGroceriesList((groceriesList) =>
-      groceriesList.filter((recipe) => recipe.key !== id)
+    setRecipeList((recipeList) =>
+      recipeList.filter((recipe) => recipe.key !== id)
     );
   }
-  console.log("+++++++++++++++++", groceriesList);
+  /////////
+
+  // FUNCTIONS CONTROLING groceriesList
+  function countGroceries(list) {
+    let newList = list.reduce((acc, item) => {
+      let indexNum = acc.findIndex((e) => e.food === item.food);
+      if (indexNum >= 0) {
+        acc[indexNum].quantity = acc[indexNum].quantity + item.quantity;
+        return acc;
+      }
+      return acc.concat(item);
+    }, []);
+    return newList;
+  }
+  function ingredientsExtractor(itemsList) {
+    let list = [];
+    itemsList.forEach((dish) => {
+      dish.ingedients?.forEach((ingre) => {
+        let newIngre = {
+          food: ingre.food,
+          quantity: ingre.quantity + " " + ingre.measure,
+        };
+        list.push(newIngre);
+      });
+    });
+    return list;
+  }
+  function sortGroceries(list) {
+    return list.sort((a, b) => a.food > b.food);
+  }
+  /////////
+
+  useEffect(() => {
+    let onlyGroceriesList = ingredientsExtractor(recipeList);
+    let sumGroceries = countGroceries(onlyGroceriesList);
+    let sortedGroceries = sortGroceries(sumGroceries);
+    console.log(sortedGroceries);
+  }, [recipeList]);
 
   return (
     <Router>
@@ -35,7 +74,7 @@ function App() {
             </Route>
             <Route exact path="/">
               <Home
-                groceriesList={groceriesList}
+                groceriesList={recipeList}
                 removeFromGroceries={removeFromGroceries}
               />
             </Route>
