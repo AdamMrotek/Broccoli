@@ -1,8 +1,5 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
-import RecipeCard from "./RecipeCard.js";
 import RecipeList from "./RecipeList.js";
-import useFetch from "./useFetch.js";
 
 function Search(props) {
   const [recipeList, setRecipeList] = useState(null);

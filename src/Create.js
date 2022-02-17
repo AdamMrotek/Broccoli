@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Create() {
   const [isPending, setIsPending] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate;
 
   const [formData, setFormData] = useState({
     title: "",
@@ -23,7 +23,7 @@ function Create() {
       .then((res) => {
         console.log("Added");
         setIsPending(false);
-        history.push("/");
+        navigate("/");
       })
       .catch((err) => console.log(err));
   };
