@@ -14,27 +14,17 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
 
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
-  // const RecipesCollectionRef = collection(db, "recipes");
-  // useEffect(() => {
-  //   const getRecipes = async () => {
-  //     console.log("hello");
-  //     const data = await getDocs(RecipesCollectionRef);
-  //     let newRecipes = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-  //     setuRecipes(newRecipes);
-  //   };
-  //   getRecipes();
-  // }, []);
-  // Controlling Auth
-
-  //
+  //controling user
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+  }, []);
 
   return (
     <Router>

@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 
-function GroceriesList(recipeList) {
-  const [groceries, setGroceries] = useState([]);
+export default function GroceriesList(recipeList) {
+  const [groceries, setGroceries] = useState(null);
   // FUNCTIONS CONTROLING groceriesList
   function countGroceries(list) {
     let newList = list.reduce((acc, item) => {
-      let indexNum = acc.findIndex((e) => e.food === item.food);
+      let indexNum = acc.findIndex((e) => e.key === item.key);
       if (indexNum >= 0) {
         acc[indexNum].quantity = acc[indexNum].quantity + item.quantity;
         return acc;
@@ -16,23 +16,30 @@ function GroceriesList(recipeList) {
   }
   function ingredientsExtractor(itemsList) {
     let list = [];
-    itemsList.forEach((dish) => {
-      dish.ingedients?.forEach((ingre) => {
-        let newIngre = {
-          food: ingre.food,
-          quantity: ingre.quantity + " " + ingre.measure,
-        };
-        list.push(newIngre);
+    if (itemsList.length > 0) {
+      console.log(itemsList);
+      itemsList.forEach((dish) => {
+        dish.ingedients?.forEach((ingre) => {
+          console.log(ingre);
+          let newIngre = {
+            food: ingre.food,
+            quantity: ingre.quantity + " " + ingre.measure,
+            key: ingre.foodId,
+          };
+          list.push(newIngre);
+        });
       });
-    });
+    }
+
     return list;
   }
   function sortGroceries(list) {
     return list.sort((a, b) => a.food > b.food);
   }
-  /////////
+  ///////
   useEffect(() => {
-    let onlyGroceriesList = ingredientsExtractor(recipeList);
+    let onlyGroceriesList = ingredientsExtractor(recipeList.recipeList);
+    console.log(onlyGroceriesList);
     let sumGroceries = countGroceries(onlyGroceriesList);
     let sortedGroceries = sortGroceries(sumGroceries);
     setGroceries(sortedGroceries);
@@ -43,7 +50,7 @@ function GroceriesList(recipeList) {
       <h2>Groceries List</h2>
       {groceries &&
         groceries.map((item) => (
-          <div>
+          <div key={item.key}>
             <p>{item.food}</p>
             <p>{item.quantity}</p>
           </div>

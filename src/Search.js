@@ -2,7 +2,7 @@ import { useState } from "react";
 import RecipeList from "./RecipeList.js";
 
 function Search(props) {
-  const [recipeList, setRecipeList] = useState(null);
+  const [searchList, setSearchList] = useState(null);
   const [recipeName, setrecipeName] = useState("");
   const [cusine, setCusine] = useState();
   // const [data, isLoading, error] = useFetch()
@@ -22,7 +22,7 @@ function Search(props) {
     });
     console.log(data);
     console.log(newData);
-    setRecipeList(newData);
+    setSearchList(newData);
   };
   return (
     <div className="create">
@@ -58,9 +58,9 @@ function Search(props) {
         </select>
         <button>Search</button>
       </form>
-      {recipeList && (
+      {searchList && (
         <RecipeList
-          recipes={recipeList}
+          recipes={searchList}
           addToGroceries={props.addToGroceries}
         />
       )}

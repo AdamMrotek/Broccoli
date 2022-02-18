@@ -36,7 +36,6 @@ function Navbar({ user }) {
         <Link to="/main/dashboard">Groceries Lists</Link>
         <Link to="/create">New Recepie</Link>
         <Link to="/profile">Your Profile</Link>
-        {!user && <UserForm formFunction={register} name={"register"} />}
         {!user && <UserForm formFunction={login} name={"log in"} />}
         {user && <p>Currently logged in {user?.email}</p>}
         {user && <button onClick={logout}>sign Out</button>}
