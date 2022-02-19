@@ -1,9 +1,10 @@
+import LogoBox from "./LogoBox.js";
 function Footer() {
   return (
     <div className="footer-wrap">
       <footer className="footer">
         <div className="footer__text">
-          <h3>Broccoli</h3>
+          <LogoBox></LogoBox>
           <p className="paragraph">Copyrights &copy; to everyone</p>
         </div>
         <div className="footer__menu">

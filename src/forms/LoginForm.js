@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function UserForm({ formFunction, name }) {
+function LoginForm({ formFunction, name }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -29,8 +29,8 @@ function UserForm({ formFunction, name }) {
         required
         minLength={6}
       />
-      <button>{name}</button>
+      <button className="btn">{name}</button>
     </form>
   );
 }
-export default UserForm;
+export default LoginForm;

@@ -1,6 +1,6 @@
 import "./App.css";
 import Navbar from "./Navbar.js";
-import Main from "./Main.js";
+import Main from "./dashboard/Main.js";
 import NotFound from "./NotFound.js";
 import Footer from "./Footer.js";
 import Home from "./Home.js";

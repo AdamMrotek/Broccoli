@@ -1,13 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { auth } from "./firebase-config.js";
 import {
   createUserWithEmailAndPassword,
   signOut,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import UserForm from "./UserForm.js";
+import LoginForm from "./forms/LoginForm.js";
+import LogoBox from "./LogoBox.js";
 
 function Navbar({ user }) {
+  const navigate = useNavigate();
   const register = async (e, email, password) => {
     e.preventDefault();
     try {
@@ -20,6 +22,7 @@ function Navbar({ user }) {
     e.preventDefault();
     try {
       const user = await signInWithEmailAndPassword(auth, email, password);
+      navigate("/main/dashboard");
     } catch (error) {
       console.log(error.message);
     }
@@ -27,19 +30,53 @@ function Navbar({ user }) {
   const logout = async () => {
     await signOut(auth);
   };
+  const testLogin = async () => {
+    try {
+      const user = await signInWithEmailAndPassword(
+        auth,
+        "example@email.com",
+        "123456"
+      );
+      navigate("/main/dashboard");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <nav className="navbar">
-      <h1>Broccolli Menu</h1>
-      <div className="links">
-        <Link to="/main/search">Explore Recepies</Link>
-        <Link to="/main/dashboard">Groceries Lists</Link>
-        <Link to="/create">New Recepie</Link>
-        <Link to="/profile">Your Profile</Link>
-        {!user && <UserForm formFunction={login} name={"log in"} />}
-        {user && <p>Currently logged in {user?.email}</p>}
-        {user && <button onClick={logout}>sign Out</button>}
-      </div>
+      <LogoBox />
+      {user && (
+        <div className="links">
+          <Link to="/main/search">Explore Recepies</Link>
+          <Link to="/main/dashboard">Groceries Lists</Link>
+          <Link to="/profile">Your Profile</Link>
+          <div>
+            <p>{user?.email}</p>
+            <button
+              className="btn btn--no-margin btn--priamary"
+              onClick={logout}
+            >
+              sign Out
+            </button>
+          </div>
+        </div>
+      )}
+
+      {!user && (
+        <div className="links">
+          <LoginForm formFunction={login} name={"log in"} />
+          <button className="btn btn--no-margin btn--priamary" onClick={logout}>
+            Create Account
+          </button>
+          <button
+            className="btn btn--no-margin btn--priamary"
+            onClick={testLogin}
+          >
+            Test Account
+          </button>
+        </div>
+      )}
     </nav>
   );
 }

@@ -1,27 +1,159 @@
-@import url("https://fonts.googleapis.com/css2?family=Amatic+SC&family=Poppins:wght@300;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Poppins:wght@300;600&display=swap");
 
 /* base styles */
 :root {
+  --primary-dark:#007944;
+  --primary-light:#71A95A;
+  --secondary-dark:#F35588;
+  --secondary-light:#FFBBB4
   --blue: #1e90ff;
   --white: #eeeeee;
-  --grey: #aaa;
+  --grey-light-1: #aaa;
+  --grey-dark-1:#333;
   --shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 * {
   margin: 0;
   font-family: "Amatic SC", cursive;
   letter-spacing: normal;
-  color: #333;
+  color:  var(--grey-dark-1);
+}
+html{
+  font-size: 62.5%;
+  min-height: 100vh;
 }
 .App {
   min-height: 100vh;
   position: relative;
 }
+/* FONTS */
 h1,
 h2,
-h3 {
+p,a {
   font-family: "Poppins", sans-serif;
+
+  /* <h1 className="heading-primary">
+  <span className="heading-primary--main"> A Chef In Every</span>
+  <span className="heading-primary--sub">  */
 }
+p,li,label{
+  font-size: 1.6rem;
+}
+
+.heading-primar{
+  font-size: 15rem;
+}
+.heading-primary--main{
+font-size: 10rem;
+display: block;
+font-family:  "Poppins", sans-serif;
+line-height: 10rem;
+padding-top: 5rem;
+display: block;
+}
+.heading-primary--sub{
+  display: block;
+  font-size: 10rem;
+
+}
+.heading-secondary{
+
+  font-size: 5rem;
+}
+.heading-tertiary{
+  color:var(--secondary-dark);
+  font-size: 2.4rem;
+}
+.logo-text--primary{
+  font-weight: 700;
+  
+}
+.logo-text--primary{
+  font-weight: 700;
+  font-size: 5rem;
+  display:block;
+  line-height: 5rem;
+  text-align: center;
+  color:var( --primary-dark)
+  
+
+  
+}
+.logo-text--secondary{
+  display:block;
+  font-family:"Poppins", sans-serif;
+  font-weight: 300; 
+  letter-spacing:0.5rem;
+  font-size:1.6rem;
+
+  transform: translateX(0.3rem);
+  text-transform: uppercase;
+
+  
+}
+
+/* <div className="logo-box">
+<img src="/svgIcons/logo.svg" alt="chief" className="card-icon" />
+<div className="logo-box__text-box">
+  <h3>
+    <span className="logo-text--primary">Broccolli</span>
+    <span className="logo-text--primary">Groceries</span>
+  </h3>
+</div> */
+
+/* /////////////////// */
+/* LOGO */
+.logo-box{
+  display: flex;
+  align-items: end;
+  
+}
+.logo-icon{
+  height:8rem;
+  width: 8rem;
+  fill: var( --primary-dark);
+ 
+}
+/* /////////////////// */
+
+/* BUTTONS */
+.btn{
+  padding:0.5rem 1.5rem;
+  background-color: var(--secondary-dark);
+  color:var(--white);
+  margin:0rem;
+  display: inline-block;
+  flex-shrink: 0;
+  font-size: 2rem;
+  border: none;
+  margin: 0.5rem;
+  font-family: "Amatic SC", cursive;
+}
+.margin-medium{
+  margin:5rem;
+  padding:1rem 3rem;
+}
+.btn--priamary{
+  background-color: var(--primary-dark);
+}
+
+/* /////////////// */
+.content {
+
+  margin: auto;
+}
+/* Header */
+.header{
+  background-color: var(--secondary-dark);
+  background-image: url(/public/hero-image01.jpg);
+  background-size: cover;
+  background-position: top center;
+  margin: 0;
+
+  padding-bottom:4rem;
+  margin-bottom: 10rem;
+}
+/* /////////////// */
 .navbar {
   padding: 20px;
   display: flex;
@@ -31,25 +163,25 @@ h3 {
   border-bottom: 1px solid #f2f2f2;
 }
 .navbar h1 {
-  color: #f1356d;
+  color:var(--secondary-dark);
 }
 .navbar .links {
   margin-left: auto;
+}
+.links{
+  display: flex;
+  align-items: center;
 }
 .navbar a {
   margin-left: 16px;
   text-decoration: none;
   padding: 6px;
+  font-size: 1.6rem;
 }
 .navbar a:hover {
-  color: #f1356d;
+  color: var(--secondary-dark);
 }
-.content {
-  max-width: 1200px;
-  margin: 40px auto;
 
-  padding: 20px;
-}
 
 /* blog previews / list */
 .blog-preview {
@@ -121,7 +253,7 @@ h3 {
   cursor: pointer;
 }
 .footer-wrap {
-  padding-top: 5rem;
+  padding-top: 12rem;
 }
 .footer {
   color: white;
@@ -132,7 +264,7 @@ h3 {
   position: absolute;
   width: 100%;
   bottom: 0;
-  height: 5rem;
+  height: 12rem;
 }
 .footer__text > * {
   color: white;
@@ -158,11 +290,12 @@ h3 {
   justify-content: center;
 }
 .recipeCard {
+
   width: 14rem;
   background-color: var(--white);
   box-shadow: var(--shadow);
   border-radius: 20px;
-  border: var(--grey) 1px solid;
+  border: var(--grey-light-1) 1px solid;
   overflow: hidden;
 }
 .recipeCard__image {
@@ -178,3 +311,35 @@ h3 {
   justify-self: end;
   margin: 1rem;
 }
+
+/* HEADER STYLING */
+.card-icon {
+  height: 10rem;
+}
+.how-it-works{
+  margin-bottom: 5rem;
+}
+.header__how-it-works__cards{
+  display: flex;
+  gap: 2rem;
+  padding: 4rem;
+ max-width: 120rem;
+ margin:auto;
+  justify-content: center;
+  
+}
+.header__how-it-works__card {
+  flex:1;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  background-color: var(--white);
+
+}
+
+/* <div className="header__how-it-works">
+<div className="header__how-it-works__card">
+  <svg className="header__how-it-works__card">Svg icon</svg>
+  <h3 className="heading-tertiary">Choose your favorite recipies</h3>
+  <p className="paragraph">
+    from the library of hundreds of recipies
+  </p> */

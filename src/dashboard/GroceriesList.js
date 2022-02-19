@@ -17,10 +17,8 @@ export default function GroceriesList(recipeList) {
   function ingredientsExtractor(itemsList) {
     let list = [];
     if (itemsList.length > 0) {
-      console.log(itemsList);
       itemsList.forEach((dish) => {
         dish.ingedients?.forEach((ingre) => {
-          console.log(ingre);
           let newIngre = {
             food: ingre.food,
             quantity: ingre.quantity + " " + ingre.measure,
@@ -39,7 +37,6 @@ export default function GroceriesList(recipeList) {
   ///////
   useEffect(() => {
     let onlyGroceriesList = ingredientsExtractor(recipeList.recipeList);
-    console.log(onlyGroceriesList);
     let sumGroceries = countGroceries(onlyGroceriesList);
     let sortedGroceries = sortGroceries(sumGroceries);
     setGroceries(sortedGroceries);
