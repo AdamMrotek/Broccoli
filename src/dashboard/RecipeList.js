@@ -11,7 +11,6 @@ function RecipeList({ recipes, addToGroceries, removeFromGroceries }) {
           return;
         }
         let newIng = { food: "newfood oh no!" };
-        console.log(ing);
         newInge.push(newIng);
       });
       let newRecipe = { ...recipe };
@@ -20,7 +19,6 @@ function RecipeList({ recipes, addToGroceries, removeFromGroceries }) {
         ingedients: newInge,
       };
     });
-    console.log(recipes);
     setShortRecipes(shortRep);
   }, [recipes]);
   return (

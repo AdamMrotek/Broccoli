@@ -35,8 +35,6 @@ function Main({ user }) {
       }
       const snapFunction = onSnapshot(q, (data) => {
         const cleanData = data.docs[0]?.data();
-        console.log("running on snap shot");
-        console.log(recipeList);
         setRecipeList(cleanData.recipes);
         setUserListId(data.docs[0].id);
       });
@@ -54,7 +52,6 @@ function Main({ user }) {
     await updateDoc(userDoc, {
       recipes: [...recipeList, recepie],
     });
-    console.log(recipeList);
   };
 
   const removeFromGroceries = async (id) => {

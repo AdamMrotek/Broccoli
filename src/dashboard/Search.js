@@ -27,6 +27,7 @@ function Search(props) {
   return (
     <div>
       <form
+        className="search-form"
         action="#"
         onSubmit={(e) => {
           handleSearch(e, recipeName, cusine);
@@ -58,7 +59,7 @@ function Search(props) {
         <button className="btn margin-medium">Search</button>
       </form>
       {searchList && (
-        <div>
+        <div className="search-results">
           <h2>Search Results:</h2>
           <RecipeList
             recipes={searchList}

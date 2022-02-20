@@ -9,9 +9,10 @@ function RegisterForm({ formFunction, name }) {
     <form
       className="register-form"
       onSubmit={(e) => {
-        formFunction(e, email, password);
+        formFunction(e, email, password, confirmPassword);
       }}
     >
+      <h2 className="heading-secondary ">Create your account</h2>
       <label htmlFor="email">Email:</label>
       <input
         type="email"
@@ -21,7 +22,7 @@ function RegisterForm({ formFunction, name }) {
         id="email"
         required
       />
-      <label htmlFor="email">Password:</label>
+      <label htmlFor="password">Password:</label>
       <input
         type="password"
         value={password}
@@ -31,6 +32,7 @@ function RegisterForm({ formFunction, name }) {
         required
         minLength={6}
       />
+      <label htmlFor="confirmPassword">Confirm Password:</label>
       <input
         type="password"
         value={confirmPassword}
@@ -40,7 +42,7 @@ function RegisterForm({ formFunction, name }) {
         required
         minLength={6}
       />
-      <button className="btn">{name}</button>
+      <button className="btn margin-medium">Register new account!</button>
     </form>
   );
 }
