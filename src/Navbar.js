@@ -62,7 +62,7 @@ function Navbar({ user }) {
         <div className="links">
           <Link to="/main/search">Explore Recepies</Link>
           <Link to="/main/dashboard">Groceries Lists</Link>
-          <Link to="/profile">Your Profile</Link>
+
           <div>
             <p>{user?.email}</p>
             <button

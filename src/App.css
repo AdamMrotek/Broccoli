@@ -6,33 +6,394 @@
   height: 40vmin;
   pointer-events: none;
 }
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Poppins:wght@300;600&display=swap");
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* base styles */
+:root {
+  --primary-dark:#007944;
+  --primary-light:#71A95A;
+  --secondary-dark:#F35588;
+  --secondary-light:#FFBBB4
+  --blue: #1e90ff;
+  --white: #eeeeee;
+  --grey-light-1: #aaa;
+  --grey-dark-1:#333;
+  --shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+* {
+  margin: 0;
+  font-family: "Amatic SC", cursive;
+  letter-spacing: normal;
+  color:  var(--grey-dark-1);
+}
+html{
+  font-size: 62.5%;
+  min-height: 100vh;
+}
+.App {
+  min-height: 100vh;
+  position: relative;
+}
+/* FONTS */
+h1,
+h2,
+p,a {
+  font-family: "Poppins", sans-serif;
+
+  /* <h1 className="heading-primary">
+  <span className="heading-primary--main"> A Chef In Every</span>
+  <span className="heading-primary--sub">  */
+}
+p,li,label{
+  font-size: 1.6rem;
+  margin:1rem;
+}
+input{
+  accent-color:var(--secondary-dark) ;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.heading-primar{
+  font-size: 15rem;
+}
+.heading-primary--main{
+font-size: 10rem;
+display: block;
+font-family:  "Poppins", sans-serif;
+line-height: 10rem;
+padding-top: 5rem;
+display: block;
+}
+.heading-primary--sub{
+  display: block;
+  font-size: 10rem;
+
+}
+.heading-secondary{
+
+  font-size: 5rem;
+}
+.heading-tertiary{
+  color:var(--secondary-dark);
+  font-size: 2.4rem;
+}
+.logo-text--primary{
+  font-weight: 700;
+  
+}
+.logo-text--primary{
+  font-weight: 700;
+  font-size: 5rem;
+  display:block;
+  line-height: 5rem;
+  text-align: center;
+  color:var( --primary-dark);
+}
+.logo-text--secondary{
+  display:block;
+  font-family:"Poppins", sans-serif;
+  font-weight: 300; 
+  letter-spacing:0.5rem;
+  font-size:1.6rem;
+  transform: translateX(0.3rem);
+  text-transform: uppercase; 
+}
+
+
+
+/* /////////////////// */
+/* LOGO */
+.logo-box{
   display: flex;
-  flex-direction: column;
+  align-items: end;
+  
+}
+.logo-icon{
+  height:8rem;
+  width: 8rem;
+  fill: var( --primary-dark);
+ 
+}
+/* /////////////////// */
+
+/* BUTTONS */
+.btn{
+  padding:0.5rem 1.5rem;
+  background-color: var(--secondary-dark);
+  color:var(--white);
+  margin:0rem;
+  display: inline-block;
+  flex-shrink: 0;
+  font-size: 2rem;
+  border: none;
+  margin: 0.5rem;
+  font-family: "Amatic SC", cursive;
+}
+.margin-medium{
+  margin:5rem;
+  padding:1rem 3rem;
+}
+.btn--priamary{
+  background-color: var(--primary-dark);
+}
+
+/* /////////////// */
+.content {
+  margin: auto;
+}
+/* Header */
+.header{
+
+  background-image: url(/public/hero-image01.jpg);
+  background-size: cover;
+  background-position: top center;
+  margin: 0;
+  padding-bottom:4rem;
+  margin-bottom: 10rem;
+}
+/* /////////////// */
+.navbar {
+  padding: 20px;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  max-width: 1200px;
+  margin: 0 auto;
+  border-bottom: 1px solid #f2f2f2;
+}
+.navbar h1 {
+  color:var(--secondary-dark);
+}
+.navbar .links {
+  margin-left: auto;
+}
+.links{
+  display: flex;
+  align-items: center;
+}
+.navbar a {
+  margin-left: 16px;
+  text-decoration: none;
+  padding: 6px;
+  font-size: 1.6rem;
+}
+.navbar a:hover {
+  color: var(--secondary-dark);
+}
+
+.registerPopUp{
+  position: absolute;
+  height:100vh;
+  width:100%;
+  top:0;
+  left:0;
+  
+}
+          
+.register-pop-up__background{
+  position:fixed;
+  top:0;
+  left:0;
+  height:100vh;
+  width:100%;
+  background-color:black;
+  filter: blur(50%);
+  z-index: 1;
+  opacity: 0.5;
+}
+.register-form{
+  position:fixed;
+  z-index: 10;
+  top:50%;
+  left:50%;
+  transform: translate(-50% ,-50%);
+
+  background-color: white;
+  padding:5rem;
+  display:flex;
+  flex-direction: column;
+}
+
+.search-form{
+  background-color: var(--grey-light-1);
+  background-image: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.5) 10%, transparent 15%), url(/public/search-image.jpg);
+  background-size: cover;
+  background-position: top center;
+  height:40rem;
+  position:absolute;
+  width:100%;
+  z-index: 0;
+}
+.search-results{
+  padding-top: 15rem;
+  padding-bottom:15rem;
+}
+
+.recepie-details h2 {
+  font-size: 20px;
+  color: #f1356d;
+  margin-bottom: 10px;
+}
+.recepie-details div {
+  margin: 20px 0;
+}
+.recepie-details button {
+  background: #f1356d;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+
+/* FOOTER */
+.footer-wrap {
+  padding-top: 12rem;
+  z-index: -10;
+}
+.footer {
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #333;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  /* height: 12rem; */
+}
+.footer__text > * {
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.footer__menu > ul {
+  display: flex;
+  list-style: none;
+}
+.footer__menu > ul > * {
+  margin: 1rem;
+  color: white;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* RECEPIE CARDS STYLING */
+.recipe-list {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 100rem;
+  justify-content: center;
+}
+.recipeCard {
+
+  width:20rem;
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+  border-radius:3px;
+
+  overflow: hidden;
+  padding-top:2rem;
+  /* to work with background in search section */
+  position: relative;
+  z-index: 10;
+
+}
+.card-title{
+  height:5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.recipeCard__image {
+  margin-top: 2rem;
+  width: 100%;
+  overflow: hidden;
+
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+}
+
+.recipeCard__button {
+  align-self: flex-end;
+  justify-self: end;
+  margin: 1rem;
+}
+.recipeCard__ingredients-item{
+  font-size: 1.2rem;
+  display: inline;
+}
+.groceries__list{
+  color:var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-light);
+  background-image: linear-gradient(to top left,var(--primary-light),var(--primary-dark));
+  margin:10rem auto;
+  padding: 0 5rem 5rem 5rem;
+  box-shadow:var(--shadow);
+  width: 50rem;
+
+}
+.groceries__list h2{
+  color:inherit
+}
+.groceries__items{
+  display: flex;
+  gap:5rem;
+  width:40rem;
+  justify-content: space-between;
+  color:inherit;
+  align-items: center;
+}
+.groceries--grey{
+  background-color: var(--grey-light-1);
+  color:var(--white);
+  border-radius: 0.5rem;
+}
+.groceries__items__food, .groceries__items_quantity{
+
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  color:inherit;
+}
+.groceries__items__food{
+  font-size: 2rem;
+  font-family:  "Amatic SC", cursive;
+  text-align: left;
+  font-weight: 700;
+}
+.done{
+  opacity:0.5;
+}
+.flex{
+  display: flex;
+align-items:center;
+padding-right:1rem;
+}
+
+/* HEADER STYLING */
+.card-icon {
+  height: 10rem;
+}
+.how-it-works{
+  margin-bottom: 5rem;
+}
+.header__how-it-works__cards{
+  display: flex;
+  gap: 2rem;
+  padding: 4rem;
+ max-width: 120rem;
+ margin:auto;
+  justify-content: center;
+  
+}
+.header__how-it-works__card {
+  flex:1;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  background-color: var(--white);
 }
