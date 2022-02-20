@@ -25,8 +25,7 @@ function Search(props) {
     setSearchList(newData);
   };
   return (
-    <div className="create">
-      <h2>Search</h2>
+    <div>
       <form
         action="#"
         onSubmit={(e) => {
@@ -56,13 +55,16 @@ function Search(props) {
             Mexican
           </option>
         </select>
-        <button>Search</button>
+        <button className="btn margin-medium">Search</button>
       </form>
       {searchList && (
-        <RecipeList
-          recipes={searchList}
-          addToGroceries={props.addToGroceries}
-        />
+        <div>
+          <h2>Search Results:</h2>
+          <RecipeList
+            recipes={searchList}
+            addToGroceries={props.addToGroceries}
+          />
+        </div>
       )}
     </div>
   );

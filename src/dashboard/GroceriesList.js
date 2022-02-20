@@ -34,22 +34,44 @@ export default function GroceriesList(recipeList) {
   function sortGroceries(list) {
     return list.sort((a, b) => a.food > b.food);
   }
+  function addCheckBoxtoGroceries(list) {
+    return list.map((item) => ({ ...item, done: false }));
+  }
+  function chcekItem(key) {
+    let newGroceries = groceries.map((item, i) => {
+      console.log("item number", i, "returns", item.key === key);
+      if (item.key === key) return { ...item, done: !item.done };
+      return { ...item };
+    });
+    console.log(newGroceries);
+    setGroceries(newGroceries);
+    console.log(groceries);
+    // setGroceries();
+  }
   ///////
   useEffect(() => {
     let onlyGroceriesList = ingredientsExtractor(recipeList.recipeList);
     let sumGroceries = countGroceries(onlyGroceriesList);
     let sortedGroceries = sortGroceries(sumGroceries);
-    setGroceries(sortedGroceries);
+    let addCheckBox = addCheckBoxtoGroceries(sortedGroceries);
+    console.log("reruning false done");
+    setGroceries(addCheckBox);
   }, [recipeList]);
 
   return (
-    <div>
-      <h2>Groceries List</h2>
+    <div className="groceries__list">
+      <h2 className="margin-medium heading-secondary">Groceries List</h2>
       {groceries &&
-        groceries.map((item) => (
-          <div key={item.key}>
-            <p>{item.food}</p>
-            <p>{item.quantity}</p>
+        groceries.map((item, i) => (
+          <div className={`flex ${i % 2 && "groceries--grey"} `}>
+            <div
+              className={`groceries__items ${item.done ? "done" : ""}`}
+              key={item.key}
+            >
+              <p className="groceries__items__food">{item.food}</p>
+              <p className="groceries__items_quantity">{item.quantity}</p>
+            </div>
+            <input type="checkbox" onChange={() => chcekItem(item.key)}></input>
           </div>
         ))}
     </div>

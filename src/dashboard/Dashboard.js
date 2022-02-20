@@ -8,7 +8,7 @@ import { collection, getDocs } from "firebase/firestore";
 function Dashboard({ user, removeFromGroceries, recipeList }) {
   return (
     <div className="home">
-      <h1>Review choosen recipes</h1>
+      <h1 className=" margin-medium">Review choosen recipes</h1>
       {recipeList?.length < 1 && (
         <Link to="/main/search">Find your recipes!</Link>
       )}

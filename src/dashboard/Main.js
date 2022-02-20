@@ -33,15 +33,17 @@ function Main({ user }) {
       if (mySnapshot.docs?.length < 1) {
         await addDoc(colRef, { userId: user.uid, recipes: [] });
       }
-      onSnapshot(q, (data) => {
+      const snapFunction = onSnapshot(q, (data) => {
         const cleanData = data.docs[0]?.data();
         console.log("running on snap shot");
         console.log(recipeList);
         setRecipeList(cleanData.recipes);
         setUserListId(data.docs[0].id);
       });
+      return snapFunction;
     };
-    getRecipes();
+    let cleanup = getRecipes();
+    return { cleanup };
   }, [user]);
 
   const addToGroceries = async (recepie) => {
