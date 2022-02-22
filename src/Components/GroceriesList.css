@@ -1,0 +1,48 @@
+.groceries__list {
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-light);
+  background-image: linear-gradient(
+    to top left,
+    var(--primary-light),
+    var(--primary-dark)
+  );
+  margin: 10rem auto;
+  padding: 0 5rem 5rem 5rem;
+  box-shadow: var(--shadow);
+  width: 50rem;
+}
+.groceries__list h2 {
+  color: inherit;
+}
+.groceries__items {
+  display: flex;
+  gap: 5rem;
+  width: 40rem;
+  justify-content: space-between;
+  color: inherit;
+  align-items: center;
+}
+.groceries--grey {
+  background-color: var(--grey-light-1);
+  color: var(--white);
+  border-radius: 0.5rem;
+}
+.groceries__items__food,
+.groceries__items_quantity {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  color: inherit;
+}
+.groceries__items__food {
+  font-size: 2rem;
+  font-family: "Amatic SC", cursive;
+  text-align: left;
+  font-weight: 700;
+}
+.done {
+  opacity: 0.5;
+}

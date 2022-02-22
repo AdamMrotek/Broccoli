@@ -1,6 +1,7 @@
+import "./HowItWorks.css";
 import React from "react";
 
-export default function HowItWorks() {
+export default function HowItWorks({ handlePopUp }) {
   return (
     <div className="how-it-works">
       <h2 className="heading-secondary">How it works ?</h2>
@@ -36,9 +37,16 @@ export default function HowItWorks() {
           </p>
         </div>
       </div>
-      <a href="#features" className="btn margin-medium">
-        Log in
-      </a>
+      <label htmlFor="email">
+        <button
+          onClick={() => {
+            handlePopUp();
+          }}
+          className="btn margin-medium"
+        >
+          Register
+        </button>
+      </label>
     </div>
   );
 }

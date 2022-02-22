@@ -1,4 +1,5 @@
-import LogoBox from "./LogoBox.js";
+import "./Footer.css";
+import LogoBox from "../Components/LogoBox.js";
 function Footer() {
   return (
     <div className="footer-wrap">

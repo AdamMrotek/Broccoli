@@ -1,0 +1,63 @@
+/* RECEPIE CARDS STYLING */
+.recipe-list {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 100rem;
+  justify-content: center;
+}
+.recipeCard {
+  width: 20rem;
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+  border-radius: 3px;
+
+  overflow: hidden;
+  padding-top: 2rem;
+  /* to work with background in search section */
+  position: relative;
+  z-index: 10;
+}
+.card-title {
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.recipeCard__image {
+  margin-top: 2rem;
+  width: 100%;
+  overflow: hidden;
+
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+}
+
+.recipeCard__button {
+  align-self: flex-end;
+  justify-self: end;
+  margin: 1rem;
+}
+.recipeCard__ingredients-item {
+  font-size: 1.2rem;
+  display: inline;
+}
+
+.recepie-details h2 {
+  font-size: 20px;
+  color: #f1356d;
+  margin-bottom: 10px;
+}
+.recepie-details div {
+  margin: 20px 0;
+}
+.recepie-details button {
+  background: #f1356d;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}

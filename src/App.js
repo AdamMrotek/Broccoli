@@ -1,11 +1,11 @@
 import "./App.css";
-import Navbar from "./Navbar.js";
-import Main from "./dashboard/Main.js";
-import NotFound from "./NotFound.js";
-import Footer from "./Footer.js";
-import Home from "./Home.js";
-import { db, auth } from "./firebase-config.js";
-import { collection, getDocs } from "firebase/firestore";
+import "./Typography.css";
+import Navbar from "./Pages/Navbar.js";
+import Main from "./Pages/Main.js";
+import NotFound from "./Pages/NotFound.js";
+import Footer from "./Pages/Footer.js";
+import Home from "./Pages/Home.js";
+import { auth } from "./firebase-config.js";
 import { onAuthStateChanged } from "firebase/auth";
 
 import {
@@ -18,7 +18,10 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [user, setUser] = useState(null);
-
+  const [registerPopUp, setRegisterPopUp] = useState(false);
+  const handlePopUp = () => {
+    setRegisterPopUp((registerPopUp) => !registerPopUp);
+  };
   //controling user
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
@@ -29,10 +32,17 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar user={user} />
+        <Navbar
+          user={user}
+          handlePopUp={handlePopUp}
+          registerPopUp={registerPopUp}
+        />
         <div className="content">
           <Routes>
-            <Route path="/main/*" element={<Main user={user} />} />
+            <Route
+              path="/main/*"
+              element={<Main user={user} handlePopUp={handlePopUp} />}
+            />
             <Route
               path="/"
               element={user ? <Navigate to="/main" /> : <Home />}
@@ -40,7 +50,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
-        <Footer></Footer>
+        <Footer />
       </div>
     </Router>
   );

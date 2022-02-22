@@ -1,10 +1,10 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Home from "../Home.js";
-import Create from "../forms/Create.js";
-import Dashboard from "./Dashboard.js";
-import Search from "./Search.js";
-import NotFound from "../NotFound.js";
+import Home from "./Home.js";
+import Create from "../Components/Forms/Create.js";
+import Dashboard from "../Components/Dashboard.js";
+import Search from "../Components/Search.js";
+import NotFound from "./NotFound.js";
 import { db } from "../firebase-config.js";
 import {
   collection,
@@ -18,7 +18,7 @@ import {
   addDoc,
 } from "firebase/firestore";
 
-function Main({ user }) {
+function Main({ user, handlePopUp }) {
   const [recipeList, setRecipeList] = useState([]);
   const [userListId, setUserListId] = useState([]);
 
@@ -63,7 +63,7 @@ function Main({ user }) {
 
   return (
     <Routes>
-      <Route path="home" element={<Home />} />
+      <Route path="home" element={<Home handlePopUp={handlePopUp} />} />
       <Route
         path=""
         element={user ? <Navigate to="dashboard" /> : <Navigate to="home" />}

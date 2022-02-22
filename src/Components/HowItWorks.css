@@ -1,0 +1,20 @@
+.card-icon {
+  height: 10rem;
+}
+.how-it-works {
+  margin-bottom: 5rem;
+}
+.header__how-it-works__cards {
+  display: flex;
+  gap: 2rem;
+  padding: 4rem;
+  max-width: 120rem;
+  margin: auto;
+  justify-content: center;
+}
+.header__how-it-works__card {
+  flex: 1;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  background-color: var(--white);
+}

@@ -1,0 +1,46 @@
+.navbar {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-bottom: 1px solid #f2f2f2;
+}
+.navbar h1 {
+  color: var(--secondary-dark);
+}
+.navbar .links {
+  margin-left: auto;
+}
+.links {
+  display: flex;
+  align-items: center;
+}
+.navbar a {
+  margin-left: 16px;
+  text-decoration: none;
+  padding: 6px;
+  font-size: 1.6rem;
+}
+.navbar a:hover {
+  color: var(--secondary-dark);
+}
+.registerPopUp {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.register-pop-up__background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+  filter: blur(50%);
+  z-index: 1;
+  opacity: 0.5;
+}

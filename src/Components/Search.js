@@ -1,5 +1,6 @@
 import { useState } from "react";
 import RecipeList from "./RecipeList.js";
+import "./Search.css";
 
 function Search(props) {
   const [searchList, setSearchList] = useState(null);

@@ -1,0 +1,42 @@
+.heading-primar {
+  font-size: 15rem;
+}
+.heading-primary--main {
+  font-size: 10rem;
+  display: block;
+  font-family: "Poppins", sans-serif;
+  line-height: 10rem;
+  padding-top: 5rem;
+  display: block;
+}
+.heading-primary--sub {
+  display: block;
+  font-size: 10rem;
+}
+.heading-secondary {
+  font-size: 5rem;
+}
+.heading-tertiary {
+  color: var(--secondary-dark);
+  font-size: 2.4rem;
+}
+.logo-text--primary {
+  font-weight: 700;
+}
+.logo-text--primary {
+  font-weight: 700;
+  font-size: 5rem;
+  display: block;
+  line-height: 5rem;
+  text-align: center;
+  color: var(--primary-dark);
+}
+.logo-text--secondary {
+  display: block;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.5rem;
+  font-size: 1.6rem;
+  transform: translateX(0.3rem);
+  text-transform: uppercase;
+}

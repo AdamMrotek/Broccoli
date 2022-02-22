@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-
+import "./RecipeList.css";
 function RecipeList({ recipes, addToGroceries, removeFromGroceries }) {
   const [shortRecipes, setShortRecipes] = useState(null);
   useEffect(() => {

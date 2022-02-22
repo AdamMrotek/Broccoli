@@ -1,18 +1,18 @@
-import { Link, Navigate, useNavigate } from "react-router-dom";
-import { auth } from "./firebase-config.js";
+import "./Navbar.css";
+import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../firebase-config.js";
 import {
   createUserWithEmailAndPassword,
   signOut,
   signInWithEmailAndPassword,
-  confirmPasswordReset,
 } from "firebase/auth";
-import LoginForm from "./forms/LoginForm.js";
-import LogoBox from "./LogoBox.js";
+import LoginForm from "../Components/Forms/LoginForm.js";
+import LogoBox from "../Components/LogoBox.js";
 import { useState } from "react";
-import RegisterForm from "./forms/RegisterFrom.js";
-function Navbar({ user }) {
+import RegisterForm from "../Components/Forms/RegisterFrom.js";
+
+function Navbar({ user, handlePopUp, registerPopUp }) {
   const navigate = useNavigate();
-  const [registerPopUp, setRegisterPopUp] = useState(false);
 
   const register = async (e, email, password, confirmPassword) => {
     e.preventDefault();
@@ -22,7 +22,7 @@ function Navbar({ user }) {
       }
       const user = await createUserWithEmailAndPassword(auth, email, password);
       navigate("/main/dashboard");
-      setRegisterPopUp(false);
+      handlePopUp();
     } catch (error) {
       console.log(error.message);
     }
@@ -50,9 +50,6 @@ function Navbar({ user }) {
     } catch (error) {
       console.log(error.message);
     }
-  };
-  const handlePopUp = () => {
-    setRegisterPopUp((registerPopUp) => !registerPopUp);
   };
 
   return (

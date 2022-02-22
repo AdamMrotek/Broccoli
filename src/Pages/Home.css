@@ -1,0 +1,8 @@
+.header {
+  background-image: url(/public/hero-image01.jpg);
+  background-size: cover;
+  background-position: top center;
+  margin: 0;
+  padding-bottom: 4rem;
+  margin-bottom: 10rem;
+}
