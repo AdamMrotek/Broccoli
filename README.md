@@ -13,7 +13,6 @@
 - React JS,
 - Firebase:
   1. Authorization,
-  1. FireStore,
   1. Firestore,
   1. Hosting
 ### Stages of development
