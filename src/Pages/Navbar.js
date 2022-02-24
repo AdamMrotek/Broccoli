@@ -10,23 +10,11 @@ import LoginForm from "../Components/Forms/LoginForm.js";
 import LogoBox from "../Components/LogoBox.js";
 import { useState } from "react";
 import RegisterForm from "../Components/Forms/RegisterFrom.js";
+import { useSignUp } from "../Hooks/useSignUp.js";
 
 function Navbar({ user, handlePopUp, registerPopUp }) {
   const navigate = useNavigate();
 
-  const register = async (e, email, password, confirmPassword) => {
-    e.preventDefault();
-    try {
-      if (password && password !== confirmPassword) {
-        throw Error("Passwords need to match");
-      }
-      const user = await createUserWithEmailAndPassword(auth, email, password);
-      navigate("/main/dashboard");
-      handlePopUp();
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
   const login = async (e, email, password) => {
     e.preventDefault();
     try {
@@ -97,7 +85,7 @@ function Navbar({ user, handlePopUp, registerPopUp }) {
             onClick={() => handlePopUp()}
             className="register-pop-up__background"
           ></div>
-          <RegisterForm formFunction={register} />
+          <RegisterForm />
         </div>
       )}
     </nav>
