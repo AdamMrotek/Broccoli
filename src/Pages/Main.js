@@ -46,9 +46,13 @@ function Main({ user, handlePopUp }) {
   }, [user]);
 
   const addToGroceries = async (recepie) => {
-    let userDoc = doc(db, "usersLists", userListId);
+    console.log(recepie);
+    let userDoc = await doc(db, "usersLists", userListId);
+    console.log(userDoc);
     let recipeExists =
-      recipeList && recipeList.some((e) => e.key === recepie.key);
+      recipeList &&
+      recipeList.length > 0 &&
+      recipeList.some((e) => e.key === recepie.key);
     if (recipeExists) return;
     await updateDoc(userDoc, {
       recipes: [...recipeList, recepie],

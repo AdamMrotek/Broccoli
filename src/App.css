@@ -69,6 +69,7 @@ input{
 /* /////////////// */
 .content {
   margin: auto;
+min-height:40rem;
 }
 
 

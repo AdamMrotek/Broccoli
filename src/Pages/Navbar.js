@@ -1,19 +1,15 @@
 import "./Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase-config.js";
-import {
-  createUserWithEmailAndPassword,
-  signOut,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
+import { signOut, signInWithEmailAndPassword } from "firebase/auth";
 import LoginForm from "../Components/Forms/LoginForm.js";
 import LogoBox from "../Components/LogoBox.js";
-import { useState } from "react";
 import RegisterForm from "../Components/Forms/RegisterFrom.js";
-import { useSignUp } from "../Hooks/useSignUp.js";
+import useAuthContext from "../Hooks/useAuthContext.js";
 
 function Navbar({ user, handlePopUp, registerPopUp }) {
   const navigate = useNavigate();
+  const contextUser = useAuthContext();
 
   const login = async (e, email, password) => {
     e.preventDefault();
@@ -34,6 +30,8 @@ function Navbar({ user, handlePopUp, registerPopUp }) {
         "example@email.com",
         "123456"
       );
+      handlePopUp();
+      console.log("Pop up state", registerPopUp);
       navigate("/main/dashboard");
     } catch (error) {
       console.log(error.message);
@@ -85,7 +83,7 @@ function Navbar({ user, handlePopUp, registerPopUp }) {
             onClick={() => handlePopUp()}
             className="register-pop-up__background"
           ></div>
-          <RegisterForm />
+          <RegisterForm handlePopUp={handlePopUp} />
         </div>
       )}
     </nav>

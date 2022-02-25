@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./RegisterForm.css";
 import { useSignUp } from "../../Hooks/useSignUp.js";
 
-function RegisterForm() {
+function RegisterForm({ handlePopUp }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -10,7 +10,6 @@ function RegisterForm() {
 
   // useSignup returns { register, error, isPending };
   const { register, error, isPending } = useSignUp();
-  console.log(error);
   return (
     <div>
       <form
@@ -18,6 +17,7 @@ function RegisterForm() {
         onSubmit={(e) => {
           e.preventDefault();
           register(email, password, confirmPassword, displayName);
+          handlePopUp();
         }}
       >
         <h2 className="heading-secondary ">Create your account</h2>
