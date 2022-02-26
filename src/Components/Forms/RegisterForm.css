@@ -10,3 +10,15 @@
   display: flex;
   flex-direction: column;
 }
+.closing-icon {
+  position: absolute;
+  top: 1rem;
+  right: 2.5rem;
+  display: block;
+  padding: 1rem 0.5rem;
+  background-color: var(--white);
+  font-weight: 700;
+  font-size: 2rem;
+  transform: scaleX(3);
+  cursor: pointer;
+}

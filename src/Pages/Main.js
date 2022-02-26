@@ -22,14 +22,13 @@ function Main({ user, handlePopUp }) {
 
   // FUNCTIONS CONTROLING recipeList
   useEffect(() => {
-    console.log("useEffect in main");
     const getRecipesCleanUp = async () => {
       if (!user) return;
       const colRef = collection(db, "usersLists");
       const q = query(colRef, where("userId", "==", user.uid));
 
       const mySnapshot = await getDocs(q);
-      console.log(mySnapshot);
+
       // Set up a collection document for users that doesnt have it yet
       if (mySnapshot.docs?.length < 1) {
         await addDoc(colRef, { userId: user.uid, recipes: [] });

@@ -12,6 +12,11 @@
   margin: auto;
   justify-content: center;
 }
+@media only screen and (max-width: 600px) {
+  .header__how-it-works__cards {
+    flex-direction: column;
+  }
+}
 .header__how-it-works__card {
   flex: 1;
   padding: 2rem;

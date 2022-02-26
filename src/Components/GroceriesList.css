@@ -46,3 +46,15 @@
 .done {
   opacity: 0.5;
 }
+@media only screen and (max-width: 600px) {
+  .groceries__list {
+    margin: 10rem auto;
+    padding: 1rem;
+    width: 80%;
+    justify-items: default;
+    align-items: stretch;
+  }
+  .groceries__items {
+    width: 100%;
+  }
+}

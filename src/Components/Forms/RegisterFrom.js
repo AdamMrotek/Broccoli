@@ -26,6 +26,9 @@ function RegisterForm({ handlePopUp }) {
           }
         }}
       >
+        <div class="closing-icon" onClick={() => handlePopUp()}>
+          x
+        </div>
         <h2 className="heading-secondary ">Create your account</h2>
         {error && <div className="error-message">{error}</div>}
         <label htmlFor="email">Email:</label>

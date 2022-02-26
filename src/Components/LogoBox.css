@@ -5,5 +5,16 @@
 .logo-icon {
   height: 8rem;
   width: 8rem;
-  fill: var(--primary-dark);
+}
+@media only screen and (max-width: 600px) {
+  .logo-icon {
+    height: 6rem;
+    width: 6rem;
+  }
+  .logo-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+  }
 }

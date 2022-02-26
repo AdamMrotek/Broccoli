@@ -44,3 +44,13 @@
   z-index: 1;
   opacity: 0.5;
 }
+@media only screen and (max-width: 600px) {
+  .links {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .links > a {
+    margin: 0;
+  }
+}

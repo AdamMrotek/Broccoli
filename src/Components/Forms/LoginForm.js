@@ -1,15 +1,25 @@
+import "./Login.css";
 import { useState } from "react";
+import { useSignIn } from "../../Hooks/useSignIn.js";
 
 function LoginForm({ formFunction, name }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { signIn, error, isPending } = useSignIn();
 
   return (
     <form
+      className="login-form"
       onSubmit={(e) => {
-        formFunction(e, email, password);
+        e.preventDefault();
+        signIn(email, password);
       }}
     >
+      {error && (
+        <div className="error-message error-message--small">
+          {error.slice(0, error.length > 50 ? 50 : error.length)}
+        </div>
+      )}
       <label htmlFor="email">Email:</label>
       <input
         type="email"

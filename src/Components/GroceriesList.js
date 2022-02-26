@@ -3,34 +3,53 @@ import { useState, useEffect } from "react";
 
 export default function GroceriesList(recipeList) {
   const [groceries, setGroceries] = useState(null);
+
   // FUNCTIONS CONTROLING groceriesList
-  function countGroceries(list) {
-    let newList = list.reduce((acc, item) => {
-      let indexNum = acc.findIndex((e) => e.key === item.key);
-      if (indexNum >= 0) {
-        acc[indexNum].quantity = acc[indexNum].quantity + item.quantity;
-        return acc;
-      }
-      return acc.concat(item);
-    }, []);
-    return newList;
-  }
+
   function ingredientsExtractor(itemsList) {
     let list = [];
     if (itemsList.length > 0) {
       itemsList.forEach((dish) => {
         dish.ingedients?.forEach((ingre) => {
+          console.log(ingre);
           let newIngre = {
             food: ingre.food,
-            quantity: ingre.quantity + " " + ingre.measure,
+            quantity: ingre.quantity,
+            measure: ingre.measure,
             key: ingre.foodId,
+            weight: ingre.weight,
           };
           list.push(newIngre);
         });
       });
     }
-
     return list;
+  }
+
+  function sumQuantity(ingedient1, ingedient2) {
+    if (
+      ingedient1.measure === ingedient2.measure ||
+      ingedient1.measure !== "grams"
+    ) {
+      return ingedient1.quantity + ingedient2.quantity;
+    } else {
+      return Math.floor(ingedient1.weight) + Math.floor(ingedient2.weight);
+    }
+  }
+
+  function countGroceries(list) {
+    let newList = list.reduce((acc, item) => {
+      let indexNum = acc.findIndex((e) => e.key === item.key);
+      if (indexNum >= 0) {
+        let newQuantity = sumQuantity(acc[indexNum], item);
+        acc[indexNum].quantity = newQuantity;
+        acc[indexNum].measure =
+          acc[indexNum].measure === item.measure ? item.measure : "grams";
+        return acc;
+      }
+      return acc.concat(item);
+    }, []);
+    return newList;
   }
   function sortGroceries(list) {
     return list.sort((a, b) => a.food > b.food);
@@ -63,7 +82,9 @@ export default function GroceriesList(recipeList) {
           <div className={`flex ${i % 2 && "groceries--grey"} `} key={item.key}>
             <div className={`groceries__items ${item.done ? "done" : ""}`}>
               <p className="groceries__items__food">{item.food}</p>
-              <p className="groceries__items_quantity">{item.quantity}</p>
+              <p className="groceries__items_quantity">
+                {item.quantity + "  " + item.measure}
+              </p>
             </div>
             <input type="checkbox" onChange={() => chcekItem(item.key)}></input>
           </div>
