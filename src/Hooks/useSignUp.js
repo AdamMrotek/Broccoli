@@ -7,7 +7,7 @@ import useAuthContext from "./useAuthContext.js";
 export const useSignUp = () => {
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(null);
-  const navigate = useNavigate();
+  const navigation = useNavigate();
   const { dispatch } = useAuthContext();
 
   const register = async (email, password, confirmPassword, displayName) => {
@@ -18,7 +18,7 @@ export const useSignUp = () => {
     try {
       //chcecking if password are matching
       if (password && password !== confirmPassword) {
-        throw Error("Passwords need to match");
+        throw new Error("Passwords need to match");
       }
       // creating account
       const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -27,22 +27,18 @@ export const useSignUp = () => {
       if (!res) {
         throw new Error("Could not complete signup");
       }
-      console.log(res);
 
       //updating displayed name
       await updateProfile(auth.currentUser, { displayName });
-      console.log(res);
 
       //upadatinh state of the context user
       dispatch({ type: "LOGIN", payload: auth.currentUser });
-
-      //navigating to dashboard
-      navigate("/main/dashboard");
+      navigation("/main/dashboard");
     } catch (error) {
       setIsPending(false);
       setError(error.message);
-      console.log(error.message);
     }
   };
+  console.log(error);
   return { register, error, isPending };
 };

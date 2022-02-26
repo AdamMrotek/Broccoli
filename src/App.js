@@ -26,6 +26,7 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setRegisterPopUp(false);
     });
   }, []);
 

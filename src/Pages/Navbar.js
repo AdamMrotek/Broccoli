@@ -30,8 +30,6 @@ function Navbar({ user, handlePopUp, registerPopUp }) {
         "example@email.com",
         "123456"
       );
-      handlePopUp();
-      console.log("Pop up state", registerPopUp);
       navigate("/main/dashboard");
     } catch (error) {
       console.log(error.message);

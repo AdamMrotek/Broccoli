@@ -1,23 +1,29 @@
 import { useState } from "react";
 import "./RegisterForm.css";
 import { useSignUp } from "../../Hooks/useSignUp.js";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function RegisterForm({ handlePopUp }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
+  const navigation = useNavigate();
 
   // useSignup returns { register, error, isPending };
   const { register, error, isPending } = useSignUp();
+
   return (
     <div>
       <form
         className="register-form"
-        onSubmit={(e) => {
+        onSubmit={async (e) => {
           e.preventDefault();
-          register(email, password, confirmPassword, displayName);
-          handlePopUp();
+          try {
+            await register(email, password, confirmPassword, displayName);
+          } catch (err) {
+            console.log(err);
+          }
         }}
       >
         <h2 className="heading-secondary ">Create your account</h2>
