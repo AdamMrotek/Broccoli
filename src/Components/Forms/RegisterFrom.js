@@ -26,7 +26,7 @@ function RegisterForm({ handlePopUp }) {
           }
         }}
       >
-        <div class="closing-icon" onClick={() => handlePopUp()}>
+        <div className="closing-icon" onClick={() => handlePopUp()}>
           x
         </div>
         <h2 className="heading-secondary ">Create your account</h2>

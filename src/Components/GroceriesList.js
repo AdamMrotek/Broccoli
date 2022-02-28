@@ -11,7 +11,6 @@ export default function GroceriesList(recipeList) {
     if (itemsList.length > 0) {
       itemsList.forEach((dish) => {
         dish.ingedients?.forEach((ingre) => {
-          console.log(ingre);
           let newIngre = {
             food: ingre.food,
             quantity: ingre.quantity,

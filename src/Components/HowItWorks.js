@@ -38,12 +38,7 @@ export default function HowItWorks({ handlePopUp }) {
         </div>
       </div>
       <label htmlFor="email">
-        <button
-          onClick={() => {
-            handlePopUp();
-          }}
-          className="btn margin-medium"
-        >
+        <button onClick={() => handlePopUp()} className="btn margin-medium">
           Register
         </button>
       </label>
