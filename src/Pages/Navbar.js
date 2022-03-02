@@ -44,7 +44,7 @@ function Navbar({ user, handlePopUp, registerPopUp }) {
           <Link to="/main/search">Explore Recepies</Link>
           <Link to="/main/dashboard">Groceries Lists</Link>
 
-          <div>
+          <div className="navbar__logout">
             <p>{user?.email}</p>
             <button
               className="btn btn--no-margin btn--priamary"

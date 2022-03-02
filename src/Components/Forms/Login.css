@@ -1,5 +1,12 @@
 .login-form {
   position: relative;
+  display: flex;
+  align-items: end;
+}
+.login-buton:hover {
+  color: var(--secondary-dark);
+  background-color: var(--white);
+  outline: var(--secondary-dark) 1px solid;
 }
 .error-message--small {
   position: absolute;

@@ -1,7 +1,7 @@
 .navbar {
   padding: 20px;
   display: flex;
-  align-items: center;
+  align-items: end;
   max-width: 1200px;
   margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
@@ -14,16 +14,31 @@
 }
 .links {
   display: flex;
-  align-items: center;
+  align-items: end;
+}
+.navbar__logout {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  margin-left: -9rem;
+}
+
+.links p {
+  margin: 5px;
 }
 .navbar a {
   margin-left: 16px;
   text-decoration: none;
-  padding: 6px;
+  padding: 5px 15px;
+  margin: 5px;
   font-size: 1.6rem;
+  border: var(--secondary-dark) 1px solid;
+  transition: all 0.2s ease-in-out;
 }
 .navbar a:hover {
-  color: var(--secondary-dark);
+  color: var(--white);
+  background-color: var(--secondary-dark);
+  border: var(--secondary-dark) 1px solid;
 }
 .registerPopUp {
   position: absolute;

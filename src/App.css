@@ -2,24 +2,24 @@
 
 /* base styles */
 :root {
-  --primary-dark:#007944;
-  --primary-light:#71A95A;
-  --secondary-dark:#F35588;
-  --secondary-light:#FFBBB4
+  --primary-dark: #007944;
+  --primary-light: #71a95a;
+  --secondary-dark: #f35588;
+  --secondary-light: #ffbbb4;
   --blue: #1e90ff;
   --white: #eeeeee;
   --grey-light-1: #aaa;
-  --grey-dark-1:#333;
+  --grey-dark-1: #333;
   --shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 * {
   margin: 0;
   font-family: "Amatic SC", cursive;
   letter-spacing: normal;
-  color:  var(--grey-dark-1);
+  color: var(--grey-dark-1);
   text-align: center;
 }
-html{
+html {
   font-size: 62.5%;
   min-height: 100vh;
 }
@@ -35,27 +35,27 @@ html{
 /* FONTS */
 h1,
 h2,
-p,a {
+p,
+a {
   font-family: "Poppins", sans-serif;
 }
-p,li,label{
+p,
+li,
+label {
   font-size: 1.6rem;
-  margin:1rem;
+  margin: 5px;
 }
-input{
-  accent-color:var(--secondary-dark) ;
+input {
+  accent-color: var(--secondary-dark);
+  margin: 5px;
 }
-
-
-
-
 
 /* BUTTONS */
-.btn{
-  padding:0.5rem 1.5rem;
+.btn {
+  padding: 0.5rem 1.5rem;
   background-color: var(--secondary-dark);
-  color:var(--white);
-  margin:0rem;
+  color: var(--white);
+  margin: 0rem;
   display: inline-block;
   flex-shrink: 0;
   font-size: 2rem;
@@ -63,35 +63,36 @@ input{
   margin: 0.5rem;
   font-family: "Amatic SC", cursive;
   cursor: pointer;
+  transition: all ease-in-out 0.1s;
 }
-.margin-medium{
-  margin:5rem;
-  padding:1rem 3rem;
+.btn:active {
+  transform: translateY(1px);
 }
-.btn--priamary{
+.margin-medium {
+  margin: 5rem;
+  padding: 1rem 3rem;
+}
+.btn--priamary {
   background-color: var(--primary-dark);
 }
 
 /* /////////////// */
 .content {
   margin: auto;
-min-height:40rem;
+  min-height: 40rem;
 }
 
-
-.flex{
+.flex {
   display: flex;
-align-items:center;
-padding-right:1rem;
+  align-items: center;
+  padding-right: 1rem;
 }
-.error-message{
+.error-message {
   background-color: rgb(184, 63, 63);
   flex-grow: 0;
-  padding:1rem;
-  font-size:1.2rem;
-  color:var(--white);
-  border-radius:2rem;
+  padding: 1rem;
+  font-size: 1.2rem;
+  color: var(--white);
+  border-radius: 2rem;
   font-family: "Poppins", sans-serif;
-
 }
-

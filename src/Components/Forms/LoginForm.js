@@ -39,7 +39,7 @@ function LoginForm({ formFunction, name }) {
         required
         minLength={6}
       />
-      <button className="btn">{name}</button>
+      <button className="btn login-buton">{name}</button>
     </form>
   );
 }
