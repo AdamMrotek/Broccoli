@@ -22,6 +22,7 @@ function LoginForm({ formFunction, name }) {
       )}
       <label htmlFor="email">Email:</label>
       <input
+        className="login-form__input"
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
@@ -31,6 +32,7 @@ function LoginForm({ formFunction, name }) {
       />
       <label htmlFor="email">Password:</label>
       <input
+        className="login-form__input"
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}

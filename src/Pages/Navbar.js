@@ -4,8 +4,9 @@ import { auth } from "../firebase-config.js";
 import { signOut, signInWithEmailAndPassword } from "firebase/auth";
 import LoginForm from "../Components/Forms/LoginForm.js";
 import LogoBox from "../Components/LogoBox.js";
-import RegisterForm from "../Components/Forms/RegisterFrom.js";
+
 import useAuthContext from "../Hooks/useAuthContext.js";
+import Popup from "../Components/Popup.js";
 
 function Navbar({ user, handlePopUp, registerPopUp }) {
   const navigate = useNavigate();
@@ -40,10 +41,11 @@ function Navbar({ user, handlePopUp, registerPopUp }) {
     <nav className="navbar">
       <LogoBox />
       {user && (
-        <div className="links">
-          <Link to="/main/search">Explore Recepies</Link>
-          <Link to="/main/dashboard">Groceries Lists</Link>
-
+        <>
+          <div className="links">
+            <Link to="/main/search">Explore Recepies</Link>
+            <Link to="/main/dashboard">Groceries Lists</Link>
+          </div>
           <div className="navbar__logout">
             <p>{user?.email}</p>
             <button
@@ -53,37 +55,31 @@ function Navbar({ user, handlePopUp, registerPopUp }) {
               sign Out
             </button>
           </div>
-        </div>
+        </>
       )}
 
       {!user && (
-        <div className="links">
+        <>
           <LoginForm formFunction={login} name={"log in"} />
-          <button
-            className="btn btn--no-margin btn--priamary"
-            onClick={() => {
-              handlePopUp();
-            }}
-          >
-            Create Account
-          </button>
-          <button
-            className="btn btn--no-margin btn--priamary"
-            onClick={testLogin}
-          >
-            Test Account
-          </button>
-        </div>
+          <div className="links">
+            <button
+              className="btn btn--no-margin btn--priamary"
+              onClick={() => {
+                handlePopUp();
+              }}
+            >
+              Create Account
+            </button>
+            <button
+              className="btn btn--no-margin btn--priamary"
+              onClick={testLogin}
+            >
+              Test Account
+            </button>
+          </div>
+        </>
       )}
-      {registerPopUp && (
-        <div className="registerPopUp">
-          <div
-            onClick={() => handlePopUp()}
-            className="register-pop-up__background"
-          ></div>
-          <RegisterForm handlePopUp={handlePopUp} />
-        </div>
-      )}
+      {registerPopUp && <Popup handlePopUp={handlePopUp} />}
     </nav>
   );
 }

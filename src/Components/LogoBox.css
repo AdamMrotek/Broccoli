@@ -1,20 +1,23 @@
 .logo-box {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
 }
 .logo-icon {
   height: 8rem;
   width: 8rem;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
   .logo-icon {
     height: 6rem;
     width: 6rem;
   }
   .logo-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     margin: 0;
+  }
+  .logo-text--secondary {
+    display: none;
+  }
+  .logo-text--primary {
+    font-size: 2rem;
   }
 }

@@ -40,7 +40,7 @@ function RegisterForm({ handlePopUp }) {
           id="email"
           required
         />
-        <label htmlFor="confirmPassword">Display Name</label>
+        <label htmlFor="confirmPassword">Display Name:</label>
         <input
           type="text"
           value={displayName}

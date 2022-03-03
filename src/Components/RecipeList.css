@@ -18,7 +18,7 @@
   padding-top: 2rem;
   /* to work with background in search section */
   position: relative;
-  z-index: 10;
+  z-index: 2;
 }
 .card-title {
   height: 5rem;

@@ -1,0 +1,23 @@
+.registerPopUp {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.register-pop-up__background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+  filter: blur(50%);
+  z-index: 3;
+  opacity: 0.5;
+}
+@media only screen and (max-width: 900px) {
+  .registerPopUp {
+  }
+}
