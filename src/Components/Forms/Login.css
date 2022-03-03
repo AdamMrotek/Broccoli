@@ -2,6 +2,7 @@
   position: relative;
   display: flex;
   align-items: flex-end;
+  margin-left: auto;
 }
 .login-buton:hover {
   color: var(--secondary-dark);
