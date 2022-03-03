@@ -10,7 +10,6 @@
   color: var(--secondary-dark);
 }
 .navbar .links {
-  margin-left: auto;
 }
 .links {
   display: flex;
