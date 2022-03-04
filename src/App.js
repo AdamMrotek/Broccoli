@@ -1,4 +1,5 @@
 import "./App.css";
+import "./Animations.css";
 import "./Typography.css";
 import Navbar from "./Pages/Navbar.js";
 import Main from "./Pages/Main.js";

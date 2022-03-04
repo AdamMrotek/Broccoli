@@ -4,7 +4,7 @@ import "./Popup.css";
 
 export default function Popup({ handlePopUp }) {
   return (
-    <div className="registerPopUp">
+    <div className="registerPopUp ">
       <div
         onClick={() => handlePopUp()}
         className="register-pop-up__background"

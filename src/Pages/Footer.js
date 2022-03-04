@@ -7,7 +7,6 @@ function Footer() {
         <footer className="footer">
           <div className="footer__text">
             <LogoBox></LogoBox>
-            <p className="paragraph">Copyrights &copy; to everyone</p>
           </div>
           <div className="footer__menu">
             <ul>

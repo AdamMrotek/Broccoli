@@ -16,7 +16,7 @@ function RegisterForm({ handlePopUp }) {
   return (
     <div>
       <form
-        className="register-form"
+        className="register-form animated"
         onSubmit={async (e) => {
           e.preventDefault();
           try {

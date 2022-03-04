@@ -1,15 +1,18 @@
 .navbar {
-  padding: 20px;
-  display: flex;
-  align-items: flex-end;
-  max-width: 1200px;
-  margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
   background-color: #f2f2f2;
 }
 .navbar h1 {
   color: var(--secondary-dark);
   color: var(--grey-dark-1);
+}
+.navbar-container {
+  padding: 20px;
+  display: flex;
+  align-items: flex-end;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-bottom: 1px solid #f2f2f2;
 }
 .navbar > .logo-box {
   margin-right: auto;

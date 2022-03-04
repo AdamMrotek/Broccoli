@@ -39,47 +39,49 @@ function Navbar({ user, handlePopUp, registerPopUp }) {
 
   return (
     <nav className="navbar">
-      <LogoBox />
-      {user && (
-        <>
-          <div className="navbar__logout">
-            <p>{user?.email}</p>
-            <button
-              className="btn btn--no-margin btn--priamary"
-              onClick={logout}
-            >
-              sign Out
-            </button>
-          </div>
-          <div className="links">
-            <Link to="/main/search">Explore Recepies</Link>
-            <Link to="/main/dashboard">Groceries Lists</Link>
-          </div>
-        </>
-      )}
+      <div className="navbar-container">
+        <LogoBox />
+        {user && (
+          <>
+            <div className="navbar__logout">
+              <p>{user?.email}</p>
+              <button
+                className="btn btn--no-margin btn--priamary"
+                onClick={logout}
+              >
+                sign Out
+              </button>
+            </div>
+            <div className="links">
+              <Link to="/main/search">Explore Recepies</Link>
+              <Link to="/main/dashboard">Groceries Lists</Link>
+            </div>
+          </>
+        )}
 
-      {!user && (
-        <>
-          <LoginForm formFunction={login} name={"log in"} />
-          <div className="links">
-            <button
-              className="btn btn--no-margin btn--priamary"
-              onClick={() => {
-                handlePopUp();
-              }}
-            >
-              Create Account
-            </button>
-            <button
-              className="btn btn--no-margin btn--priamary"
-              onClick={testLogin}
-            >
-              Test Account
-            </button>
-          </div>
-        </>
-      )}
-      {registerPopUp && <Popup handlePopUp={handlePopUp} />}
+        {!user && (
+          <>
+            <LoginForm formFunction={login} name={"log in"} />
+            <div className="links">
+              <button
+                className="btn btn--no-margin btn--priamary"
+                onClick={() => {
+                  handlePopUp();
+                }}
+              >
+                Create Account
+              </button>
+              <button
+                className="btn btn--no-margin btn--priamary"
+                onClick={testLogin}
+              >
+                Test Account
+              </button>
+            </div>
+          </>
+        )}
+        {registerPopUp && <Popup handlePopUp={handlePopUp} />}
+      </div>
     </nav>
   );
 }
