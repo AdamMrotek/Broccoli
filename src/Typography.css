@@ -11,7 +11,7 @@
 }
 .heading-primary--sub {
   display: block;
-  font-size: 10rem;
+  font-size: 5rem;
 }
 .heading-secondary {
   font-size: 5rem;
@@ -39,4 +39,9 @@
   font-size: 1.6rem;
   transform: translateX(0.3rem);
   text-transform: uppercase;
+}
+.heading-primary-title {
+  text-align: end;
+  font-family: "Amatic SC", cursive;
+  font-size: 5rem;
 }

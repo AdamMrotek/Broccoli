@@ -1,18 +1,41 @@
 import { useState } from "react";
 import RecipeList from "./RecipeList.js";
 import "./Search.css";
+import InputOption from "./Forms/InputOption.js";
 
 function Search(props) {
   const [searchList, setSearchList] = useState(null);
   const [recipeName, setrecipeName] = useState("");
   const [cusine, setCusine] = useState();
-  // const [data, isLoading, error] = useFetch()
+  let cusines = [
+    "American",
+    "Asian",
+    "British",
+    "Caribbean",
+    "Central Europe",
+    "Chinese",
+    "Eastern Europe",
+    "French",
+    "Indian",
+    "Italian",
+    "Japanese",
+    "Kosher",
+    "Mediterranean",
+    "Mexican",
+    "Middle Eastern",
+    "Nordic",
+    "South American",
+    "South East Asian",
+  ];
+
+  console.log(searchList?.length);
   const handleSearch = async (e, recipeName, cusine) => {
     e.preventDefault();
     const response = await fetch(
-      `https://api.edamam.com/api/recipes/v2?type=public&q=${recipeName}&app_id=${process.env.REACT_APP_Application_ID}&app_key=${process.env.REACT_APP_Application_Keys}`
+      `https://api.edamam.com/api/recipes/v2?type=public&q=${recipeName}&app_id=${process.env.REACT_APP_Application_ID}&app_key=${process.env.REACT_APP_Application_Keys}&cuisineType=${cusine}`
     );
     const data = await response.json();
+
     let newData = data.hits.map((recipe) => {
       return {
         lable: recipe.recipe.label,
@@ -22,11 +45,11 @@ function Search(props) {
       };
     });
     console.log(data);
-    console.log(newData);
+    console.log(newData.length);
     setSearchList(newData);
   };
   return (
-    <div>
+    <>
       <form
         className="search-form"
         action="#"
@@ -50,25 +73,30 @@ function Search(props) {
           value={cusine}
           onChange={(e) => setCusine(e.target.value)}
         >
-          <option id="author" value="italian">
-            Italian
-          </option>
-          <option id="author" value="mexican">
-            Mexican
-          </option>
+          {cusines.map((cusine) => {
+            return (
+              <InputOption key={cusine} id={"author"} valueOfOption={cusine} />
+            );
+          })}
         </select>
         <button className="btn margin-medium">Search</button>
+        {searchList?.length === 0 && (
+          <h1 className="search-form__no-results">
+            Couldn't find any results!
+          </h1>
+        )}
       </form>
-      {searchList && (
+      {searchList && searchList.length > 0 && (
         <div className="search-results">
           <h2>Search Results:</h2>
+
           <RecipeList
             recipes={searchList}
             addToGroceries={props.addToGroceries}
           />
         </div>
       )}
-    </div>
+    </>
   );
 }
 

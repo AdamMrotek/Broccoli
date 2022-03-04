@@ -42,6 +42,11 @@ export default function HowItWorks({ handlePopUp }) {
           Register
         </button>
       </label>
+      <img
+        className="how-it-works__img"
+        src="/broccoli-cut.png"
+        alt="halved broccoli"
+      ></img>
     </div>
   );
 }

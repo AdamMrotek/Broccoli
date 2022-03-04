@@ -42,10 +42,6 @@ function Navbar({ user, handlePopUp, registerPopUp }) {
       <LogoBox />
       {user && (
         <>
-          <div className="links">
-            <Link to="/main/search">Explore Recepies</Link>
-            <Link to="/main/dashboard">Groceries Lists</Link>
-          </div>
           <div className="navbar__logout">
             <p>{user?.email}</p>
             <button
@@ -54,6 +50,10 @@ function Navbar({ user, handlePopUp, registerPopUp }) {
             >
               sign Out
             </button>
+          </div>
+          <div className="links">
+            <Link to="/main/search">Explore Recepies</Link>
+            <Link to="/main/dashboard">Groceries Lists</Link>
           </div>
         </>
       )}

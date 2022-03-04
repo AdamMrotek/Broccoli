@@ -2,15 +2,26 @@
   height: 10rem;
 }
 .how-it-works {
-  margin-bottom: 5rem;
+  overflow: hidden;
+  position: relative;
+  object-fit: cover;
+  padding-bottom: 10rem;
 }
 .header__how-it-works__cards {
   display: flex;
-  gap: 2rem;
-  padding: 4rem;
+  gap: 4rem;
+  padding: 10rem;
   max-width: 120rem;
   margin: auto;
   justify-content: center;
+}
+.how-it-works__img {
+  position: absolute;
+  width: 70%;
+  bottom: 0%;
+  right: 0%;
+  z-index: -1;
+  transform: translateX(60%) translateY(50%);
 }
 @media only screen and (max-width: 600px) {
   .header__how-it-works__cards {

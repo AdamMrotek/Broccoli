@@ -27,7 +27,7 @@ export default function GroceriesList(recipeList) {
 
   function sumQuantity(ingedient1, ingedient2) {
     if (
-      ingedient1.measure === ingedient2.measure ||
+      ingedient1.measure === ingedient2.measure &&
       ingedient1.measure !== "grams"
     ) {
       return ingedient1.quantity + ingedient2.quantity;
@@ -44,10 +44,12 @@ export default function GroceriesList(recipeList) {
         acc[indexNum].quantity = newQuantity;
         acc[indexNum].measure =
           acc[indexNum].measure === item.measure ? item.measure : "grams";
+        acc[indexNum].weight += item.weight;
         return acc;
       }
       return acc.concat(item);
     }, []);
+
     return newList;
   }
   function sortGroceries(list) {

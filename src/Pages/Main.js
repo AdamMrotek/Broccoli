@@ -48,7 +48,6 @@ function Main({ user, handlePopUp }) {
   }, [user]);
 
   const addToGroceries = async (recepie) => {
-    console.log(recepie);
     let userDoc = doc(db, "usersLists", userListId);
     console.log(userDoc);
     let recipeExists =
