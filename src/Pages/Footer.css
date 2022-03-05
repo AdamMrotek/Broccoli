@@ -36,6 +36,13 @@
   color: white;
   cursor: pointer;
 }
+.footer__list-item,
+.footer__list-item:active,
+.footer__list-item:visited {
+  color: white;
+  font-family: "Amatic SC", cursive;
+  text-decoration: none;
+}
 @media only screen and (max-width: 900px) {
   .footer-wrap {
     padding-top: 25rem;

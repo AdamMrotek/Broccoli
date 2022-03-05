@@ -10,9 +10,16 @@ function Footer() {
           </div>
           <div className="footer__menu">
             <ul>
-              <li className="listItem">Git repository</li>
-              <li className="listItem">Profiles</li>
-              <li className="listItem">Carrers</li>
+              <li className="listItem">
+                <a
+                  className="footer__list-item"
+                  rel="noopener noreferrer"
+                  href="https://github.com/AdamMrotek/Broccoli"
+                  target="_blank"
+                >
+                  Git repository
+                </a>
+              </li>
             </ul>
           </div>
         </footer>

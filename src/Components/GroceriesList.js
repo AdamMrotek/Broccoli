@@ -1,5 +1,5 @@
 import "./GroceriesList.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 export default function GroceriesList(recipeList) {
   const [groceries, setGroceries] = useState(null);
@@ -36,7 +36,7 @@ export default function GroceriesList(recipeList) {
     }
   }
 
-  function countGroceries(list) {
+  const countGroceries = useCallback((list) => {
     let newList = list.reduce((acc, item) => {
       let indexNum = acc.findIndex((e) => e.key === item.key);
       if (indexNum >= 0) {
@@ -51,7 +51,7 @@ export default function GroceriesList(recipeList) {
     }, []);
 
     return newList;
-  }
+  }, []);
   function sortGroceries(list) {
     return list.sort((a, b) => a.food > b.food);
   }
@@ -64,7 +64,6 @@ export default function GroceriesList(recipeList) {
       return { ...item };
     });
     setGroceries(newGroceries);
-    // setGroceries();
   }
   ///////
   useEffect(() => {
@@ -73,7 +72,7 @@ export default function GroceriesList(recipeList) {
     let sortedGroceries = sortGroceries(sumGroceries);
     let addCheckBox = addCheckBoxtoGroceries(sortedGroceries);
     setGroceries(addCheckBox);
-  }, [recipeList]);
+  }, [recipeList, countGroceries]);
 
   return (
     <div className="groceries__list">

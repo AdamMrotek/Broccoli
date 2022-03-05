@@ -24,6 +24,7 @@
 .navbar__logout {
   display: flex;
   align-items: flex-end;
+  margin-left: auto;
 }
 
 .links p {
@@ -62,7 +63,7 @@
     margin: 0;
     background-color: white;
   }
-  .navbar {
+  .navbar-container {
     justify-content: space-between;
   }
   .navbar__logout {

@@ -13,9 +13,10 @@ function Home({ handlePopUp }) {
         <div className="header__text-box">
           <h1 className="heading-primary-title">Wellcome to Broccoli</h1>
           <p className="paragraph">
-            Place for home chefs, whos pation is sustainability. <br />
+            The place for home chefs whose passion is sustainability.
+            <br />
             We take the food supply out of your mind, so you can focus on the
-            things you really enjoy!
+            things you enjoy!
           </p>
 
           <button onClick={() => handlePopUp()} className="btn margin-medium">
