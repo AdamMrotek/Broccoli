@@ -1,4 +1,6 @@
-import { createContext, useReducer } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { createContext, useReducer, useEffect } from "react";
+import { auth } from "../firebase-config.js";
 
 export const AuthContext = createContext();
 export const authReducer = (state, action) => {
@@ -13,7 +15,19 @@ export const authReducer = (state, action) => {
   }
 };
 export const AuthContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(authReducer, { user: null });
+  //initial state, authIsready is used to delay the render of interface
+  //to prevent gliching and jumping interface
+  const [state, dispatch] = useReducer(authReducer, {
+    user: null,
+    authIsReady: false,
+  });
+
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, (user) => {
+      dispatch({ type: "AUTH_IS_READY", payload: user });
+    });
+    unsub();
+  }, []);
 
   return (
     <AuthContext.Provider value={{ ...state, dispatch }}>

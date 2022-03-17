@@ -6,8 +6,9 @@ import InputOption from "./Forms/InputOption.js";
 function Search(props) {
   const [searchList, setSearchList] = useState(null);
   const [recipeName, setrecipeName] = useState("");
-  const [cusine, setCusine] = useState();
+  const [cusine, setCusine] = useState("any");
   let cusines = [
+    "Any",
     "American",
     "Asian",
     "British",
@@ -31,8 +32,19 @@ function Search(props) {
   console.log(searchList?.length);
   const handleSearch = async (e, recipeName, cusine) => {
     e.preventDefault();
+    console.log(
+      `https://api.edamam.com/api/recipes/v2?type=public&q=${recipeName}&app_id=${
+        process.env.REACT_APP_Application_ID
+      }&app_key=${process.env.REACT_APP_Application_Keys}&cuisineType=${
+        cusine === "any" ? "" : "&cuisineType=" + cusine
+      }`
+    );
     const response = await fetch(
-      `https://api.edamam.com/api/recipes/v2?type=public&q=${recipeName}&app_id=${process.env.REACT_APP_Application_ID}&app_key=${process.env.REACT_APP_Application_Keys}&cuisineType=${cusine}`
+      `https://api.edamam.com/api/recipes/v2?type=public&q=${recipeName}&app_id=${
+        process.env.REACT_APP_Application_ID
+      }&app_key=${process.env.REACT_APP_Application_Keys}${
+        cusine === "any" ? "" : "&cuisineType=" + cusine
+      }`
     );
     const data = await response.json();
 
@@ -57,7 +69,7 @@ function Search(props) {
           handleSearch(e, recipeName, cusine);
         }}
       >
-        <label htmlFor="recipeName">recipeName</label>
+        <label htmlFor="recipeName">Recipe Name or Ingredient</label>
         <input
           id="recipeName"
           type="text"
