@@ -21,6 +21,6 @@ const ApiLibraryEdamam = {
     "South East Asian",
   ],
   mealType: ["Any", "Breakfast", "Dinner", "Lunch", "Snack", "Teatime"],
-  health: ["Any", "vegan", "vegetarian", "dairy-free"],
+  health: ["vegan", "vegetarian", "dairy-free"],
 };
-export default ApiLibraryEdamam;
+export { ApiLibraryEdamam };
