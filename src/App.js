@@ -6,8 +6,6 @@ import Main from "./Pages/Main.js";
 import NotFound from "./Pages/NotFound.js";
 import Footer from "./Pages/Footer.js";
 import Home from "./Pages/Home.js";
-import { auth } from "./firebase-config.js";
-import { onAuthStateChanged } from "firebase/auth";
 
 import {
   BrowserRouter as Router,
@@ -15,45 +13,38 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import useAuthContext from "./Hooks/useAuthContext.js";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const context = useAuthContext();
+
   const [registerPopUp, setRegisterPopUp] = useState(false);
   const handlePopUp = () => {
     setRegisterPopUp((registerPopUp) => !registerPopUp);
   };
-  //controling user
-  useEffect(() => {
-    onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setRegisterPopUp(false);
-    });
-  }, []);
 
   return (
     <Router>
-      <div className="App">
-        <Navbar
-          user={user}
-          handlePopUp={handlePopUp}
-          registerPopUp={registerPopUp}
-        />
-        <div className="content">
-          <Routes>
-            <Route
-              path="/main/*"
-              element={<Main user={user} handlePopUp={handlePopUp} />}
-            />
-            <Route
-              path="/"
-              element={user ? <Navigate to="/main" /> : <Home />}
-            />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+      {context.authIsReady && (
+        <div className="App">
+          <Navbar handlePopUp={handlePopUp} registerPopUp={registerPopUp} />
+          <div className="content">
+            <Routes>
+              <Route
+                path="/main/*"
+                element={<Main user={context.user} handlePopUp={handlePopUp} />}
+              />
+              <Route
+                path="/"
+                element={context.user ? <Navigate to="/main" /> : <Home />}
+              />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
+      )}
     </Router>
   );
 }
