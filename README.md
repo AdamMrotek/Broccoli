@@ -135,9 +135,9 @@ Requirements for testing :
 | Accessibility on multiple devices | Using Database |:white_check_mark:|
 | Adding recipes on multiple devices | Live Stream data to keep everything in sync |:white_check_mark:|
 | API inconsistent measurements of ingredients | switching from cups/units/pounds to grams |:white_check_mark:|
-| Heavy properties drilling for user |  rearranging the props structure not ideal but works/implementing context provider|:white_check_mark:|
+| Heavy properties drilling for user |  rearranging the props structure not ideal but works/Update! implemented context provider for Auth|:white_check_mark:|
 | live stream of data needs to stop while the app is not used | onSnapshot returns cleanup function that need to be returned in useEffect Hook|:white_check_mark:|
-| Jittery experience if logged user come back to the app | delaying rendering of the page on the initial load while waiting for auth token to be checked|:heavy_check_mark:|
+| Jittery experience if logged user come back to the app | delaying rendering of the page on the initial load while waiting for auth token to be checked|:white_check_mark:|
 | Ability to build multiple lists | adding history functionality/ query database based on uid |:heavy_check_mark:|
 | Sharing recipe list between accounts | adding an option to copy in groceries list based on list id |:heavy_check_mark:|
 | Passing props(objects) that are used in useEffect and need to be listed as dependencies create an infinite loop of rerenders | useCallback for functions / useRef for other objects to stop referencing on every rerender, generally not worth it otherwise|:white_check_mark:|
