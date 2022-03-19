@@ -142,6 +142,7 @@ Requirements for testing :
 | Sharing recipe list between accounts | adding an option to copy in groceries list based on list id |:heavy_check_mark:|
 | Passing props(objects) that are used in useEffect and need to be listed as dependencies create an infinite loop of rerenders | useCallback for functions / useRef for other objects to stop referencing on every rerender, generally not worth it otherwise|:white_check_mark:|
 | Multiplying same recipes | function that tracks recipe multiplier/ need extra property |:heavy_check_mark:|
+| API querries return with in too many results | Paginatiation and sort to be implemented |:heavy_check_mark:|
 
 
 
