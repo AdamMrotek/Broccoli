@@ -1,44 +1,32 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase-config.js";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import useAuthContext from "./useAuthContext.js";
 
-export const useSignUp = () => {
+export const useLogout = () => {
   const [isCancelled, setIsCancelled] = useState(false);
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(null);
   const navigation = useNavigate();
   const { dispatch } = useAuthContext();
 
-  const register = async (email, password, confirmPassword, displayName) => {
+  const logout = async () => {
     //reseting states in case of rerun
     setError(null);
     setIsPending(true);
-
+    console.log("loggin out");
     try {
-      //chcecking if password are matching
-      if (password && password !== confirmPassword) {
-        throw new Error("Passwords need to match");
-      }
       // creating account
-      const res = await createUserWithEmailAndPassword(auth, email, password);
-      if (isCancelled) {
-        return;
-      }
-      //chcecking if successful
-      if (!res) {
-        throw new Error("Could not complete signup");
-      }
+      await signOut(auth);
 
-      //updating displayed name
-      await updateProfile(auth.currentUser, { displayName });
+      //checking if unmounted
       if (isCancelled) {
         return;
       }
       //upadatinh state of the context user
-      dispatch({ type: "LOGIN", payload: auth.currentUser });
-      navigation("/main/dashboard");
+      dispatch({ type: "LOGOUT" });
+      navigation("/");
     } catch (error) {
       if (isCancelled) {
         return;
@@ -50,5 +38,6 @@ export const useSignUp = () => {
   useEffect(() => {
     return () => setIsCancelled(true);
   }, []);
-  return { register, error, isPending };
+
+  return { logout, error, isPending };
 };
