@@ -17,24 +17,24 @@ function Search(props) {
   const [cusine, setCusine] = useState("any");
   const [mealType, setMealType] = useState("any");
   const [healthChoices, setHeathChoices] = useState([]);
+
   // Search resutl list
   const [searchList, setSearchList] = useState(null);
+  const [nextPage, setNextPage] = useState([]);
 
   const handelCheckboxChange = (e, chceckBoxSetter) => {
     const target = e.target;
     const value = target.checked ? true : false;
     const name = target.name;
-    console.log(value);
     if (value) {
-      setHeathChoices((healthChoices) => {
+      chceckBoxSetter((healthChoices) => {
         return [...healthChoices, name];
       });
     } else {
-      setHeathChoices((healthChoices) => {
+      chceckBoxSetter((healthChoices) => {
         return healthChoices.filter((healthChoice) => healthChoice !== name);
       });
     }
-    console.log(healthChoices);
   };
 
   const createAPIquerry = () => {
@@ -53,12 +53,7 @@ function Search(props) {
     return `https://api.edamam.com/api/recipes/v2?type=public&q=${querry}&app_id=${process.env.REACT_APP_Application_ID}&app_key=${process.env.REACT_APP_Application_Keys}${cusineQuerry}${mealTypeQuerry}${heathQuerry}`;
   };
 
-  const handleSearch = async (e, recipeName, cusine) => {
-    e.preventDefault();
-    const apiQuerry = createAPIquerry();
-    const response = await fetch(apiQuerry);
-    const data = await response.json();
-
+  const handleSearchResultsEdamam = (data, setSearchResults) => {
     let newData = data.hits.map((recipe) => {
       return {
         lable: recipe.recipe.label,
@@ -67,84 +62,164 @@ function Search(props) {
         key: recipe.recipe.uri.split("recipe_")[1],
       };
     });
-    console.log(data);
-    console.log(newData.length);
-    setSearchList(newData);
+    setSearchResults(newData);
+  };
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    const apiQuerry = createAPIquerry();
+    const response = await fetch(apiQuerry);
+    const data = await response.json();
+    //chcecking nextPage next?.href makes sure there is next before reading href
+    data._links.next?.href
+      ? setNextPage([apiQuerry, data._links.next.href])
+      : setNextPage([apiQuerry, null]);
+    // updating state of the current list and creating objects to render
+    handleSearchResultsEdamam(data, setSearchList);
+  };
+
+  const goToNextPage = async () => {
+    //feching last element of nextPage array
+    const response = await fetch(nextPage[nextPage.length - 1]);
+    const data = await response.json();
+    //chceking if next page has link to next page
+    data._links.next?.href
+      ? setNextPage((nextPage) => nextPage.concat(data._links.next.href))
+      : setNextPage((nextPage) => nextPage.concat(null));
+    // updating state of the current list and creating objects to render
+    handleSearchResultsEdamam(data, setSearchList);
+  };
+  const goToPreviousPage = async () => {
+    //feching url saved in history of nextPage
+    const response = await fetch(nextPage[nextPage.length - 3]);
+    const data = await response.json();
+    // updating state of the current list and creating objects to render
+    handleSearchResultsEdamam(data, setSearchList);
+
+    //setting prevoius page as current so the next link can work
+    setNextPage((nextPage) => nextPage.slice(0, nextPage.length - 1));
   };
 
   return (
     <>
-      <form
-        className="search-form"
-        action="#"
-        onSubmit={(e) => {
-          handleSearch(e, recipeName, cusine);
-        }}
-      >
-        <label htmlFor="recipeName">Recipe Name or Ingredient</label>
-        <input
-          id="recipeName"
-          type="text"
-          required
-          name="recipeName"
-          value={recipeName}
-          onChange={(e) => setrecipeName(e.target.value)}
-        />
-        <label htmlFor="cusine">Cusine</label>
-        <select
-          name="cusine"
-          id="cusine"
-          value={cusine}
-          onChange={(e) => setCusine(e.target.value)}
+      <div className="search-form">
+        <form
+          className="search-form__fields"
+          action="#"
+          onSubmit={(e) => {
+            handleSearch(e, recipeName, cusine);
+          }}
         >
-          {cusines.map((cusine) => {
-            return (
-              <InputOption key={cusine} id={"author"} valueOfOption={cusine} />
-            );
-          })}
-        </select>
-        <label htmlFor="meal">Meal type</label>
-        <select
-          name="meal"
-          id="meal"
-          value={mealType}
-          onChange={(e) => setMealType(e.target.value)}
-        >
-          {mealTypes.map((mealType) => {
-            return (
-              <InputOption
-                key={mealType}
-                id={"meal"}
-                valueOfOption={mealType}
-              />
-            );
-          })}
-        </select>
-        {health.map((healthOption) => {
-          return (
-            <ChcekboxInput
-              key={healthOption}
-              value={healthOption}
-              handleChange={handelCheckboxChange}
-              setCheckBoxes={setHeathChoices}
-            />
-          );
-        })}
-        <button className="btn margin-medium">Search</button>
-        {searchList?.length === 0 && (
-          <h1 className="search-form__no-results">
-            Couldn't find any results!
-          </h1>
-        )}
-      </form>
+          <label htmlFor="recipeName">Recipe Name or Ingredients</label>
+          <input
+            id="recipeName"
+            type="text"
+            required
+            name="recipeName"
+            value={recipeName}
+            onChange={(e) => setrecipeName(e.target.value)}
+          />
+          <label htmlFor="cusine">Cusine</label>
+          <select
+            name="cusine"
+            id="cusine"
+            value={cusine}
+            onChange={(e) => setCusine(e.target.value)}
+          >
+            {cusines.map((cusine) => {
+              return (
+                <InputOption
+                  key={cusine}
+                  id={"author"}
+                  valueOfOption={cusine}
+                />
+              );
+            })}
+          </select>
+          <label htmlFor="meal">Meal type</label>
+          <select
+            name="meal"
+            id="meal"
+            value={mealType}
+            onChange={(e) => setMealType(e.target.value)}
+          >
+            {mealTypes.map((mealType) => {
+              return (
+                <InputOption
+                  key={mealType}
+                  id={"meal"}
+                  valueOfOption={mealType}
+                />
+              );
+            })}
+          </select>
+          <div className="search-form__chcekboxes">
+            {health.map((healthOption) => {
+              return (
+                <ChcekboxInput
+                  key={healthOption}
+                  value={healthOption}
+                  handleChange={handelCheckboxChange}
+                  setCheckBoxes={setHeathChoices}
+                />
+              );
+            })}
+          </div>
+          <button className="btn">Search</button>
+          {searchList?.length === 0 && (
+            <h2 className="search-form__no-results">
+              Couldn't find any results!
+            </h2>
+          )}
+        </form>
+      </div>
+
       {searchList && searchList.length > 0 && (
         <div className="search-results">
-          <h2>Search Results:</h2>
+          <h2 className="heading-secondary search-results__title">
+            Search Results:
+          </h2>
+          <div className="navigation-buttons">
+            {nextPage.length > 2 && (
+              <button
+                className="btn search-form_pagination-btn search-form_pagination-btn--previous"
+                onClick={(e) => goToPreviousPage()}
+              >
+                Previous Page
+              </button>
+            )}
+            {nextPage[nextPage.length - 1] && (
+              <button
+                className="btn search-form_pagination-btn search-form_pagination-btn--next"
+                onClick={(e) => goToNextPage()}
+              >
+                Next Page
+              </button>
+            )}
+          </div>
 
           <RecipeList
             recipes={searchList}
             addToGroceries={props.addToGroceries}
           />
+          <div className="navigation-buttons">
+            {nextPage.length > 2 && (
+              <button
+                className="btn search-form_pagination-btn search-form_pagination-btn--previous"
+                onClick={(e) => goToPreviousPage()}
+              >
+                Previous Page
+              </button>
+            )}
+            {nextPage[nextPage.length - 1] && (
+              <button
+                className="btn search-form_pagination-btn search-form_pagination-btn--next"
+                onClick={(e) => goToNextPage()}
+              >
+                Next Page
+              </button>
+            )}
+          </div>
         </div>
       )}
     </>

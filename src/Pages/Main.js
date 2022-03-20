@@ -15,11 +15,22 @@ import {
   onSnapshot,
   addDoc,
 } from "firebase/firestore";
+import { useColletion } from "../Hooks/useColletion.js";
 
 function Main({ user, handlePopUp }) {
   const [recipeList, setRecipeList] = useState([]);
   const [userListId, setUserListId] = useState([]);
 
+  const { documents, error } = useColletion("usersLists", [
+    "uid",
+    "==",
+    `${user?.uid}`,
+  ]);
+
+  // console.log(documents ? documents.length : false, error);
+  // console.log(documents);
+  // console.log(user?.uid);
+  // console.log(userListId);
   // FUNCTIONS CONTROLING recipeList
   useEffect(() => {
     const getRecipesCleanUp = async () => {

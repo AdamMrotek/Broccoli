@@ -13,13 +13,41 @@
   position: absolute;
   width: 100%;
   z-index: 0;
+  padding-top: 4rem;
+}
+.search-form__fields {
+  margin: auto;
+  width: clamp(30rem, 75%, 120rem);
 }
 .search-results {
+  position: static;
   padding-top: 15rem;
   padding-bottom: 15rem;
+  z-index: 10;
+}
+.search-results__title.heading-secondary {
+  position: relative;
+  z-index: 10;
+}
+.search-form_pagination-btn {
+  text-align: end;
+}
+.search-form_pagination-btn--next {
+  margin-left: auto;
+}
+.navigation-buttons {
+  width: clamp(30rem, 100%, 90rem);
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
 }
 @media only screen and (max-width: 600px) {
   .search-form {
     padding-top: 3rem;
   }
+}
+.search-form__chcekboxes {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
 }

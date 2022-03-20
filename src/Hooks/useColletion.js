@@ -11,11 +11,11 @@ import {
 // db value exported from confing - Values from Firebase
 import { db } from "../firebase-config.js";
 
-export default function useColletion(collectionName, _query, _orderBy) {
+export const useColletion = (collectionName, _query, _orderBy) => {
   //useRef used to stop infinite loop on useEffect
   //reference values are being realocated on each rerender and treated as diffrent - values {}==={} gives false
   //useCallback - same thing but for functions only
-
+  console.log(collectionName, _query, _orderBy);
   const queryValue = useRef(_query).current;
   const orderByValue = useRef(_orderBy).current;
 
@@ -33,16 +33,18 @@ export default function useColletion(collectionName, _query, _orderBy) {
     let ref = collection(db, collectionName);
 
     // condition statemnt to change reference to querry if query values have been passed as arguments
-    if (queryValue || orderByValue) {
-      ref = query(
-        ref,
-        // query here has 3 value f.e. "uid" ,"==", "CurrentUserIdString"
-        queryValue ? where(...queryValue) : null,
-        orderByValue ? orderBy(orderByValue) : null,
-        limit(20)
-      );
+    if (queryValue) {
+      console.log(queryValue);
+      ref = query(ref, where(...queryValue));
+      // ref = query(
+      //   ref,
+      //   // query here has 3 value f.e. "uid" ,"==", "CurrentUserIdString"
+      //   // queryValue ? where("uid", "==", "2ZC8mAp6ltTiUnYk2nOPoS9cGwG3") : null,
+      //   orderByValue ? orderBy(orderByValue) : null,
+      //   limit(5)
+      // );
     }
-
+    console.log(ref);
     //subscribe to live change made to the documets from reference or query (depending on ref value here)
     // onSntapshot returns clean up function which will unsubscribe from listening to the changes
     const unsubscribe = onSnapshot(
@@ -65,4 +67,4 @@ export default function useColletion(collectionName, _query, _orderBy) {
 
   //the whole hook returns:
   return { documents, error };
-}
+};

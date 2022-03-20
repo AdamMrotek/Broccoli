@@ -1,5 +1,5 @@
 import "./Navbar.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import { auth } from "../firebase-config.js";
 import LoginForm from "../Components/Forms/LoginForm.js";
 import LogoBox from "../Components/LogoBox.js";
@@ -10,7 +10,6 @@ import { useSignIn } from "../Hooks/useSignIn.js";
 import { useLogout } from "../Hooks/useLogout.js";
 
 function Navbar({ handlePopUp, registerPopUp }) {
-  const navigate = useNavigate();
   const user = useAuthContext();
   console.log(user);
   const { signIn, error, isPending } = useSignIn();
