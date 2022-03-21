@@ -176,9 +176,6 @@ function Search(props) {
 
       {searchList && searchList.length > 0 && (
         <div className="search-results">
-          <h2 className="heading-secondary search-results__title">
-            Search Results:
-          </h2>
           <div className="navigation-buttons">
             {nextPage.length > 2 && (
               <button

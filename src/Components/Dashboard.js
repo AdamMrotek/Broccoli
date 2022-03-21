@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import RecipeList from "./RecipeList.js";
 import { Link } from "react-router-dom";
 import GroceriesList from "./GroceriesList.js";
-import { db } from "../firebase-config.js";
-import { collection, getDocs } from "firebase/firestore";
+import UserResources from "./UserResources.js";
 
-function Dashboard({ user, removeFromGroceries, recipeList }) {
+function Dashboard({ removeFromGroceries, recipeList }) {
   return (
     <div>
       <h1 className=" margin-medium">Review choosen recipes</h1>
@@ -19,6 +18,7 @@ function Dashboard({ user, removeFromGroceries, recipeList }) {
         />
       )}
       {recipeList?.length >= 1 && <GroceriesList recipeList={recipeList} />}
+      <UserResources />
     </div>
   );
 }

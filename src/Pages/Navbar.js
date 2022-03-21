@@ -11,7 +11,6 @@ import { useLogout } from "../Hooks/useLogout.js";
 
 function Navbar({ handlePopUp, registerPopUp }) {
   const user = useAuthContext();
-  console.log(user);
   const { signIn, error, isPending } = useSignIn();
   const {
     logout,

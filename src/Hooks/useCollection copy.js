@@ -11,7 +11,7 @@ import {
 // db value exported from confing - Values from Firebase
 import { db } from "../firebase-config.js";
 
-export const useColletion = (collectionName, _query, _orderBy) => {
+export const useCollection = (collectionName, _query, _orderBy) => {
   //useRef used to stop infinite loop on useEffect
   //reference values are being realocated on each rerender and treated as diffrent - values {}==={} gives false
   //useCallback - same thing but for functions only
@@ -31,7 +31,10 @@ export const useColletion = (collectionName, _query, _orderBy) => {
   useEffect(() => {
     //building up a reference to Firebase Colletion (will be used if no query or orderBy)
     let ref = collection(db, collectionName);
-    ref = query(ref, where(...queryValue));
+    if (queryValue) {
+      ref = query(ref, where(...queryValue));
+    }
+
     // condition statemnt to change reference to querry if query values have been passed as arguments
 
     // if (queryValue) {
@@ -53,13 +56,12 @@ export const useColletion = (collectionName, _query, _orderBy) => {
     const unsubscribe = onSnapshot(
       ref,
       (Snapshot) => {
-        console.log(documents, "im in snapshot");
         const data = [];
-        Snapshot.forEach((doc) => {
-          console.log(doc.data());
-          data.push(doc.data());
+        Snapshot.docs.forEach((doc) => {
+          data.push({ ...doc.data(), id: doc.id });
         });
         setDocuments(data);
+        setError(null);
       },
       (error) => {
         // second argument is a callback with error
@@ -68,8 +70,9 @@ export const useColletion = (collectionName, _query, _orderBy) => {
     );
 
     // We are returning cleanup function, will be invoked if this hook is unmounted
-    return unsubscribe;
+    return () => unsubscribe();
   }, [collectionName, orderByValue, queryValue]);
+  console.log(documents);
 
   //the whole hook returns:
   return { documents, error };

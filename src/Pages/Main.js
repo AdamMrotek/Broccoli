@@ -15,22 +15,23 @@ import {
   onSnapshot,
   addDoc,
 } from "firebase/firestore";
-import { useColletion } from "../Hooks/useColletion.js";
+import { useCollection } from "../Hooks/useCollection copy.js";
 
 function Main({ user, handlePopUp }) {
   const [recipeList, setRecipeList] = useState([]);
   const [userListId, setUserListId] = useState([]);
 
-  const { documents, error } = useColletion("usersLists", [
-    "uid",
+  const { documents, error } = useCollection("usersLists", [
+    "userId",
     "==",
     `${user?.uid}`,
   ]);
 
-  // console.log(documents ? documents.length : false, error);
-  // console.log(documents);
-  // console.log(user?.uid);
-  // console.log(userListId);
+  useEffect(() => {
+    console.log(documents);
+    console.log(error);
+  }, [documents, error]);
+  console.log(documents);
   // FUNCTIONS CONTROLING recipeList
   useEffect(() => {
     const getRecipesCleanUp = async () => {
@@ -56,7 +57,7 @@ function Main({ user, handlePopUp }) {
 
     //returns cleanup funtion when react unmounts the object
     return () => getRecipesCleanUp();
-  }, [user]);
+  }, [user, documents]);
 
   const addToGroceries = async (recepie) => {
     let userDoc = doc(db, "usersLists", userListId);
@@ -93,6 +94,7 @@ function Main({ user, handlePopUp }) {
               user={user}
               recipeList={recipeList}
               removeFromGroceries={removeFromGroceries}
+              documents={documents}
             />
           ) : (
             <Navigate to="/main" />
