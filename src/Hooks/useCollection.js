@@ -34,30 +34,16 @@ export const useCollection = (collectionName, _query, _orderBy) => {
     if (queryValue) {
       ref = query(ref, where(...queryValue));
     }
+    console.log("useEffect in colletion runs");
 
-    // condition statemnt to change reference to querry if query values have been passed as arguments
-
-    // if (queryValue) {
-    //   console.log(queryValue);
-    //   ref = query(ref, where(...queryValue));
-    //   // ref = query(
-    //   //   ref,
-    //   //   // query here has 3 value f.e. "uid" ,"==", "CurrentUserIdString"
-    //   //   // queryValue ? where("uid", "==", "2ZC8mAp6ltTiUnYk2nOPoS9cGwG3") : null,
-    //   //   orderByValue ? orderBy(orderByValue) : null,
-    //   //   limit(5)
-    //   // );
-    // }
-
-    console.log(ref);
     //subscribe to live change made to the documets from reference or query (depending on ref value here)
     // onSntapshot returns clean up function which will unsubscribe from listening to the changes
 
     const unsubscribe = onSnapshot(
       ref,
-      (Snapshot) => {
+      (snapshot) => {
         const data = [];
-        Snapshot.docs.forEach((doc) => {
+        snapshot.docs.forEach((doc) => {
           data.push({ ...doc.data(), id: doc.id });
         });
         setDocuments(data);
@@ -70,9 +56,11 @@ export const useCollection = (collectionName, _query, _orderBy) => {
     );
 
     // We are returning cleanup function, will be invoked if this hook is unmounted
-    return () => unsubscribe();
+    return () => {
+      console.log("cleanUp in ");
+      unsubscribe();
+    };
   }, [collectionName, orderByValue, queryValue]);
-  console.log(documents);
 
   //the whole hook returns:
   return { documents, error };

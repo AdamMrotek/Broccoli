@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import useAuthContext from "../Hooks/useAuthContext.js";
-import { useCollection } from "../Hooks/useCollection copy.js";
+import { useCollection } from "../Hooks/useCollection.js";
 
 export default function UserResources() {
   const context = useAuthContext();

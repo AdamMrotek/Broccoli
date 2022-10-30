@@ -18,7 +18,6 @@ function Dashboard({ removeFromGroceries, recipeList }) {
         />
       )}
       {recipeList?.length >= 1 && <GroceriesList recipeList={recipeList} />}
-      <UserResources />
     </div>
   );
 }

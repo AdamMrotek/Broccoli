@@ -15,7 +15,7 @@ import {
   onSnapshot,
   addDoc,
 } from "firebase/firestore";
-import { useCollection } from "../Hooks/useCollection copy.js";
+import { useCollection } from "../Hooks/useCollection.js";
 
 function Main({ user, handlePopUp }) {
   const [recipeList, setRecipeList] = useState([]);
@@ -27,24 +27,26 @@ function Main({ user, handlePopUp }) {
     `${user?.uid}`,
   ]);
 
-  useEffect(() => {
-    console.log(documents);
-    console.log(error);
-  }, [documents, error]);
-  console.log(documents);
+  // useEffect(() => {
+  //   if (!user) return;
+  //   if (!documents) return;
+  //   console.log("settingUp a state");
+  //   setRecipeList(documents[0]?.recipes);
+  // }, [user, documents]);
   // FUNCTIONS CONTROLING recipeList
   useEffect(() => {
+    console.log("Main.js useEffect");
     const getRecipesCleanUp = async () => {
       if (!user) return;
       const colRef = collection(db, "usersLists");
       const q = query(colRef, where("userId", "==", user.uid));
 
-      const mySnapshot = await getDocs(q);
+      // const mySnapshot = await getDocs(q);
 
-      // Set up a collection document for users that doesnt have it yet
-      if (mySnapshot.docs?.length < 1) {
-        await addDoc(colRef, { userId: user.uid, recipes: [] });
-      }
+      // // Set up a collection document for users that doesnt have it yet
+      // if (mySnapshot.docs?.length < 1) {
+      //   await addDoc(colRef, { userId: user.uid, recipes: [] });
+      // }
       // Set up stream data and saves the clean up function to stop data streaming from firebase
       const snapFunction = onSnapshot(q, (data) => {
         const cleanData = data.docs[0]?.data();
@@ -54,9 +56,12 @@ function Main({ user, handlePopUp }) {
       return snapFunction;
     };
     getRecipesCleanUp();
-
     //returns cleanup funtion when react unmounts the object
-    return () => getRecipesCleanUp();
+    return () => {
+      console.log("cleanup function in Main.js");
+      setRecipeList(null);
+      getRecipesCleanUp();
+    };
   }, [user, documents]);
 
   const addToGroceries = async (recepie) => {
