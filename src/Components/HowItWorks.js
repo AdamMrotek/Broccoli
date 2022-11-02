@@ -1,5 +1,6 @@
 import "./HowItWorks.css";
 import React from "react";
+import PrimaryButton from "./Buttons/Buttons.js";
 
 export default function HowItWorks({ handlePopUp }) {
   return (
@@ -41,6 +42,7 @@ export default function HowItWorks({ handlePopUp }) {
         <button onClick={() => handlePopUp()} className="btn margin-medium">
           Register
         </button>
+        <PrimaryButton> Hello </PrimaryButton>
       </label>
       <img
         className="how-it-works__img"
