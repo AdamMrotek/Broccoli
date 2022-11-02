@@ -5,8 +5,8 @@
 ## App concept in mind:
 
 > The idea is based on services like "Hello Fresh," "Gusto," and "grubby."
-  These sites offer boxes with products measured as per recipes delivered every week.
-  That system has its own limitation - restrictive recipe pull, and it is not available in many countries.
+  These sites offer boxes with products measured as per recipes and delivered every week.
+  That system has its own limitation - restrictive recipe selection, and it is not available in many countries.
 
 ## Business solution:
 
@@ -124,6 +124,7 @@ Requirements for testing :
 1. (Done)Building users
 1. (Done)Building backend database with recipes
 1. (Done)Filtering recipes by type of cuisine
+1. (comming next ...) Graphic overhall 
 1. (comming next ...) impementing multiple list assign to one user
 1. Adding form to add recipes (can we trust user input/account types?)
 1. Connecting users with recipes as authors and favorites
