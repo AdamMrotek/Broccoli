@@ -1,11 +1,12 @@
 .card-icon {
   height: 10rem;
 }
-.how-it-works {
+.our-mission {
+  background-color: var(--white);
   overflow: hidden;
   position: relative;
   object-fit: cover;
-  padding-bottom: 5rem;
+  padding: 5rem 0rem;
 }
 .header__how-it-works__cards {
   display: flex;
