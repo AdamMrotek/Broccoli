@@ -1,6 +1,6 @@
 .logo-box {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 .logo-icon {
   height: 8rem;

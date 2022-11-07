@@ -15,21 +15,27 @@ function Home({ handlePopUp }) {
         <div className="header__text-box">
           <h1 className="heading-primary-title">Wellcome to Broccoli</h1>
           <p className="paragraph">
-            The place for home chefs whose passion is sustainability.
-            <br />
-            We take the food supply out of your mind, so you can focus on the
-            things you enjoy!
+            The place for home chefs whose passion is sustainability. We take
+            the food supply out of your mind, so you can focus on the things you
+            enjoy!
           </p>
 
           <button onClick={() => handlePopUp()} className="btn margin-medium">
             Join!
           </button>
         </div>
-        <img
-          src="/broccoli-full.png"
-          className="header__img"
-          alt="broccoli"
-        ></img>
+        <div className="hero-image-container">
+          <img
+            src="/hero-brocoli-main.png"
+            className="hero__img"
+            alt="broccoli"
+          ></img>
+          <img
+            src="/hero-brocoli-twig.png"
+            className="hero__img__animated"
+            alt="broccoli"
+          ></img>
+        </div>
       </div>
       <HowItWorks handlePopUp={handlePopUp} />
       <OurMission handlePopUp={handlePopUp} />

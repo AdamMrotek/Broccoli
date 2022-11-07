@@ -1,33 +1,66 @@
 .header {
   /* background-image: url(/public/hero-image01.jpg); */
+  border-radius: 0px 0px 70px 70px;
+  background: #ec8235; /* fallback for old browsers */
+  background: linear-gradient(
+    to left,
+    #f4d941,
+    #ec8235
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   background-size: cover;
   background-position: top center;
   margin: 0;
-  padding-bottom: 2rem;
-  margin-bottom: 5rem;
+  padding-bottom: 5rem;
+  padding-top: 25rem;
+  margin-top: -15rem;
+  margin-bottom: 10rem;
   display: flex;
   justify-content: center;
+  align-items: center;
   box-shadow: var(--shadow-strong);
   background-color: white;
 }
 .header__text-box {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   padding-bottom: 2%;
   align-items: flex-end;
   text-align: left;
-  width: 30%;
+  width: clamp(500px, 50%, 600px);
 }
 .header__text-box > * {
+  color: white;
   text-align: right;
   margin-right: 0;
   margin-top: 2rem;
 }
-.header__img {
-  width: 50%;
-  height: 50%;
+.hero-image-container {
+  position: relative;
+  width: clamp(350px, 50%, 600px);
+  height: 30%;
+  margin-left: 10rem;
 }
+.hero__img {
+  width: 100%;
+  height: 100%;
+}
+.hero__img__animated {
+  position: absolute;
+  left: -3%;
+  top: 8%;
+  height: 60%;
+  transition: 1s all ease-in-out;
+  transform-origin: bottom right;
+  animation: 8s twig-wave;
+  animation-iteration-count: 5;
+  animation-direction: alternate;
+}
+.hero__img__animated:hover {
+  transform: rotate(10deg);
+  /* transform-origin: 50% 50%; */
+}
+
 .header__fixed-img {
   position: fixed;
   left: 0%;

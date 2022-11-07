@@ -1,48 +1,40 @@
 import "./HowItWorks.css";
 import React from "react";
 import PrimaryButton from "./Buttons/Buttons.js";
-
+import SideCard from "./SideCard.js";
+let howItWorksContent = [
+  {
+    title: "Choose the recipies",
+    description:
+      "from the library of hundreds of recipies that are great and awsome. Thanks to our AI taste generator you can get furhter !",
+    icon: "/svgIcons/undraw_chef_cu-0-r.svg",
+  },
+  {
+    title: "Create your list",
+    description:
+      "from the library of hundreds of recipies that are great and awsome. Thanks to our AI taste generator you can get furhter !",
+    icon: "/svgIcons/undraw_healthy_options_sdo3 (1).svg",
+  },
+  {
+    title: "Go and get it!",
+    description:
+      "from the library of hundreds of recipies that are great and awsome. Thanks to our AI taste generator you can get furhter !",
+    icon: "/svgIcons/undraw_shopping_app_flsj.svg",
+  },
+];
 export default function HowItWorks({ handlePopUp }) {
   return (
     <div className="how-it-works">
       <h2 className="heading-secondary">How it works ?</h2>
-
-      <div className="header__how-it-works__cards">
-        <div className="header__how-it-works__card">
-          <img
-            src="/svgIcons/undraw_chef_cu-0-r.svg"
-            alt="chief"
-            className="card-icon"
-          />
-          <h3 className="heading-tertiary">Choose your favorite recipies</h3>
-          <p className="paragraph">from the library of hundreds of recipies</p>
-        </div>
-        <div className="header__how-it-works__card lower-card">
-          <img
-            src="/svgIcons/undraw_healthy_options_sdo3 (1).svg"
-            alt="chief"
-            className="card-icon"
-          />
-          <h3 className="heading-tertiary">Create you shopping list</h3>
-          <p className="paragraph">approve you groceries</p>
-        </div>
-        <div className="header__how-it-works__card">
-          <img
-            src="/svgIcons/undraw_shopping_app_flsj.svg"
-            alt="chief"
-            className="card-icon"
-          />
-          <h3 className="heading-tertiary">Go Shopping or order online</h3>
-          <p className="paragraph">
-            chcek you shopping list on your mobile devices
-          </p>
-        </div>
+      <div className="side-cards">
+        {howItWorksContent.map((p, i) => {
+          return <SideCard cardKey={i} cardContent={p} />;
+        })}
       </div>
       <label htmlFor="email">
         <button onClick={() => handlePopUp()} className="btn margin-medium">
           Register
         </button>
-        <PrimaryButton> Hello </PrimaryButton>
       </label>
       <img
         className="how-it-works__img"

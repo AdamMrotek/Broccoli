@@ -1,0 +1,30 @@
+.side-card {
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  width: 70%;
+  max-width: 800px;
+  background-color: bisque;
+  padding: 4.2rem;
+  margin: 6.8rem;
+  align-items: center;
+  border-radius: 30px;
+  box-shadow: var(--shadow-strong);
+}
+.side-card__icon {
+  height: 30rem;
+  margin-top: -10rem;
+  margin-right: -5rem;
+  padding: 2rem;
+}
+.side-card__text-containter {
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (max-width: 900px) {
+  .side-card {
+    flex-direction: column;
+    padding: 2.6rem;
+  }
+}

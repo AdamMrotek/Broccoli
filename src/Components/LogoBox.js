@@ -3,8 +3,9 @@ import React from "react";
 
 export default function LogoBox() {
   let offsetColors = [
-    [0, "#fff33b"],
-    [1, "#e93e3a"],
+    [0, "#233329"],
+    [0.7, "#007944"],
+    [1, "#007944"],
   ];
   return (
     <div className="logo-box">
@@ -34,7 +35,6 @@ export default function LogoBox() {
       <div className="logo-box__text-box">
         <h3>
           <span className="logo-text--primary">Broccoli</span>
-          <span className="logo-text--secondary"> Groceries</span>
         </h3>
       </div>
     </div>
