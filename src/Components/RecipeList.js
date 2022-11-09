@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import DishCard from "./DishCard.js";
 import "./RecipeList.css";
+
 function RecipeList({ recipes, addToGroceries, removeFromGroceries }) {
   const [shortRecipes, setShortRecipes] = useState(null);
   useEffect(() => {
@@ -25,43 +27,11 @@ function RecipeList({ recipes, addToGroceries, removeFromGroceries }) {
       {shortRecipes &&
         recipes.map((recipe) => {
           return (
-            <div className="recipeCard" key={recipe.key}>
-              <div className="card-title">
-                <h3 className="heading-tertiary">{recipe.lable}</h3>
-              </div>
-              <img
-                className="recipeCard__image"
-                src={recipe.image}
-                alt={recipe.label}
-              />
-              <h3 className="heading-tertiary">Ingredients</h3>
-
-              {/* ingredients */}
-              {recipe.ingedients?.map((ingre, i) => {
-                return (
-                  <div className="recipeCard__ingredients" key={recipe.key + i}>
-                    <p className="recipeCard__ingredients-item">{ingre.food}</p>
-                  </div>
-                );
-              })}
-
-              {addToGroceries && (
-                <button
-                  className="recipeCard__button"
-                  onClick={() => addToGroceries(recipe)}
-                >
-                  Add to grocerie list
-                </button>
-              )}
-              {removeFromGroceries && (
-                <button
-                  className="recipeCard__button"
-                  onClick={() => removeFromGroceries(recipe.key)}
-                >
-                  Remove
-                </button>
-              )}
-            </div>
+            <DishCard
+              recipe={recipe}
+              addToGroceries={addToGroceries}
+              removeFromGroceries={removeFromGroceries}
+            ></DishCard>
           );
         })}
     </div>

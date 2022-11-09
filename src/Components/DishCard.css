@@ -1,0 +1,80 @@
+.recipe-card {
+  width: clamp(200px, 40%, 300px);
+  border-radius: 3px;
+  overflow: hidden;
+  /* to work with background in search section */
+  position: relative;
+  z-index: 2;
+}
+.recipe-card .card-title * {
+  text-align: left;
+  font-size: 2.5rem;
+  color: var(--grey-dark-1);
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+.recipe-card__image-containter {
+  border-radius: 2rem;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  width: 100%;
+}
+.recipe-card__image {
+  width: 100%;
+  display: block;
+  overflow: hidden;
+
+  object-fit: cover;
+
+  transition: all 1s ease-in-out;
+}
+.recipe-card__image:hover {
+  transform: scale(1.1);
+}
+
+.recipe-card__button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 2rem;
+  background-color: white;
+  padding: 0 0 0.6rem 0;
+  line-height: 0;
+  border-radius: 50%;
+  font-size: 5rem;
+  border: none;
+  opacity: 0.5;
+  height: 4rem;
+  width: 4rem;
+  cursor: pointer;
+  border: 1px solid var(--grey-light-1);
+}
+.ing-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.recipe-card__ingredients-item {
+  font-size: 1.6rem;
+  border: 1px solid var(--grey-light-1);
+  border-radius: 0.5rem;
+  padding: 3px 6px;
+  color: rgb(134, 134, 134);
+  white-space: nowrap;
+}
+
+.recepie-details h2 {
+  font-size: 20px;
+
+  margin-bottom: 10px;
+}
+.recepie-details div {
+  margin: 20px 0;
+}
+.recepie-details button {
+  background: #f1356d;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}

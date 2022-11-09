@@ -1,6 +1,5 @@
 import HowItWorks from "../Components/HowItWorks.js";
-import OurMission from "../Components/OurMission.js";
-import OutMission from "../Components/OurMission.js";
+import FeaturedRecipes from "../Components/FeaturedRecipes.js";
 import "./Home.css";
 function Home({ handlePopUp }) {
   return (
@@ -38,7 +37,7 @@ function Home({ handlePopUp }) {
         </div>
       </div>
       <HowItWorks handlePopUp={handlePopUp} />
-      <OurMission handlePopUp={handlePopUp} />
+      <FeaturedRecipes handlePopUp={handlePopUp} />
     </div>
   );
 }
