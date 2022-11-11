@@ -1,45 +1,55 @@
 .header {
-  /* background-image: url(/public/hero-image01.jpg); */
   border-radius: 0px 0px 70px 70px;
-  background: #ec8235; /* fallback for old browsers */
-  background: linear-gradient(
-    to left,
-    #f4d941,
-    #ec8235
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #ec8235;
+  background: linear-gradient(to left, #f7e796, #7ba189);
 
   background-size: cover;
   background-position: top center;
-  margin: 0;
   padding-bottom: 5rem;
-  padding-top: 25rem;
-  margin-top: -15rem;
+  padding-top: 22rem;
+  margin-top: -22rem;
   margin-bottom: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: var(--shadow-strong);
   background-color: white;
+  box-sizing: border-box;
+  height: 80vh;
+  width: 100%;
+  position: relative;
+  z-index: 0;
+}
+.header_container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 4.2rem;
+  gap: 6.8rem;
+  /* flex-wrap: wrap; */
+
+  /* z-index: -; */
 }
 .header__text-box {
   display: flex;
   flex-direction: column;
   padding-bottom: 2%;
   align-items: flex-end;
-  text-align: left;
-  width: clamp(500px, 50%, 600px);
+  width: clamp(500px, 45%, 600px);
 }
 .header__text-box > * {
   color: white;
-  text-align: right;
-  margin-right: 0;
-  margin-top: 2rem;
+}
+.heading-primary-title {
 }
 .hero-image-container {
   position: relative;
-  width: clamp(350px, 50%, 600px);
-  height: 30%;
-  margin-left: 10rem;
+  width: clamp(350px, 45%, 600px);
+  transform: translateX(3%);
+
+  /* margin-left: 10rem; */
 }
 .hero__img {
   width: 100%;
@@ -69,6 +79,14 @@
 
   width: 50%;
   z-index: -1;
+  opacity: 0.8;
+}
+.header__paragraph {
+  text-align: end;
+}
+.header__call-to-actions {
+  margin: 2.5rem 0 0 0;
+  /* justify-self: start; */
 }
 @media only screen and (max-width: 900px) {
   .header__fixed-img {
@@ -79,10 +97,17 @@
     flex-direction: column;
     align-items: center;
   }
+  .header_container {
+    flex-wrap: wrap;
+    justify-content: center;
+
+    /* z-index: -; */
+  }
   .header__text-box {
     padding-bottom: 2%;
     align-items: unset;
     width: 80%;
+    justify-content: center;
   }
   .header__text-box > * {
     text-align: center;

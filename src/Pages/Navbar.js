@@ -46,9 +46,9 @@ function Navbar({ handlePopUp, registerPopUp }) {
 
         {!user.user && (
           <>
-            <LoginForm formFunction={signIn} name={"log in"} />
+            {/* <LoginForm formFunction={signIn} name={"log in"} /> */}
             <div className="links">
-              <button
+              {/* <button
                 type="button"
                 className="btn btn--no-margin btn--priamary"
                 onClick={() => {
@@ -56,7 +56,7 @@ function Navbar({ handlePopUp, registerPopUp }) {
                 }}
               >
                 Create Account
-              </button>
+              </button> */}
               <button
                 className="btn btn--no-margin btn--priamary"
                 onClick={testLogin}

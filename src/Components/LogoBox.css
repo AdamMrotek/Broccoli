@@ -6,7 +6,7 @@
   height: 8rem;
   width: 8rem;
 }
-@media only screen and (max-width: 900px) {
+/* @media only screen and (max-width: 900px) {
   .logo-icon {
     height: 6rem;
     width: 6rem;
@@ -20,4 +20,4 @@
   .logo-text--primary {
     font-size: 2rem;
   }
-}
+} */
