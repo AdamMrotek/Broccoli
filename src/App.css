@@ -40,18 +40,7 @@ html {
   position: relative;
 }
 /* FONTS */
-h1,
-h2,
-p,
-a {
-  font-family: "Dosis", sans-serif;
-}
-p,
-li,
-label {
-  font-size: 1.6rem;
-  margin: 5px;
-}
+
 input {
   accent-color: var(--secondary-dark);
   margin: 5px;
@@ -115,6 +104,11 @@ input:focus:invalid {
 }
 .btn:active {
   transform: translateY(1px);
+}
+.btn.btn-outline {
+  background: none;
+  color: var(--grey-dark-1);
+  border: 1px solid var(--grey-dark-1);
 }
 .margin-medium {
   margin: 5rem;

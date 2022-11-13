@@ -1,0 +1,9 @@
+.featured {
+  background-color: rgb(191, 221, 227);
+  max-width: 1400px;
+  padding: 6.8rem;
+}
+.featured > .recipe-list {
+  display: flex;
+  flex-wrap: nowrap;
+}

@@ -1,6 +1,6 @@
 import "./HowItWorks.css";
 import React from "react";
-import PrimaryButton from "./Buttons/Buttons.js";
+// import PrimaryButton from "./Buttons/Buttons.js";
 import SideCard from "./SideCard.js";
 let howItWorksContent = [
   {
@@ -28,7 +28,7 @@ export default function HowItWorks({ handlePopUp }) {
       <h2 className="heading-secondary">How it works ?</h2>
       <div className="side-cards">
         {howItWorksContent.map((p, i) => {
-          return <SideCard cardKey={i} cardContent={p} />;
+          return <SideCard key={i} cardKey={i} cardContent={p} />;
         })}
       </div>
       <label htmlFor="email">

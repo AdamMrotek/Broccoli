@@ -6,21 +6,17 @@ import LogoBox from "../Components/LogoBox.js";
 
 import useAuthContext from "../Hooks/useAuthContext.js";
 import Popup from "../Components/Popup.js";
-import { useSignIn } from "../Hooks/useSignIn.js";
+
 import { useLogout } from "../Hooks/useLogout.js";
 
 function Navbar({ handlePopUp, registerPopUp }) {
   const user = useAuthContext();
-  const { signIn, error, isPending } = useSignIn();
+
   const {
     logout,
     error: logoutError,
     isPending: logoutIsPending,
   } = useLogout();
-
-  const testLogin = async () => {
-    signIn("example@email.com", "123456");
-  };
 
   return (
     <nav className="navbar">
@@ -57,12 +53,6 @@ function Navbar({ handlePopUp, registerPopUp }) {
               >
                 Create Account
               </button> */}
-              <button
-                className="btn btn--no-margin btn--priamary"
-                onClick={testLogin}
-              >
-                Test Account
-              </button>
             </div>
           </>
         )}

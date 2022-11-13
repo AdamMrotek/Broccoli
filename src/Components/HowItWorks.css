@@ -28,19 +28,19 @@
   margin-left: auto;
 }
 .side-card:nth-child(1n) {
-  background-color: #b6c65187;
+  /* background-color: #b6c65187;s */
 }
 .side-card:nth-child(odd) {
   margin-right: auto;
 }
 .side-cards {
   max-width: 1200px;
-  margin: 11rem auto;
+  margin: 6.8rem auto;
 }
 .side-cards .heading-tertiary,
 .side-cards .paragraph {
   color: var(--grey-dark-1);
-  text-align: left;
+  text-align: right;
 }
 .side-card:nth-child(1n):not(:last-child):after {
   content: "";

@@ -22,8 +22,8 @@ export default function LogoBox() {
           y2="424"
           gradientUnits="userSpaceOnUse"
         >
-          {offsetColors.map((p) => (
-            <stop offset={p[0]} stopColor={p[1]} />
+          {offsetColors.map((p, i) => (
+            <stop key={i + Date.now()} offset={p[0]} stopColor={p[1]} />
           ))}
         </linearGradient>
 

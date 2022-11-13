@@ -19,7 +19,6 @@ export default function DishCard({
         <h3 className="heading-tertiary">{recipe.lable}</h3>
       </div>
       <div className="ing-list">
-        {/* ingredients */ console.log(recipe.ingedients?.slice(0, 3))}
         {recipe.ingedients?.slice(0, 3).map((ingre, i) => {
           return (
             <div className="recipe-card__ingredients" key={recipe.key + i}>

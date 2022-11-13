@@ -24,14 +24,17 @@ function RecipeList({ recipes, addToGroceries, removeFromGroceries }) {
   }, [recipes]);
   return (
     <div className="recipe-list">
+      {console.log(recipes)}
       {shortRecipes &&
-        recipes.map((recipe) => {
+        recipes.map((recipe, i) => {
           return (
-            <DishCard
-              recipe={recipe}
-              addToGroceries={addToGroceries}
-              removeFromGroceries={removeFromGroceries}
-            ></DishCard>
+            <div key={"dish" + i + Date.now()}>
+              <DishCard
+                recipe={recipe}
+                addToGroceries={addToGroceries}
+                removeFromGroceries={removeFromGroceries}
+              ></DishCard>
+            </div>
           );
         })}
     </div>

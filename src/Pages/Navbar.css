@@ -1,5 +1,6 @@
 .navbar {
-  margin: 6.8rem;
+  margin: 0 6.8rem;
+  max-width: 2000px;
 }
 .navbar h1 {
   color: var(--secondary-dark);
@@ -7,9 +8,9 @@
 }
 .navbar-container {
   display: flex;
-  align-items: flex-end;
   justify-content: space-between;
-  max-width: 1200px;
+  align-items: center;
+  max-width: 1400px;
   margin: 4.2rem auto;
   position: relative;
   z-index: 2;
@@ -23,7 +24,7 @@
 }
 .navbar__logout {
   display: flex;
-  align-items: flex-end;
+  /* align-items: flex-end; */
   margin-left: auto;
 }
 
