@@ -44,14 +44,12 @@ function RecipeList({ recipes, addToGroceries, removeFromGroceries }) {
       {shortRecipes &&
         recipes.map((recipe, i) => {
           return (
-            <motion.div>
-              <DishCard
-                key={"dish" + i + Date.now()}
-                recipe={recipe}
-                addToGroceries={addToGroceries}
-                removeFromGroceries={removeFromGroceries}
-              ></DishCard>
-            </motion.div>
+            <DishCard
+              key={"dish" + i + Date.now()}
+              recipe={recipe}
+              addToGroceries={addToGroceries}
+              removeFromGroceries={removeFromGroceries}
+            ></DishCard>
           );
         })}
     </motion.div>

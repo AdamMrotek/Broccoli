@@ -1,5 +1,6 @@
 import HowItWorks from "../Components/HowItWorks.js";
 import FeaturedRecipes from "../Components/FeaturedRecipes.js";
+import MotionComponent from "../Components/MotionComponent.js";
 import { useSignIn } from "../Hooks/useSignIn.js";
 import "./Home.css";
 function Home({ handlePopUp }) {
@@ -55,6 +56,7 @@ function Home({ handlePopUp }) {
       </div>
       <HowItWorks handlePopUp={handlePopUp} />
       <FeaturedRecipes handlePopUp={handlePopUp} />
+      <MotionComponent></MotionComponent>
     </div>
   );
 }
