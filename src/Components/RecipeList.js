@@ -1,6 +1,18 @@
 import { useEffect, useState } from "react";
 import DishCard from "./DishCard.js";
 import "./RecipeList.css";
+import { motion } from "framer-motion";
+const container = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
+};
 
 function RecipeList({ recipes, addToGroceries, removeFromGroceries }) {
   const [shortRecipes, setShortRecipes] = useState(null);
@@ -23,21 +35,26 @@ function RecipeList({ recipes, addToGroceries, removeFromGroceries }) {
     setShortRecipes(shortRep);
   }, [recipes]);
   return (
-    <div className="recipe-list">
-      {console.log(recipes)}
+    <motion.div
+      className="recipe-list"
+      variants={container}
+      initial="hidden"
+      animate="visible"
+    >
       {shortRecipes &&
         recipes.map((recipe, i) => {
           return (
-            <div key={"dish" + i + Date.now()}>
+            <motion.div>
               <DishCard
+                key={"dish" + i + Date.now()}
                 recipe={recipe}
                 addToGroceries={addToGroceries}
                 removeFromGroceries={removeFromGroceries}
               ></DishCard>
-            </div>
+            </motion.div>
           );
         })}
-    </div>
+    </motion.div>
   );
 }
 
