@@ -13,8 +13,19 @@ const container = {
     },
   },
 };
+const item = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+};
 
-function RecipeList({ recipes, addToGroceries, removeFromGroceries }) {
+export default function RecipeList({
+  recipes,
+  addToGroceries,
+  removeFromGroceries,
+}) {
   const [shortRecipes, setShortRecipes] = useState(null);
   useEffect(() => {
     const shortRep = recipes.map((recipe) => {
@@ -35,25 +46,24 @@ function RecipeList({ recipes, addToGroceries, removeFromGroceries }) {
     setShortRecipes(shortRep);
   }, [recipes]);
   return (
-    <motion.div
-      className="recipe-list"
+    <motion.ul
       variants={container}
       initial="hidden"
       animate="visible"
+      className="recipe-list"
     >
-      {shortRecipes &&
-        recipes.map((recipe, i) => {
-          return (
+      {recipes.map((recipe, i) => {
+        return (
+          <motion.li variants={item} className="recipe-list__item">
             <DishCard
               key={"dish" + i + Date.now()}
               recipe={recipe}
               addToGroceries={addToGroceries}
               removeFromGroceries={removeFromGroceries}
             ></DishCard>
-          );
-        })}
-    </motion.div>
+          </motion.li>
+        );
+      })}
+    </motion.ul>
   );
 }
-
-export default RecipeList;

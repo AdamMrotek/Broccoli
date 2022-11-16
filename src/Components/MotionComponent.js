@@ -1,7 +1,7 @@
-import * as React from "react";
 import { motion } from "framer-motion";
 import "./MotionComponent.css";
-
+import { useEffect, useState } from "react";
+import DishCard from "./DishCard.js";
 const container = {
   hidden: { opacity: 1, scale: 0 },
   visible: {
@@ -22,17 +22,43 @@ const item = {
   },
 };
 
-export default function MotionComponent() {
+export default function MotionComponent({
+  recipes,
+  addToGroceries,
+  removeFromGroceries,
+}) {
+  const [shortRecipes, setShortRecipes] = useState(null);
+  useEffect(() => {
+    const shortRep = recipes.map((recipe) => {
+      let newInge = [];
+      recipe.ingedients.forEach((ing, i) => {
+        if (i > 1) {
+          return;
+        }
+        let newIng = { food: "newfood oh no!" };
+        newInge.push(newIng);
+      });
+      let newRecipe = { ...recipe };
+      return {
+        ...newRecipe,
+        ingedients: newInge,
+      };
+    });
+    setShortRecipes(shortRep);
+  }, [recipes]);
   return (
-    <motion.ul
-      className="container"
-      variants={container}
-      initial="hidden"
-      animate="visible"
-    >
-      {[0, 1, 2, 3].map((index) => (
-        <motion.li key={index} className="item" variants={item} />
-      ))}
+    <motion.ul variants={container} initial="hidden" animate="visible">
+      {shortRecipes &&
+        recipes.map((recipe, i) => (
+          <motion.li key={i} variants={item}>
+            <DishCard
+              key={"dish" + i + Date.now()}
+              recipe={recipe}
+              addToGroceries={addToGroceries}
+              removeFromGroceries={removeFromGroceries}
+            ></DishCard>
+          </motion.li>
+        ))}
     </motion.ul>
   );
 }

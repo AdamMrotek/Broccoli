@@ -8,3 +8,7 @@
   max-width: 100rem;
   justify-content: center;
 }
+.recipe-list__item {
+  list-style: none;
+  width: clamp(200px, 30%, 300px);
+}

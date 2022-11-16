@@ -1,15 +1,13 @@
 import "./DishCard.css";
-import { motion } from "framer-motion";
 
 export default function DishCard({
   recipe,
   addToGroceries,
   removeFromGroceries,
 }) {
-  const splitArray = (ingedients) => {};
   return (
     <div className="recipe-card" key={recipe.key}>
-      <div className="recipe-card__image-containter item">
+      <div className="recipe-card__image-containter">
         <img
           className="recipe-card__image"
           src={recipe.image}

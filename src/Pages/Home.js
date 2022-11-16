@@ -56,7 +56,6 @@ function Home({ handlePopUp }) {
       </div>
       <HowItWorks handlePopUp={handlePopUp} />
       <FeaturedRecipes handlePopUp={handlePopUp} />
-      <MotionComponent></MotionComponent>
     </div>
   );
 }

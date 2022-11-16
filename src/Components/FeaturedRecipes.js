@@ -3,6 +3,7 @@ import React from "react";
 import PrimaryButton from "./Buttons/Buttons.js";
 import recipes from "./featuredRecipesSource.js";
 import RecipeList from "./RecipeList.js";
+import MotionComponent from "./MotionComponent.js";
 
 export default function OurMission({ handlePopUp }) {
   return (
