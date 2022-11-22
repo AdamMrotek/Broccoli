@@ -8,9 +8,11 @@ import useAuthContext from "../Hooks/useAuthContext.js";
 import Popup from "../Components/Popup.js";
 
 import { useLogout } from "../Hooks/useLogout.js";
+import { useSignIn } from "../Hooks/useSignIn.js";
 
 function Navbar({ handlePopUp, registerPopUp }) {
   const user = useAuthContext();
+  const { signIn } = useSignIn();
 
   const {
     logout,
@@ -24,8 +26,14 @@ function Navbar({ handlePopUp, registerPopUp }) {
         <LogoBox />
         {user.user && (
           <>
+            <div className="links">
+              <Link to="/main/search">Explore Recepies</Link>
+              <Link to="/main/dashboard">Groceries Lists</Link>
+            </div>
             <div className="navbar__logout">
-              <p>{user.user?.displayName}</p>
+              <p className="paragraph navbar__user-name">
+                Welcome, {user.user?.displayName}
+              </p>
               <button
                 className="btn btn--no-margin btn--priamary"
                 onClick={logout}
@@ -33,20 +41,16 @@ function Navbar({ handlePopUp, registerPopUp }) {
                 sign Out
               </button>
             </div>
-            <div className="links">
-              <Link to="/main/search">Explore Recepies</Link>
-              <Link to="/main/dashboard">Groceries Lists</Link>
-            </div>
           </>
         )}
 
         {!user.user && (
           <>
-            {/* <LoginForm formFunction={signIn} name={"log in"} /> */}
+            <LoginForm formFunction={signIn} name={"log in"} />
             <div className="links">
               {/* <button
                 type="button"
-                className="btn btn--no-margin btn--priamary"
+                className="btn"
                 onClick={() => {
                   handlePopUp();
                 }}

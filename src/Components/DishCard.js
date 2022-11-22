@@ -11,7 +11,7 @@ export default function DishCard({
         <img
           className="recipe-card__image"
           src={recipe.image}
-          alt={recipe.label}
+          alt={recipe.lable}
         />
       </div>
 
@@ -19,7 +19,7 @@ export default function DishCard({
         <h3 className="heading-tertiary">{recipe.lable}</h3>
       </div>
       <div className="ing-list">
-        {recipe.ingedients?.slice(0, 3).map((ingre, i) => {
+        {recipe.ingedients?.slice(0, 4).map((ingre, i) => {
           return (
             <div className="recipe-card__ingredients" key={recipe.key + i}>
               <p className="recipe-card__ingredients-item">{ingre.food}</p>

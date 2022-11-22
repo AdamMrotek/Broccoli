@@ -41,7 +41,7 @@ function Search(props) {
     let querry = recipeName;
     let cusineQuerry = cusine === "any" ? "" : "&cuisineType=" + cusine;
     let mealTypeQuerry = mealType === "any" ? "" : "&mealType=" + mealType;
-    let heathQuerry =
+    let healthQuerry =
       healthChoices.length > 0
         ? healthChoices
             .map((choice) => {
@@ -49,15 +49,16 @@ function Search(props) {
             })
             .join("")
         : "";
-    console.log(heathQuerry);
-    return `https://api.edamam.com/api/recipes/v2?type=public&q=${querry}&app_id=${process.env.REACT_APP_Application_ID}&app_key=${process.env.REACT_APP_Application_Keys}${cusineQuerry}${mealTypeQuerry}${heathQuerry}`;
+    console.log(healthQuerry);
+    return `https://api.edamam.com/api/recipes/v2?type=public&q=${querry}&app_id=${process.env.REACT_APP_Application_ID}&app_key=${process.env.REACT_APP_Application_Keys}${cusineQuerry}${mealTypeQuerry}${healthQuerry}`;
   };
 
   const handleSearchResultsEdamam = (data, setSearchResults) => {
+    console.log(data);
     let newData = data.hits.map((recipe) => {
       return {
         lable: recipe.recipe.label,
-        image: recipe.recipe.images.SMALL.url,
+        image: recipe.recipe.images.REGULAR.url,
         ingedients: recipe.recipe.ingredients,
         key: recipe.recipe.uri.split("recipe_")[1],
       };

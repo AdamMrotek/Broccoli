@@ -12,7 +12,7 @@ export default function LogoBox() {
       <svg
         className="logo-icon"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 424 456"
+        viewBox="40 30 350 400"
       >
         <linearGradient
           id="a"

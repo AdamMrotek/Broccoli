@@ -5,6 +5,7 @@
   /* to work with background in search section */
   position: relative;
   z-index: 2;
+  transition: 0.3s all;
 }
 .recipe-card .card-title * {
   text-align: left;
@@ -13,6 +14,7 @@
   border-radius: 1rem;
   margin: 1.5rem 0;
   line-height: 2.5rem;
+  min-height: 5rem;
 }
 .recipe-card__image-containter {
   border-radius: 2rem;
@@ -56,11 +58,11 @@
   gap: 0.5rem;
 }
 .recipe-card__ingredients-item {
-  font-size: 1.6rem;
+  font-size: 2rem;
   border: 1px solid var(--grey-light-1);
   border-radius: 0.5rem;
   padding: 3px 6px;
-  color: rgb(134, 134, 134);
+  color: var(--grey-dark-1)
   white-space: nowrap;
 }
 

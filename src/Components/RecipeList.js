@@ -52,6 +52,7 @@ export default function RecipeList({
       animate="visible"
       className="recipe-list"
     >
+      {console.log(recipes)}
       {recipes.map((recipe, i) => {
         return (
           <motion.li variants={item} className="recipe-list__item">

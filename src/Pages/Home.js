@@ -12,7 +12,7 @@ function Home({ handlePopUp }) {
     <div>
       <img
         className="header__fixed-img"
-        src="/broccoli-cut.png"
+        src="/broccoli-cut.jpg"
         alt="halved broccoli"
       ></img>
       <div className="header">

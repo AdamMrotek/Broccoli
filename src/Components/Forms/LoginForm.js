@@ -20,7 +20,9 @@ function LoginForm({ formFunction, name }) {
           {error.slice(0, error.length > 50 ? 50 : error.length)}
         </div>
       )}
-      <label htmlFor="email">Email:</label>
+      <label className="login__label" htmlFor="email">
+        e-mail:
+      </label>
       <input
         className="login-form__input"
         type="email"
@@ -30,7 +32,9 @@ function LoginForm({ formFunction, name }) {
         id="email"
         required
       />
-      <label htmlFor="email">Password:</label>
+      <label className="login__label" htmlFor="password">
+        password:
+      </label>
       <input
         className="login-form__input"
         type="password"

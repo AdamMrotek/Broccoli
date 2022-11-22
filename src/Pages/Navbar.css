@@ -1,6 +1,12 @@
 .navbar {
-  margin: 0 6.8rem;
+  position: relative;
+  margin: 0;
+  padding: 0 6.8rem;
   max-width: 2000px;
+  display: inline-block;
+  width: calc(100%);
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.533);
 }
 .navbar h1 {
   color: var(--secondary-dark);
@@ -11,7 +17,7 @@
   justify-content: space-between;
   align-items: center;
   max-width: 1400px;
-  margin: 4.2rem auto;
+  margin: 1em auto;
   position: relative;
   z-index: 2;
 }
@@ -24,7 +30,8 @@
 }
 .navbar__logout {
   display: flex;
-  /* align-items: flex-end; */
+  align-items: center;
+  gap: 1.6rem;
   margin-left: auto;
 }
 
@@ -35,9 +42,9 @@
   margin-left: 16px;
   text-decoration: none;
   padding: 5px 15px;
-  margin: 5px;
+  /* margin: 5px; */
   font-size: 1.6rem;
-  border: var(--secondary-dark) 1px solid;
+  border: transparent 1px solid;
   transition: all 0.2s ease-in-out;
 }
 .navbar a:hover {
@@ -45,7 +52,9 @@
   background-color: var(--secondary-dark);
   border: var(--secondary-dark) 1px solid;
 }
-
+.navbar__user-name {
+  font-size: 2rem;
+}
 @media only screen and (max-width: 900px) {
   .links {
     position: fixed;

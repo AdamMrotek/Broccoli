@@ -6,6 +6,9 @@
   height: 8rem;
   width: 8rem;
 }
+.logo-text--primary {
+  font-family: "Amatic SC", cursive;
+}
 /* @media only screen and (max-width: 900px) {
   .logo-icon {
     height: 6rem;

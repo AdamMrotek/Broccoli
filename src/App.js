@@ -26,25 +26,25 @@ function App() {
 
   return (
     <Router>
-      {/* {context.authIsReady && ( */}
-      <div className="App">
-        <Navbar handlePopUp={handlePopUp} registerPopUp={registerPopUp} />
-        <div className="content">
-          <Routes>
-            <Route
-              path="/main/*"
-              element={<Main user={context.user} handlePopUp={handlePopUp} />}
-            />
-            <Route
-              path="/"
-              element={context.user ? <Navigate to="/main" /> : <Home />}
-            />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+      {context.authIsReady && (
+        <div className="App">
+          <Navbar handlePopUp={handlePopUp} registerPopUp={registerPopUp} />
+          <div className="content">
+            <Routes>
+              <Route
+                path="/main/*"
+                element={<Main user={context.user} handlePopUp={handlePopUp} />}
+              />
+              <Route
+                path="/"
+                element={context.user ? <Navigate to="/main" /> : <Home />}
+              />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-      {/* )} */}
+      )}
     </Router>
   );
 }

@@ -1,7 +1,40 @@
-@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700&display=swap");
-
+/* @import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&&display=swap"); */
+/* 
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700&display=swap"); */
+@font-face {
+  font-family: "Dosis";
+  font-style: bold;
+  font-weight: 600;
+  src: local("Dosis"), url(./fonts/Dosis-Bold.ttf) format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Dosis";
+  font-style: regular;
+  font-weight: 400;
+  src: local("Dosis"), url(./fonts/Dosis-Regular.ttf) format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Amatic SC";
+  font-style: regular;
+  font-weight: 400;
+  src: local("Amatic SC"), url(./fonts/AmaticSC-Regular.ttf) format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Amatic SC";
+  font-style: bold;
+  font-weight: 700;
+  src: local("Amatic SC"), url(./fonts/AmaticSC-Bold.ttf) format("truetype");
+  font-display: swap;
+}
+/* @font-face {
+  font-family: "Amatic SC";
+  font-style: bold;
+  font-weight: 700;
+  src: url(../public/Fonts/AmaticSC-Bold.ttf) format("ttf");
+} */
 /* base styles */
 :root {
   --primary-dark: #007944;
@@ -20,7 +53,7 @@
 }
 * {
   margin: 0;
-  font-family: "Amatic SC", cursive;
+  font-family: "Dosis", sans-serif;
   letter-spacing: normal;
   color: var(--grey-dark-1);
   text-align: center;
@@ -43,7 +76,7 @@ html {
 
 input {
   accent-color: var(--secondary-dark);
-  margin: 5px;
+  font-size: 2rem;
   height: 3.5rem;
   border-radius: 10px;
   border: var(--grey-light-1) 1px solid;

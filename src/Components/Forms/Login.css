@@ -9,6 +9,15 @@
   background-color: var(--white);
   outline: var(--secondary-dark) 1px solid;
 }
+.login__input {
+  margin-right: 1.6rem;
+  font-family: "Dosis", sans-serif;
+}
+.login__label {
+  font-family: "Dosis", sans-serif;
+  font-size: 2rem;
+  margin-right: 1rem;
+}
 .error-message--small {
   position: absolute;
   bottom: -3rem;
@@ -16,6 +25,13 @@
   left: 50%;
   transform: translateX(-50%);
   white-space: nowrap;
+}
+.login-buton {
+  margin: 0;
+}
+.login-form__input {
+  margin-right: 2rem;
+  width: 11rem;
 }
 @media only screen and (max-width: 900px) {
   .login-form {

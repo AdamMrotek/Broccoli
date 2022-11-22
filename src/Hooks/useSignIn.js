@@ -40,9 +40,9 @@ export const useSignIn = () => {
     }
   };
 
-  useEffect(() => {
-    return () => setIsCancelled(true);
-  }, []);
+  // useEffect(() => {
+  //   return () => setIsCancelled(true);
+  // }, []);
 
   return { signIn, error, isPending };
 };

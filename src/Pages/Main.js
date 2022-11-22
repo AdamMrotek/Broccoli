@@ -35,7 +35,7 @@ function Main({ user, handlePopUp }) {
   // }, [user, documents]);
   // FUNCTIONS CONTROLING recipeList
   useEffect(() => {
-    console.log("Main.js useEffect");
+    // console.log("Main.js useEffect");
     const getRecipesCleanUp = async () => {
       if (!user) return;
       const colRef = collection(db, "usersLists");

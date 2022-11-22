@@ -7,7 +7,7 @@ a {
 p,
 li,
 label {
-  font-size: 1.8rem;
+  font-size: 2.5rem;
 }
 .heading-primar {
   font-size: 15rem;
@@ -64,6 +64,7 @@ label {
   margin-bottom: 2.5rem;
 }
 .paragraph {
-  font-weight: 600;
+  opacity: 0.8;
+  font-weight: 500;
   letter-spacing: 0.5px;
 }

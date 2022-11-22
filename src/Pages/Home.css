@@ -8,7 +8,7 @@
   margin-bottom: 2.5rem;
   display: flex;
   align-items: end;
-  justify-content: center;
+
   box-shadow: var(--shadow-strong);
   background-color: white;
   box-sizing: border-box;
@@ -54,11 +54,14 @@
   /* position: relative; */
   display: flex;
   flex-direction: column;
-  padding-bottom: 3rem;
-  align-items: flex-end;
+  padding-bottom: 6.8rem;
+
   width: clamp(255px, 28%, 350px);
   /* z-index: 3; */
   /* padding-left: 6.8rem; */
+}
+.header__text-box > h1 {
+  text-align: start;
 }
 
 /* .header__text-box > p,
@@ -96,7 +99,7 @@ h1 {
   opacity: 0.8;
 }
 .header__paragraph {
-  text-align: end;
+  text-align: start;
 }
 .header__call-to-actions {
   margin: 2.5rem 0 0 0;
@@ -142,7 +145,7 @@ h1 {
     top: 0;
     z-index: 5;
     z-index: -3;
-    opacity: 0.4;
+    opacity: 0.6;
     border-radius: 3rem;
     padding-bottom: 1rem;
   }

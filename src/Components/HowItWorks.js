@@ -31,14 +31,14 @@ export default function HowItWorks({ handlePopUp }) {
           return <SideCard key={i} cardKey={i} cardContent={p} />;
         })}
       </div>
-      <label htmlFor="email">
-        <button onClick={() => handlePopUp()} className="btn margin-medium">
-          Register
-        </button>
-      </label>
+
+      <button onClick={() => handlePopUp()} className="btn margin-medium">
+        Register
+      </button>
+
       <img
         className="how-it-works__img"
-        src="/broccoli-cut.png"
+        src="/broccoli-cut.jpg"
         alt="halved broccoli"
       ></img>
     </div>
