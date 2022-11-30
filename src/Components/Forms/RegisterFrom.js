@@ -14,9 +14,9 @@ function RegisterForm({ handlePopUp }) {
   const { register, error, isPending } = useSignUp();
 
   return (
-    <div>
+    <div className="log-in__container">
       <form
-        className="register-form animated"
+        className="login-form animated"
         onSubmit={async (e) => {
           e.preventDefault();
           try {
@@ -26,60 +26,93 @@ function RegisterForm({ handlePopUp }) {
           }
         }}
       >
-        <div className="closing-icon" onClick={() => handlePopUp()}>
+        {/* <div className="closing-icon" onClick={() => handlePopUp()}>
           x
-        </div>
-        <h2 className="heading-secondary ">Create your account</h2>
+        </div> */}
+        <h2 className="heading-tertiary ">Create your account</h2>
+        <p className="paragraph">Join the bandwagon!</p>
         {error && <div className="error-message">{error}</div>}
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          name="email"
-          id="email"
-          required
-        />
-        <label htmlFor="confirmPassword">Display Name:</label>
-        <input
-          type="text"
-          value={displayName}
-          onChange={(e) => setDisplayName(e.target.value)}
-          name="displayName"
-          id="displayName"
-          required
-          minLength={6}
-        />
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          name="password"
-          id="password"
-          required
-          minLength={6}
-        />
-        <label htmlFor="confirmPassword">Confirm Password:</label>
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          name="confirmPassword"
-          id="confirmPassword"
-          required
-          minLength={6}
-        />
+        <div className="form-field">
+          <label className="login__label" htmlFor="email">
+            Email:
+          </label>
+          <input
+            className="login-form__input"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            name="email"
+            id="email"
+            required
+          />
+        </div>
+
+        <div className="form-field">
+          <label className="login__label" htmlFor="confirmPassword">
+            Display Name:
+          </label>
+          <input
+            className="login-form__input"
+            type="text"
+            value={displayName}
+            onChange={(e) => setDisplayName(e.target.value)}
+            name="displayName"
+            id="displayName"
+            required
+            minLength={3}
+          />
+        </div>
+        <div className="form-field">
+          <label className="login__label" htmlFor="password">
+            Password:
+          </label>
+
+          <input
+            className="login-form__input"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            name="password"
+            id="password"
+            required
+            minLength={6}
+          />
+        </div>
+        <div className="form-field">
+          <label className="login__label" htmlFor="confirmPassword">
+            Confirm Password:
+          </label>
+
+          <input
+            className="login-form__input"
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            name="confirmPassword"
+            id="confirmPassword"
+            required
+            minLength={6}
+          />
+        </div>
 
         {!isPending && (
-          <button className="btn margin-medium">Register new account!</button>
+          <button className="btn login-buton">
+            {" "}
+            <span> Register new account!</span>
+          </button>
         )}
         {isPending && (
-          <button className="btn margin-medium" disabled>
-            Register new account!
+          <button className="btn login-buton" disabled>
+            <span> Register new account!</span>
           </button>
         )}
       </form>
+      <p className="paragraph-secondary mtop-s">
+        Already with us?{" "}
+        <span className="register-link" onClick={() => handlePopUp("login")}>
+          Get in here!
+        </span>
+      </p>
     </div>
   );
 }

@@ -62,7 +62,7 @@
   border: 1px solid var(--grey-light-1);
   border-radius: 0.5rem;
   padding: 3px 6px;
-  color: var(--grey-dark-1)
+  color: var(--grey-dark-1);
   white-space: nowrap;
 }
 

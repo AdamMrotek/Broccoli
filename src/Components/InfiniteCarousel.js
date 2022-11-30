@@ -44,7 +44,6 @@ export default function InfiniteCarousel({ children }) {
       if (current <= 2) {
         setTranslateX(containterRef.current.clientWidth - halfFlexGap);
         setCurrent(children.length + 1);
-        console.log("works here");
         setCurrentUi(children.length + 1, 1);
       } else {
         setTranslateX(
@@ -77,7 +76,6 @@ export default function InfiniteCarousel({ children }) {
           {child}
         </li>
       ));
-      // console.log(items);
       return [
         <li key={children.length + 2} className="slides">
           {children[children.length - 2]}
@@ -86,7 +84,7 @@ export default function InfiniteCarousel({ children }) {
           {children[children.length - 1]}
         </li>,
         ...items,
-        <li key={children.length} className="slides">
+        <li key={children.length + 4} className="slides">
           {children[0]}
         </li>,
         <li key={children.length + 3} className="slides">
@@ -94,7 +92,6 @@ export default function InfiniteCarousel({ children }) {
         </li>,
       ];
     }
-    // console.log(children.length > 1);
   }, [children]);
 
   useLayoutEffect(() => {
@@ -168,6 +165,7 @@ export default function InfiniteCarousel({ children }) {
           <ul className="carousel__navbar" ref={navbarRef}>
             {slides.slice(4).map((slide, i) => (
               <li
+                key={i}
                 onClick={() => navigateHandler(i + 2)}
                 className={`carousel__navbar__dot`}
               ></li>

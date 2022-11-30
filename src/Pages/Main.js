@@ -27,27 +27,14 @@ function Main({ user, handlePopUp }) {
     `${user?.uid}`,
   ]);
 
-  // useEffect(() => {
-  //   if (!user) return;
-  //   if (!documents) return;
-  //   console.log("settingUp a state");
-  //   setRecipeList(documents[0]?.recipes);
-  // }, [user, documents]);
   // FUNCTIONS CONTROLING recipeList
   useEffect(() => {
-    // console.log("Main.js useEffect");
+    handlePopUp();
     const getRecipesCleanUp = async () => {
       if (!user) return;
       const colRef = collection(db, "usersLists");
       const q = query(colRef, where("userId", "==", user.uid));
 
-      // const mySnapshot = await getDocs(q);
-
-      // // Set up a collection document for users that doesnt have it yet
-      // if (mySnapshot.docs?.length < 1) {
-      //   await addDoc(colRef, { userId: user.uid, recipes: [] });
-      // }
-      // Set up stream data and saves the clean up function to stop data streaming from firebase
       const snapFunction = onSnapshot(q, (data) => {
         const cleanData = data.docs[0]?.data();
         setRecipeList(cleanData.recipes);
@@ -58,7 +45,6 @@ function Main({ user, handlePopUp }) {
     getRecipesCleanUp();
     //returns cleanup funtion when react unmounts the object
     return () => {
-      console.log("cleanup function in Main.js");
       setRecipeList(null);
       getRecipesCleanUp();
     };
@@ -66,7 +52,6 @@ function Main({ user, handlePopUp }) {
 
   const addToGroceries = async (recepie) => {
     let userDoc = doc(db, "usersLists", userListId);
-    console.log(userDoc);
     let recipeExists =
       recipeList &&
       recipeList.length > 0 &&

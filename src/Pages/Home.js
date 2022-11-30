@@ -6,7 +6,7 @@ import "./Home.css";
 function Home({ handlePopUp }) {
   const { signIn, error, isPending } = useSignIn();
   const testLogin = async () => {
-    signIn("example@email.com", "123456");
+    signIn("test@test.com", "123456");
   };
   return (
     <div>
@@ -20,24 +20,26 @@ function Home({ handlePopUp }) {
         <div className="header_container">
           <div className="header__text-box">
             <h1 className="heading-primary-title">Wellcome to Broccoli</h1>
-            <p className="paragraph header__paragraph">
-              Broccoli it the place for home chefs whose passion is
-              sustainability. We take the food supply out of your mind, so you
-              can focus on the things you enjoy!
-            </p>
-            <div className="header__buttons-container">
-              <button
-                onClick={() => handlePopUp()}
-                className="btn margin-medium header__call-to-actions"
-              >
-                Join!
-              </button>
-              <button
-                className="btn btn-outline header__call-to-actions"
-                onClick={testLogin}
-              >
-                Test Account
-              </button>
+            <div className="header__paragraph">
+              <p className="paragraph ">
+                Broccoli it the place for home chefs whose passion is
+                sustainability. We take the food supply out of your mind, so you
+                can focus on the things you enjoy!
+              </p>
+              <div className="header__buttons-container">
+                <button
+                  onClick={() => handlePopUp("register")}
+                  className="btn margin-medium header__call-to-actions"
+                >
+                  Join!
+                </button>
+                <button
+                  className="btn btn-outline header__call-to-actions"
+                  onClick={testLogin}
+                >
+                  Test Account
+                </button>
+              </div>
             </div>
           </div>
           {/* <div className="hero-image-container">

@@ -26,15 +26,15 @@ label {
 }
 .heading-secondary {
   font-size: 6.8rem;
-  font-family: "Amatic SC", cursive;
+  /* font-family: "Amatic SC", cursive; */
   font-weight: 700;
 }
 .heading-tertiary {
-  color: var(--white);
+  /* color: var(--white); */
   font-size: 4.2rem;
   font-family: "Dosis", sans-serif;
   line-height: 4.2rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.6rem;
 }
 .logo-text--primary {
   font-weight: 700;
@@ -58,13 +58,22 @@ label {
 } */
 .heading-primary-title {
   text-align: end;
-  font-family: "Amatic SC", cursive;
-  font-size: 6.8rem;
-  line-height: 6.8rem;
+  /* font-family: "Amatic SC", cursive; */
+  font-size: 11rem;
+  line-height: 11rem;
   margin-bottom: 2.5rem;
 }
 .paragraph {
-  opacity: 0.8;
   font-weight: 500;
   letter-spacing: 0.5px;
+}
+.paragraph-secondary {
+  opacity: 0.8;
+  font-size: 2rem;
+}
+@media only screen and (max-width: 1300px) {
+  .heading-primary-title {
+    font-size: 6.8rem;
+    line-height: 6.8rem;
+  }
 }

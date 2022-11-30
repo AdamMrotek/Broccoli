@@ -39,9 +39,7 @@ export const useLogout = () => {
     }
   };
   useEffect(() => {
-    return () => {
-      console.log("setting is canceled to", isCancelled);
-    };
+    return () => {};
   }, [isCancelled]);
   // useEffect(() => {
   //   return () => {

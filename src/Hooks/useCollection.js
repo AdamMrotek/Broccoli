@@ -34,7 +34,6 @@ export const useCollection = (collectionName, _query, _orderBy) => {
     if (queryValue) {
       ref = query(ref, where(...queryValue));
     }
-    console.log("useEffect in colletion runs");
 
     //subscribe to live change made to the documets from reference or query (depending on ref value here)
     // onSntapshot returns clean up function which will unsubscribe from listening to the changes
@@ -57,7 +56,6 @@ export const useCollection = (collectionName, _query, _orderBy) => {
 
     // We are returning cleanup function, will be invoked if this hook is unmounted
     return () => {
-      console.log("cleanUp in ");
       unsubscribe();
     };
   }, [collectionName, orderByValue, queryValue]);

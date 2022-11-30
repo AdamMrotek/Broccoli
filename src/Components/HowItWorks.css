@@ -6,6 +6,7 @@
   position: relative;
   object-fit: cover;
   padding: 4.2rem;
+  z-index: 0;
 }
 .header__how-it-works__cards {
   display: flex;
@@ -19,10 +20,10 @@
   position: absolute;
   width: 70%;
   bottom: 0%;
-  right: 0%;
+  left: 0%;
   z-index: -1;
   opacity: 0.8;
-  transform: translateX(60%) translateY(50%);
+  transform: translateX(-60%) translateY(50%);
 }
 .side-card:nth-child(even) {
   margin-left: auto;

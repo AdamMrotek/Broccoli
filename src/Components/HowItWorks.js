@@ -25,14 +25,17 @@ let howItWorksContent = [
 export default function HowItWorks({ handlePopUp }) {
   return (
     <div className="how-it-works">
-      <h2 className="heading-secondary">How it works ?</h2>
+      <h2 className="heading-secondary">How it works?</h2>
       <div className="side-cards">
         {howItWorksContent.map((p, i) => {
           return <SideCard key={i} cardKey={i} cardContent={p} />;
         })}
       </div>
 
-      <button onClick={() => handlePopUp()} className="btn margin-medium">
+      <button
+        onClick={() => handlePopUp("register")}
+        className="btn margin-medium"
+      >
         Register
       </button>
 

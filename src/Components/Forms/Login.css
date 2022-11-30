@@ -1,11 +1,41 @@
+.log-in__container {
+  position: relative;
+  z-index: 10;
+  background-color: white;
+  padding: 6.8rem;
+  border-radius: 30px;
+}
 .login-form {
   position: relative;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  /* align-items: stretch; */
   margin-left: auto;
+  color: var(--white);
+  /* gap: 2.5rem; */
 }
-.login-buton:hover {
+.register-link {
   color: var(--secondary-dark);
+  text-decoration: underline;
+  cursor: pointer;
+  padding-top: 2.5rem;
+}
+.form-field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* margin-top: 1.6rem; */
+}
+
+.form-field:first-of-type {
+  margin-top: 2.5rem;
+}
+.log-in__container:last-child {
+  margin-top: 2.5rem;
+}
+
+.login-buton:hover {
   background-color: var(--white);
   outline: var(--secondary-dark) 1px solid;
 }
@@ -27,11 +57,41 @@
   white-space: nowrap;
 }
 .login-buton {
+  /* width: unset; */
   margin: 0;
+  /* padding: 1rem; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  color: var(--white);
+  /* width: 120px; */
 }
+.login-form .login-buton {
+  width: 100%;
+  margin-top: 2.5rem;
+}
+.login-buton > svg {
+  height: 3rem;
+  width: 3rem;
+  /* flex-shrink: 0;
+  width: max-content; */
+}
+
+.login-buton > span {
+  color: var(--white);
+  padding-right: 0.5rem;
+}
+.login-buton:hover > span,
+.login-buton:hover > svg > path {
+  fill: var(--secondary-dark);
+  color: var(--secondary-dark);
+}
+
 .login-form__input {
-  margin-right: 2rem;
-  width: 11rem;
+  /* margin-right: 2rem; */
+  /* width: 11rem; */
+  background-color: var(--white);
 }
 @media only screen and (max-width: 900px) {
   .login-form {
@@ -41,10 +101,10 @@
     justify-content: center;
   }
   .login-form > *:not(.btn) {
-    margin: 0;
+    /* margin: 0; */
   }
   .login-form__input {
-    width: 10rem;
-    margin-left: 2rem;
+    /* width: 10rem; */
+    /* margin-left: 2rem; */
   }
 }

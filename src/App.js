@@ -19,9 +19,13 @@ import useAuthContext from "./Hooks/useAuthContext.js";
 function App() {
   const context = useAuthContext();
 
-  const [registerPopUp, setRegisterPopUp] = useState(false);
-  const handlePopUp = () => {
-    setRegisterPopUp((registerPopUp) => !registerPopUp);
+  const [registerPopUp, setRegisterPopUp] = useState("none");
+  const handlePopUp = (value) => {
+    if (value === "login" || value === "register")
+      setRegisterPopUp(() => value);
+    if (!value) {
+      setRegisterPopUp(() => "none");
+    }
   };
 
   return (
@@ -37,7 +41,13 @@ function App() {
               />
               <Route
                 path="/"
-                element={context.user ? <Navigate to="/main" /> : <Home />}
+                element={
+                  context.user ? (
+                    <Navigate to="/main" />
+                  ) : (
+                    <Home handlePopUp={handlePopUp} />
+                  )
+                }
               />
               <Route path="*" element={<NotFound />} />
             </Routes>

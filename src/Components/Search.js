@@ -49,7 +49,7 @@ function Search(props) {
             })
             .join("")
         : "";
-    console.log(healthQuerry);
+
     return `https://api.edamam.com/api/recipes/v2?type=public&q=${querry}&app_id=${process.env.REACT_APP_Application_ID}&app_key=${process.env.REACT_APP_Application_Keys}${cusineQuerry}${mealTypeQuerry}${healthQuerry}`;
   };
 
@@ -104,69 +104,80 @@ function Search(props) {
   return (
     <>
       <div className="search-form">
+        <h2 className="margin-medium heading-secondary  ">Add new recipes</h2>
         <form
-          className="search-form__fields"
+          className="q"
           action="#"
           onSubmit={(e) => {
             handleSearch(e, recipeName, cusine);
           }}
         >
-          <label htmlFor="recipeName">Recipe Name or Ingredients</label>
-          <input
-            id="recipeName"
-            type="text"
-            required
-            name="recipeName"
-            value={recipeName}
-            onChange={(e) => setrecipeName(e.target.value)}
-          />
-          <label htmlFor="cusine">Cusine</label>
-          <select
-            name="cusine"
-            id="cusine"
-            value={cusine}
-            onChange={(e) => setCusine(e.target.value)}
-          >
-            {cusines.map((cusine) => {
-              return (
-                <InputOption
-                  key={cusine}
-                  id={"author"}
-                  valueOfOption={cusine}
-                />
-              );
-            })}
-          </select>
-          <label htmlFor="meal">Meal type</label>
-          <select
-            name="meal"
-            id="meal"
-            value={mealType}
-            onChange={(e) => setMealType(e.target.value)}
-          >
-            {mealTypes.map((mealType) => {
-              return (
-                <InputOption
-                  key={mealType}
-                  id={"meal"}
-                  valueOfOption={mealType}
-                />
-              );
-            })}
-          </select>
-          <div className="search-form__chcekboxes">
-            {health.map((healthOption) => {
-              return (
-                <ChcekboxInput
-                  key={healthOption}
-                  value={healthOption}
-                  handleChange={handelCheckboxChange}
-                  setCheckBoxes={setHeathChoices}
-                />
-              );
-            })}
+          <div className="search-form__fields__text-search">
+            <input
+              id="recipeName"
+              type="text"
+              required
+              name="recipeName"
+              value={recipeName}
+              placeholder=" "
+              onChange={(e) => setrecipeName(e.target.value)}
+            />
+            <label htmlFor="recipeName">Recipe Name or Ingredients</label>
+            <button className="btn">Search</button>
           </div>
-          <button className="btn">Search</button>
+          <div className="search-form__fields__options">
+            <div className="search-filter">
+              <label htmlFor="cusine">Cusine</label>
+              <select
+                name="cusine"
+                id="cusine"
+                value={cusine}
+                onChange={(e) => setCusine(e.target.value)}
+              >
+                {cusines.map((cusine) => {
+                  return (
+                    <InputOption
+                      key={cusine}
+                      id={"author"}
+                      valueOfOption={cusine}
+                    />
+                  );
+                })}
+              </select>
+            </div>
+            <div className="search-filter">
+              <label htmlFor="meal">Meal type</label>
+              <select
+                name="meal"
+                id="meal"
+                value={mealType}
+                onChange={(e) => setMealType(e.target.value)}
+              >
+                {mealTypes.map((mealType) => {
+                  return (
+                    <InputOption
+                      key={mealType}
+                      id={"meal"}
+                      valueOfOption={mealType}
+                    />
+                  );
+                })}
+              </select>
+            </div>
+            <div className="search-form__chcekboxes">
+              {health.map((healthOption) => {
+                return (
+                  <ChcekboxInput
+                    key={healthOption}
+                    value={healthOption}
+                    handleChange={handelCheckboxChange}
+                    setCheckBoxes={setHeathChoices}
+                  />
+                );
+              })}
+            </div>
+          </div>
+
           {searchList?.length === 0 && (
             <h2 className="search-form__no-results">
               Couldn't find any results!

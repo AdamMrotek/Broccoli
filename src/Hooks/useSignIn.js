@@ -12,6 +12,7 @@ export const useSignIn = () => {
   const { dispatch } = useAuthContext();
 
   const signIn = async (email, password) => {
+    console.log(email, password);
     //reseting states in case of rerun
     setError(null);
     setIsPending(true);
@@ -29,6 +30,7 @@ export const useSignIn = () => {
       }
 
       //upadatinh state of the context user
+      console.log(auth.currentUser);
       dispatch({ type: "LOGIN", payload: auth.currentUser });
       navigation("/main/dashboard");
     } catch (error) {

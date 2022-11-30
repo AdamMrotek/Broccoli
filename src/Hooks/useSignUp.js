@@ -15,6 +15,7 @@ export const useSignUp = () => {
     //reseting states in case of rerun
     setError(null);
     setIsPending(true);
+    console.log(email, password, confirmPassword, displayName);
 
     try {
       //chcecking if password are matching

@@ -39,7 +39,7 @@
 :root {
   --primary-dark: #007944;
   --primary-light: #71a95a;
-  --secondary-dark: #f35588;
+  --secondary-dark: #d42d62;
   --secondary-light: #ffbbb4;
   --color-green: #71a95a;
   --color-danger: #a83333;
@@ -79,7 +79,7 @@ input {
   font-size: 2rem;
   height: 3.5rem;
   border-radius: 10px;
-  border: var(--grey-light-1) 1px solid;
+  border: none;
   border-bottom: var(--grey-light-1) 3px solid;
   padding: 3px;
   transition: all ease-in-out 0.2s;
@@ -102,11 +102,12 @@ input:focus:invalid {
   position: relative;
   padding: 0.5rem 1.5rem;
   background-color: var(--secondary-dark);
-  color: var(--white);
+  color: var(--justWhite);
   margin: 0rem;
   display: inline-block;
   flex-shrink: 0;
   font-size: 2rem;
+  font-weight: 700;
   border: none;
   border-radius: 10px;
   margin: 0.5rem;
@@ -114,6 +115,9 @@ input:focus:invalid {
   cursor: pointer;
   transition: all ease-in-out 0.1s;
   z-index: 2;
+}
+button {
+  font-family: "Amatic SC", cursive;
 }
 .btn:hover {
   transform: translate(0, -0.1rem);
@@ -146,6 +150,9 @@ input:focus:invalid {
 .margin-medium {
   margin: 5rem;
   padding: 1rem 3rem;
+}
+.mtop-s {
+  margin-top: 2.5rem;
 }
 @media only screen and (max-width: 900px) {
   .margin-medium {
