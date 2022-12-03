@@ -13,17 +13,14 @@ export const useLogout = () => {
 
   const logout = async () => {
     //reseting states in case of rerun
-    console.log("canceled is", isCancelled);
     setError(null);
     setIsPending(true);
-    console.log("loggin out");
     try {
       // creating account
       await signOut(auth);
-      console.log("loggin out", auth);
       //checking if unmounted
       if (isCancelled) {
-        console.log("dispaching isCancelled");
+        // console.log("dispaching isCancelled");
         return;
       }
       //upadatinh state of the context user
@@ -38,9 +35,7 @@ export const useLogout = () => {
       setError(error.message);
     }
   };
-  useEffect(() => {
-    return () => {};
-  }, [isCancelled]);
+
   // useEffect(() => {
   //   return () => {
   //     console.log("setting is canceled to true");

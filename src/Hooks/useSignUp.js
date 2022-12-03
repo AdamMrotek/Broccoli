@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../firebase-config.js";
+import { auth, db } from "../firebase-config.js";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import useAuthContext from "./useAuthContext.js";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 
 export const useSignUp = () => {
   const [isCancelled, setIsCancelled] = useState(false);
@@ -15,7 +16,6 @@ export const useSignUp = () => {
     //reseting states in case of rerun
     setError(null);
     setIsPending(true);
-    console.log(email, password, confirmPassword, displayName);
 
     try {
       //chcecking if password are matching
@@ -24,6 +24,11 @@ export const useSignUp = () => {
       }
       // creating account
       const res = await createUserWithEmailAndPassword(auth, email, password);
+
+      const docRef = await addDoc(collection(db, "usersLists"), {
+        userId: auth.currentUser.uid,
+        recipes: [],
+      });
       if (isCancelled) {
         return;
       }
@@ -31,7 +36,6 @@ export const useSignUp = () => {
       if (!res) {
         throw new Error("Could not complete signup");
       }
-
       //updating displayed name
       await updateProfile(auth.currentUser, { displayName });
       if (isCancelled) {

@@ -29,20 +29,20 @@ function Main({ user, handlePopUp }) {
 
   // FUNCTIONS CONTROLING recipeList
   useEffect(() => {
-    handlePopUp();
     const getRecipesCleanUp = async () => {
       if (!user) return;
       const colRef = collection(db, "usersLists");
       const q = query(colRef, where("userId", "==", user.uid));
-
       const snapFunction = onSnapshot(q, (data) => {
         const cleanData = data.docs[0]?.data();
+        if (!cleanData) return;
         setRecipeList(cleanData.recipes);
         setUserListId(data.docs[0].id);
       });
       return snapFunction;
     };
     getRecipesCleanUp();
+    handlePopUp();
     //returns cleanup funtion when react unmounts the object
     return () => {
       setRecipeList(null);

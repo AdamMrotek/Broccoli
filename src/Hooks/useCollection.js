@@ -42,6 +42,7 @@ export const useCollection = (collectionName, _query, _orderBy) => {
       ref,
       (snapshot) => {
         const data = [];
+
         snapshot.docs.forEach((doc) => {
           data.push({ ...doc.data(), id: doc.id });
         });
