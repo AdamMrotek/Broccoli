@@ -1,6 +1,5 @@
 import HowItWorks from "../Components/HowItWorks.js";
 import FeaturedRecipes from "../Components/FeaturedRecipes.js";
-import MotionComponent from "../Components/MotionComponent.js";
 import { useSignIn } from "../Hooks/useSignIn.js";
 import "./Home.css";
 function Home({ handlePopUp }) {
@@ -19,7 +18,7 @@ function Home({ handlePopUp }) {
         <div className="header__text-backround"></div>
         <div className="header_container">
           <div className="header__text-box">
-            <h1 className="heading-primary-title">Wellcome to Broccoli</h1>
+            <h1 className="heading-primary-title">Welcome to Broccoli</h1>
             <div className="header__paragraph">
               <p className="paragraph ">
                 Broccoli it the place for home chefs whose passion is
@@ -42,18 +41,6 @@ function Home({ handlePopUp }) {
               </div>
             </div>
           </div>
-          {/* <div className="hero-image-container">
-            <img
-              src="/hero-brocoli-main.png"
-              className="hero__img"
-              alt="broccoli"
-            ></img>
-            <img
-              src="/hero-brocoli-twig.png"
-              className="hero__img__animated"
-              alt="broccoli"
-            ></img>
-          </div> */}
         </div>
       </div>
       <HowItWorks handlePopUp={handlePopUp} />

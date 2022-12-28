@@ -12,13 +12,12 @@ let howItWorksContent = [
   {
     title: "Create your list",
     description:
-      "from the library of hundreds of recipies that are great and awsome. Thanks to our AI taste generator you can get furhter !",
+      "once you have your list of recipies can add and remove recipes, and we will create a shopping list for you.",
     icon: "/svgIcons/undraw_healthy_options_sdo3 (1).svg",
   },
   {
     title: "Go and get it!",
-    description:
-      "from the library of hundreds of recipies that are great and awsome. Thanks to our AI taste generator you can get furhter !",
+    description: "access your list from other ",
     icon: "/svgIcons/undraw_shopping_app_flsj.svg",
   },
 ];

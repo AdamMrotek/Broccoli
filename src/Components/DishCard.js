@@ -6,7 +6,7 @@ export default function DishCard({
   removeFromGroceries,
 }) {
   return (
-    <div className="recipe-card" key={recipe.key}>
+    <div className="recipe-card">
       <div className="recipe-card__image-containter">
         <img
           className="recipe-card__image"

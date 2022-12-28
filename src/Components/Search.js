@@ -54,7 +54,6 @@ function Search(props) {
   };
 
   const handleSearchResultsEdamam = (data, setSearchResults) => {
-    console.log(data);
     let newData = data.hits.map((recipe) => {
       return {
         lable: recipe.recipe.label,
