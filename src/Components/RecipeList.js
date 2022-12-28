@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import DishCard from "./DishCard.js";
 import "./RecipeList.css";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 const container = {
   hidden: { opacity: 1, scale: 0 },
   visible: {
@@ -50,20 +50,30 @@ export default function RecipeList({
       variants={container}
       initial="hidden"
       animate="visible"
+      layout
       className="recipe-list"
     >
-      {recipes.map((recipe, i) => {
-        return (
-          <motion.li key={i} variants={item} className="recipe-list__item">
-            <DishCard
-              key={"dish" + i + Date.now()}
-              recipe={recipe}
-              addToGroceries={addToGroceries}
-              removeFromGroceries={removeFromGroceries}
-            ></DishCard>
-          </motion.li>
-        );
-      })}
+      <AnimatePresence>
+        {recipes.map((recipe, i) => {
+          return (
+            <motion.li
+              layout
+              key={recipe.key}
+              variants={item}
+              className="recipe-list__item"
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              exit={{ opacity: 0 }}
+            >
+              <DishCard
+                recipe={recipe}
+                addToGroceries={addToGroceries}
+                removeFromGroceries={removeFromGroceries}
+              ></DishCard>
+            </motion.li>
+          );
+        })}
+      </AnimatePresence>
     </motion.ul>
   );
 }

@@ -32,9 +32,11 @@ export const useCollection = (collectionName, _query, _orderBy) => {
     //building up a reference to Firebase Colletion (will be used if no query or orderBy)
     let ref = collection(db, collectionName);
     if (queryValue) {
-      ref = query(ref, where(...queryValue));
+      ref = query(ref, where(...queryValue), orderBy("createdAt", "desc"));
     }
-
+    // if (orderByValue) {
+    //   ref = query(ref, orderBy(...orderByValue));
+    // }
     //subscribe to live change made to the documets from reference or query (depending on ref value here)
     // onSntapshot returns clean up function which will unsubscribe from listening to the changes
 

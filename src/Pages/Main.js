@@ -9,6 +9,7 @@ import {
   collection,
   doc,
   getDocs,
+  serverTimestamp,
   updateDoc,
   query,
   where,
@@ -21,11 +22,11 @@ function Main({ user, handlePopUp }) {
   const [recipeList, setRecipeList] = useState([]);
   const [userListId, setUserListId] = useState([]);
 
-  const { documents, error } = useCollection("usersLists", [
-    "userId",
-    "==",
-    `${user?.uid}`,
-  ]);
+  const { documents, error } = useCollection(
+    "usersLists",
+    ["userId", "==", `${user?.uid}`],
+    ["createdAt", "desc"]
+  );
 
   // FUNCTIONS CONTROLING recipeList
   useEffect(() => {
@@ -58,7 +59,7 @@ function Main({ user, handlePopUp }) {
       recipeList.some((e) => e.key === recepie.key);
     if (recipeExists) return;
     await updateDoc(userDoc, {
-      recipes: [...recipeList, recepie],
+      recipes: [...recipeList, { ...recepie, createdAt: Date.now() }],
     });
   };
 
