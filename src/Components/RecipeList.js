@@ -50,30 +50,30 @@ export default function RecipeList({
       variants={container}
       initial="hidden"
       animate="visible"
-      layout
+      // layout
       className="recipe-list"
     >
-      <AnimatePresence>
-        {recipes.map((recipe, i) => {
-          return (
-            <motion.li
-              layout
-              key={recipe.key}
-              variants={item}
-              className="recipe-list__item"
-              animate={{ opacity: 1 }}
-              initial={{ opacity: 0 }}
-              exit={{ opacity: 0 }}
-            >
-              <DishCard
-                recipe={recipe}
-                addToGroceries={addToGroceries}
-                removeFromGroceries={removeFromGroceries}
-              ></DishCard>
-            </motion.li>
-          );
-        })}
-      </AnimatePresence>
+      {/* <AnimatePresence> */}
+      {recipes.map((recipe, i) => {
+        return (
+          <motion.li
+            layout
+            key={recipe.key}
+            variants={item}
+            className="recipe-list__item"
+            animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            exit={{ opacity: 0 }}
+          >
+            <DishCard
+              recipe={recipe}
+              addToGroceries={addToGroceries}
+              removeFromGroceries={removeFromGroceries}
+            ></DishCard>
+          </motion.li>
+        );
+      })}
+      {/* </AnimatePresence> */}
     </motion.ul>
   );
 }
