@@ -17,7 +17,8 @@ let howItWorksContent = [
   },
   {
     title: "Go and get it!",
-    description: "access your list from other ",
+    description:
+      "access your list from other devices and tick off items you already have",
     icon: "/svgIcons/undraw_shopping_app_flsj.svg",
   },
 ];
