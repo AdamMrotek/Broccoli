@@ -68,7 +68,7 @@ function Search(props) {
   const handleSearch = async (e) => {
     e.preventDefault();
     const apiQuerry = createAPIquerry();
-    const response = await fetch(apiQuerry);
+    const response = await fetch(apiQuerry, { cache: "force-cache" });
     const data = await response.json();
     //chcecking nextPage next?.href makes sure there is next before reading href
     data._links.next?.href
