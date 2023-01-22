@@ -32,7 +32,9 @@ export default function GroceriesList(recipeList) {
     ) {
       return ingedient1.quantity + ingedient2.quantity;
     } else {
-      return Math.floor(ingedient1.weight) + Math.floor(ingedient2.weight);
+      return (
+        Math.floor(ingedient1.weight) + Math.floor(ingedient2.weight)
+      ).toFixed(1);
     }
   }
 
@@ -52,8 +54,24 @@ export default function GroceriesList(recipeList) {
 
     return newList;
   }, []);
+  function cleanMeasurements(measure) {
+    if (measure === null) return "just a pinch";
+    if (measure === "<unit>") return "Unit";
+    return measure;
+  }
+  function cleanQuantity(quantity) {
+    if (quantity === 0) return "";
+    return (+quantity).toFixed(1);
+  }
   function sortGroceries(list) {
     return list.sort((a, b) => a.food > b.food);
+  }
+  function cleanUpMeasure(recipes) {
+    return recipes.map((recipe) => {
+      recipe.measure = cleanMeasurements(recipe.measure);
+      recipe.quantity = cleanQuantity(recipe.quantity);
+      return recipe;
+    });
   }
   function addCheckBoxtoGroceries(list) {
     return list.map((item) => ({ ...item, done: false }));
@@ -68,7 +86,8 @@ export default function GroceriesList(recipeList) {
   ///////
   useEffect(() => {
     let onlyGroceriesList = ingredientsExtractor(recipeList.recipeList);
-    let sumGroceries = countGroceries(onlyGroceriesList);
+    let sumGroceries = cleanUpMeasure(countGroceries(onlyGroceriesList));
+    console.log(sumGroceries);
     let sortedGroceries = sortGroceries(sumGroceries);
     let addCheckBox = addCheckBoxtoGroceries(sortedGroceries);
     setGroceries(addCheckBox);

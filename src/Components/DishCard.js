@@ -31,7 +31,7 @@ export default function DishCard({
       {addToGroceries && (
         <button
           aria-label="Add to groceries"
-          className="recipe-card__button"
+          className="btn recipe-card__button "
           onClick={() => addToGroceries(recipe)}
         >
           +
@@ -39,7 +39,8 @@ export default function DishCard({
       )}
       {removeFromGroceries && (
         <button
-          className="recipe-card__button"
+          aria-label="remove from groceries"
+          className="btn recipe-card__button"
           onClick={() => removeFromGroceries(recipe.key)}
         >
           -
