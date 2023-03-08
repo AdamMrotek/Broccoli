@@ -22,7 +22,7 @@ function RegisterForm({ handlePopUp }) {
           try {
             await register(email, password, confirmPassword, displayName);
           } catch (err) {
-            console.log(err);
+            // console.log(err);
           }
         }}
       >

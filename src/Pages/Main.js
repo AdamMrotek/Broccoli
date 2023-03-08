@@ -8,13 +8,10 @@ import { db } from "../firebase-config.js";
 import {
   collection,
   doc,
-  getDocs,
-  serverTimestamp,
   updateDoc,
   query,
   where,
   onSnapshot,
-  addDoc,
 } from "firebase/firestore";
 import { useCollection } from "../Hooks/useCollection.js";
 

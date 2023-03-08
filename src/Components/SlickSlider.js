@@ -12,7 +12,6 @@ import React from "react";
 const halfFlexGap = 25;
 
 export default function SlickSlider({ children }) {
-  // console.log(children);
   const containterRef = useRef();
   const [current, setCurrent] = useState(2);
   const [lockSlider, setLockSlider] = useState(false);
@@ -20,8 +19,6 @@ export default function SlickSlider({ children }) {
 
   const moveSlides = (direction) => {
     containterRef.current.style.transitionDuration = "500ms";
-    // console.log("Current", current);
-    // console.log("TranslateX", translateX);
     if (lockSlider) return;
     if (direction === "prev") {
       if (current <= 2) {
@@ -55,7 +52,6 @@ export default function SlickSlider({ children }) {
           {child}
         </li>
       ));
-      // console.log(items);
       return [
         <li key={children.length + 2} className="slides">
           {children[children.length - 2]}
@@ -81,7 +77,6 @@ export default function SlickSlider({ children }) {
     const listOfSlides = Array.from(
       document.querySelector(".carousel__container").childNodes
     ).map((slide) => slide.childNodes[0]);
-    // console.log("newSlides", listOfSlides);
     listOfSlides.forEach((slide) => slide.classList.remove("current-slide"));
     if (current <= 2) {
       listOfSlides[1].classList.add("current-slide");
@@ -93,18 +88,12 @@ export default function SlickSlider({ children }) {
     containterRef.current.style.transitionDuration = "500ms";
     const transitionEnd = (e) => {
       if (e.target !== containterRef.current) return;
-      // console.log("transitionEnd");
       setLockSlider(false);
       if (current <= 2) {
-        // console.log("transitionX set to the end");
-        // console.log("current in <=2", current);
-        // console.log(containterRef.current.style);
         containterRef.current.style.transitionDuration = "0ms";
         setTranslateX(containterRef.current.clientWidth * 2 - halfFlexGap);
       }
       if (current >= children.length + 1) {
-        // console.log("transitionX set to the start");
-        // console.log("current in => length", current);
         containterRef.current.style.transitionDuration = "0ms";
         setTranslateX(
           containterRef.current.clientWidth * (children.length + 1) -
@@ -113,19 +102,18 @@ export default function SlickSlider({ children }) {
       }
     };
     const transitionStart = (e) => {
-      console.log("ADDING EVENT");
+      // console.log("ADDING EVENT");
       if (e.target !== containterRef.current) return;
       if (current <= 2 || current >= children.length + 1) {
-        // console.log("locking app");
         setLockSlider(true);
       }
     };
-    console.log("attaching event");
+    // console.log("attaching event");
     containterRef.current.addEventListener("transitionstart", transitionStart);
     containterRef.current.addEventListener("transitionend", transitionEnd);
     return () => {
       if (containterRef.current) {
-        console.log("removing event");
+        // console.log("removing event");
         containterRef.current.removeEventListener(
           "transitionstart",
           transitionStart

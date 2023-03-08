@@ -11,7 +11,7 @@ export default function UserResources() {
   ]);
 
   useEffect(() => {
-    console.log(documents);
+    // console.log(documents);
   }, [documents]);
 
   return (

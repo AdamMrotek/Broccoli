@@ -24,7 +24,7 @@ export const useLogout = () => {
         return;
       }
       //upadatinh state of the context user
-      console.log("dispaching logout");
+      // console.log("dispaching logout");q
       dispatch({ type: "LOGOUT" });
       navigation("/");
     } catch (error) {

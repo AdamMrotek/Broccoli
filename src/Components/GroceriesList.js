@@ -87,7 +87,7 @@ export default function GroceriesList(recipeList) {
   useEffect(() => {
     let onlyGroceriesList = ingredientsExtractor(recipeList.recipeList);
     let sumGroceries = cleanUpMeasure(countGroceries(onlyGroceriesList));
-    console.log(sumGroceries);
+    // console.log(sumGroceries);
     let sortedGroceries = sortGroceries(sumGroceries);
     let addCheckBox = addCheckBoxtoGroceries(sortedGroceries);
     setGroceries(addCheckBox);

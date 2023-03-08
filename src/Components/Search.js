@@ -39,8 +39,10 @@ function Search(props) {
 
   const createAPIquerry = () => {
     let querry = recipeName;
-    let cusineQuerry = cusine === "any" ? "" : "&cuisineType=" + cusine;
-    let mealTypeQuerry = mealType === "any" ? "" : "&mealType=" + mealType;
+    let cusineQuerry =
+      cusine.toLowerCase() === "any" ? "" : "&cuisineType=" + cusine;
+    let mealTypeQuerry =
+      mealType.toLowerCase() === "any" ? "" : "&mealType=" + mealType;
     let healthQuerry =
       healthChoices.length > 0
         ? healthChoices
